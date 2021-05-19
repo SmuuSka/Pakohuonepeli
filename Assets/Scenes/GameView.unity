@@ -154,7 +154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 519420031}
   cursorSprite: {fileID: 667534438}
-  target: {fileID: 0}
+  target: {fileID: 2046805423}
   value: 0
   maxValue: 36
   minValue: 0
