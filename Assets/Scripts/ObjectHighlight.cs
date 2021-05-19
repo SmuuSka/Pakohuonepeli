@@ -1,13 +1,13 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class ObjectHighlight : MonoBehaviour
 {
-
-    [SerializeField] private GameObject[] wheelObject = new GameObject[3];
-    [SerializeField] private GameObject cursor;
+    [SerializeField] private GameObject[] peliObjekti = new GameObject[3];
+    [SerializeField] private GameObject kursori;
     [SerializeField] Color highlightColor;
     [SerializeField] Color defaultColor;
 
@@ -26,7 +26,7 @@ public class ObjectHighlight : MonoBehaviour
         Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mouseWorldPos.z = 0f;
         transform.position = mouseWorldPos;
-        cursor.transform.position = mouseWorldPos;
+        kursori.transform.position = mouseWorldPos;
 
         Debug.Log("Task " + moveToTask);
 
@@ -39,34 +39,15 @@ public class ObjectHighlight : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("PeliObjekti") && collision.gameObject == wheelObject[0])
+        if (collision.gameObject.CompareTag("PeliObjekti") && collision.gameObject == peliObjekti[0])
         {
-            wheelObject[0].GetComponent<SpriteRenderer>().material.color = highlightColor;
-            index = 1;
+            peliObjekti[0].GetComponent<SpriteRenderer>().material.color = highlightColor;
             moveToTask = true;
-
-
-        }
-        if (collision.gameObject.CompareTag("PeliObjekti") && collision.gameObject == wheelObject[1])
-        {
-            wheelObject[1].GetComponent<SpriteRenderer>().color = highlightColor;
-            index = 2;
-            moveToTask = true;
-
-        }
-        if (collision.gameObject.CompareTag("PeliObjekti") && collision.gameObject == wheelObject[2])
-        {
-            wheelObject[2].GetComponent<SpriteRenderer>().color = highlightColor;
-            index = 3;
-            moveToTask = true;
-
         }
     }
     private void OnCollisionExit2D(Collision2D collision)
     {
-        wheelObject[0].GetComponent<SpriteRenderer>().material.color = defaultColor;
-        wheelObject[1].GetComponent<SpriteRenderer>().color = defaultColor;
-        wheelObject[2].GetComponent<SpriteRenderer>().color = defaultColor;
+        peliObjekti[0].GetComponent<SpriteRenderer>().material.color = defaultColor;
         moveToTask = false;
     }
     private void OnMouseEnter()
