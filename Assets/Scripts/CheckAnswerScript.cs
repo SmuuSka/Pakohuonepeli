@@ -34,7 +34,7 @@ public class CheckAnswerScript : MonoBehaviour
 
     private void CheckAnswer()
     {
-        slot[slotInt].text = cursorManager.value.ToString();
+        slot[slotInt].text = cursorManager.currentValue.ToString();
 
         switch (slotInt)
         {

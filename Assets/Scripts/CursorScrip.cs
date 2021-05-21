@@ -7,7 +7,7 @@ public class CursorScrip : MonoBehaviour
     [SerializeField] private Camera mainCamera; //Ei liity hiireen
     [SerializeField] private GameObject cursorSprite; // Hiiren kursorin tilalle tuleva kuva
     [SerializeField] private GameObject target; //Ei liity hiireen
-    public float value, maxValue = 36f, minValue = 0f; //Ei liity hiireen
+    public float currentValue, maxValue, minValue; //Ei liity hiireen
 
 
     // Start is called before the first frame update
@@ -20,7 +20,7 @@ public class CursorScrip : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("Value: " + value);
+        Debug.Log("Value: " + currentValue);
         Vector3 mouseWorldPos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
         mouseWorldPos.z = 0f;
         transform.position = mouseWorldPos;
@@ -34,19 +34,21 @@ public class CursorScrip : MonoBehaviour
         var mouseWheel = Input.GetAxisRaw("Mouse ScrollWheel");
         if (mouseWheel > 0)
         {
-            if (value < maxValue)
+            currentValue++;
+            target.transform.Rotate(new Vector3(0, 0, transform.rotation.z + 10f));
+            if (currentValue == 36)
             {
-                value++;
-
-                target.transform.Rotate(new Vector3(0, 0, transform.rotation.z + 10f));
+                currentValue = 0;
             }
         }
         if (mouseWheel < 0)
         {
-            if (value > minValue)
+            currentValue--;
+            target.transform.Rotate(new Vector3(0, 0, transform.rotation.z - 10f));
+
+            if (currentValue == -1)
             {
-                value--;
-                target.transform.Rotate(new Vector3(0, 0, transform.rotation.z - 10f));
+                currentValue = 35;
             }
         }
     }
