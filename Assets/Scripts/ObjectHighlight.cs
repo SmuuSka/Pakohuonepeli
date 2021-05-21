@@ -11,13 +11,13 @@ public class ObjectHighlight : MonoBehaviour
     [SerializeField] Color highlightColor;
     [SerializeField] Color defaultColor;
 
-    private int index;
+    //private int index = 0;
     private bool moveToTask;
 
     // Start is called before the first frame update
     void Start()
     {
-        index = 0;
+        //index = 0;
     }
 
     // Update is called once per frame

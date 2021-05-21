@@ -690,9 +690,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '0
-
-'
+  m_Text: 0
 --- !u!222 &703856261
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -794,6 +792,7 @@ GameObject:
   - component: {fileID: 763767083}
   - component: {fileID: 763767082}
   - component: {fileID: 763767081}
+  - component: {fileID: 763767085}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -882,6 +881,30 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &763767085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 763767080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9cef53734a48cd41829403124e3d21e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slot:
+  - {fileID: 703856260}
+  - {fileID: 561208226}
+  - {fileID: 1612407118}
+  - {fileID: 2128120580}
+  - {fileID: 778896754}
+  answer:
+  - {fileID: 708647885}
+  - {fileID: 27160068}
+  - {fileID: 284671875}
+  - {fileID: 1132624518}
+  - {fileID: 1408030539}
 --- !u!1 &778896752
 GameObject:
   m_ObjectHideFlags: 0
