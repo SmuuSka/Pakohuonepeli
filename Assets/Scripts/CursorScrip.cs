@@ -20,7 +20,7 @@ public class CursorScrip : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("Value: " + currentValue);
+        //Debug.Log("Value: " + currentValue);
         Vector3 mouseWorldPos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
         mouseWorldPos.z = 0f;
         transform.position = mouseWorldPos;
