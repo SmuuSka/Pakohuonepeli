@@ -74,6 +74,7 @@ public class CheckAnswerScript : MonoBehaviour
                     slot[slotInt].color = Color.green;
                     slot.Remove(slot[slotInt]);
                     answer.Remove(answer[slotInt]);
+                    slotInt--;
                 }
             }
         }
@@ -81,7 +82,7 @@ public class CheckAnswerScript : MonoBehaviour
 
     private void Update()
     {
-        if (slotCount > 0)
+        if (slot.Count > 0)
         {
             LockWheelNumber();
         }
