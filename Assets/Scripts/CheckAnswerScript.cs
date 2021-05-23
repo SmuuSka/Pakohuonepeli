@@ -6,8 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class CheckAnswerScript : MonoBehaviour
 {
-    [SerializeField] private Text[] slot = new Text[0];
-    [SerializeField] private Text[] answer = new Text[0];
+    [SerializeField] private List<Text> slot = new List<Text>();
+    [SerializeField] private List<Text> answer = new List<Text>();
     [Space]
     [Space]
     [SerializeField] private Button nextSlot;
@@ -16,7 +16,8 @@ public class CheckAnswerScript : MonoBehaviour
 
     private CursorScrip cursorManager;
 
-    private int slotInt;
+    [SerializeField] private int slotInt;
+    private int slotCount;
 
     private void Start()
     {
@@ -35,38 +36,63 @@ public class CheckAnswerScript : MonoBehaviour
         answer[4].text = Random.Range(0, 35).ToString();
 
         slotInt = 0;
+        slotCount = slot.Count;
 
         nextSlot.onClick.AddListener(GoNext);
         previousSlot.onClick.AddListener(GoBack);
-        sendAnswer.onClick.AddListener(CheckAnswerIsPressed);
+        sendAnswer.onClick.AddListener(CheckAnswer);
+
+        
+
+        //if (slot.Count > 0)
+        //{
+        //    LockWheelNumber();
+        //    for (int i = 0; i < slotCount; i++)
+        //    {
+        //        if (slot[slotInt].text == answer[slotInt].text)
+        //        {
+        //            slot[slotInt].color = Color.green;
+        //            slot.Remove(slot[slotInt]);
+        //            answer.Remove(answer[slotInt]);
+        //        }
+        //    }
+        //}
+
+
     }
 
     private void CheckAnswer()
     {
-        for (int i = 0; i < answer.Length; i++)
+        if (slot.Count > 0)
         {
-            if (slot[i].text == answer[i].text)
+            LockWheelNumber();
+            for (int i = 0; i < slotCount; i++)
             {
-                slot[i].color = Color.green;
-            }
-            else
-            {
-                slot[i].color = Color.red;
+                Debug.Log("SlotCount" + slotCount);
+                if (slot[slotInt].text == answer[slotInt].text)
+                {
+                    slot[slotInt].color = Color.green;
+                    slot.Remove(slot[slotInt]);
+                    answer.Remove(answer[slotInt]);
+                }
             }
         }
     }
 
     private void Update()
     {
-        LockWheelNumber();
+        if (slotCount > 0)
+        {
+            LockWheelNumber();
+        }
     }
 
     public void GoNext()
     {
-        if (slotInt < 4)
+        if (slotInt < slot.Count - 1)
         {
-
-            slotInt++;
+            Debug.Log("Slot Int " + slotInt);
+            slotInt += 1;
         }
         
     }
@@ -74,17 +100,15 @@ public class CheckAnswerScript : MonoBehaviour
     {
         if (slotInt > 0)
         {
-            slotInt--;
+            Debug.Log("Slot Int " + slotInt);
+            slotInt -= 1;
         }
-    }
-    public void CheckAnswerIsPressed()
-    {
-        CheckAnswer();
     }
 
     private void LockWheelNumber()
     {
         slot[slotInt].text = cursorManager.currentValue.ToString();
+        slot[slotInt].color = Color.yellow;
         Debug.Log("Current Slot " + slotInt);
     }
 }

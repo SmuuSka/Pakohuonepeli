@@ -355,7 +355,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 763767085}
         m_TargetAssemblyTypeName: CheckAnswerScript, Assembly-CSharp
-        m_MethodName: GoBack
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -588,7 +588,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 763767085}
         m_TargetAssemblyTypeName: CheckAnswerScript, Assembly-CSharp
-        m_MethodName: Gonext
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1373,6 +1373,7 @@ MonoBehaviour:
   nextSlot: {fileID: 154718232}
   previousSlot: {fileID: 942087411}
   sendAnswer: {fileID: 83097093}
+  slotInt: 0
 --- !u!1 &778896752
 GameObject:
   m_ObjectHideFlags: 0
@@ -1538,7 +1539,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 763767085}
         m_TargetAssemblyTypeName: CheckAnswerScript, Assembly-CSharp
-        m_MethodName: GoBack
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
