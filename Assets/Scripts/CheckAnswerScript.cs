@@ -63,7 +63,7 @@ public class CheckAnswerScript : MonoBehaviour
 
     private void CheckAnswer()
     {
-        if (slot.Count > 0)
+        if (slot.Count != 0)
         {
             LockWheelNumber();
             for (int i = 0; i < slotCount; i++)
@@ -75,6 +75,10 @@ public class CheckAnswerScript : MonoBehaviour
                     slot.Remove(slot[slotInt]);
                     answer.Remove(answer[slotInt]);
                     slotInt--;
+                    if (slotInt < 0)
+                    {
+                        slotInt += 1;
+                    }
                 }
             }
         }
@@ -82,9 +86,14 @@ public class CheckAnswerScript : MonoBehaviour
 
     private void Update()
     {
+        
         if (slot.Count > 0)
         {
             LockWheelNumber();
+        }
+        else
+        {
+            SceneManager.LoadScene(1);
         }
     }
 

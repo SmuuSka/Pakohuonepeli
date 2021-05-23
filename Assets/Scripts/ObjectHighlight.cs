@@ -6,8 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class ObjectHighlight : MonoBehaviour
 {
-    [SerializeField] private GameObject[] peliObjekti = new GameObject[3];
-    [SerializeField] private GameObject kursori;
+    [SerializeField] private GameObject[] peliObjekti = new GameObject[0];
+    [SerializeField] private Texture2D cursorSprite;
     [SerializeField] Color highlightColor;
     [SerializeField] Color defaultColor;
 
@@ -17,6 +17,7 @@ public class ObjectHighlight : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Cursor.SetCursor(cursorSprite, new Vector2(0, 0), CursorMode.ForceSoftware);
         //index = 0;
     }
 
@@ -26,7 +27,7 @@ public class ObjectHighlight : MonoBehaviour
         Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mouseWorldPos.z = 0f;
         transform.position = mouseWorldPos;
-        kursori.transform.position = mouseWorldPos;
+        //kursori.transform.position = mouseWorldPos;
 
         Debug.Log("Task " + moveToTask);
 

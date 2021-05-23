@@ -5,8 +5,9 @@ using UnityEngine;
 public class CursorScrip : MonoBehaviour
 {
     [SerializeField] private Camera mainCamera; //Ei liity hiireen
-    [SerializeField] private GameObject cursorSprite; // Hiiren kursorin tilalle tuleva kuva
+    [SerializeField] private Texture2D cursorSprite;
     [SerializeField] private GameObject target; //Ei liity hiireen
+    
     public float currentValue, maxValue, minValue; //Ei liity hiireen
 
 
@@ -14,7 +15,9 @@ public class CursorScrip : MonoBehaviour
     void Start()
     {
 
-        Cursor.visible = false; // Piilottaa alkuperäisen kursorin
+        //Cursor.visible = false; // Piilottaa alkuperäisen kursorin
+        Cursor.SetCursor(cursorSprite, new Vector2(0,0),CursorMode.ForceSoftware);
+        
     }
 
     // Update is called once per frame
@@ -24,7 +27,7 @@ public class CursorScrip : MonoBehaviour
         Vector3 mouseWorldPos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
         mouseWorldPos.z = 0f;
         transform.position = mouseWorldPos;
-        cursorSprite.transform.position = mouseWorldPos;
+        //cursorSprite.transform.position = mouseWorldPos;
         SpinTheLock();
 
 
