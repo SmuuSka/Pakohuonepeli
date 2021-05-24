@@ -18,7 +18,7 @@ public class Lukitus : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        OnLukossa();
     }
 
     private void OnLukossa()
