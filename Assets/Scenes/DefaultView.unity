@@ -123,6 +123,50 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &64278698
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 64278700}
+  - component: {fileID: 64278699}
+  m_Layer: 0
+  m_Name: CursorManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &64278699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 64278698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c15878aac458b864f95fd499960e1167, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursorSprite: {fileID: 2800000, guid: 4db3eda28ffa49b48bf6de5da315d685, type: 3}
+--- !u!4 &64278700
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 64278698}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -9.958248, y: 5.419685, z: -365.0403}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &810649130
 GameObject:
   m_ObjectHideFlags: 0
@@ -132,7 +176,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 810649132}
-  - component: {fileID: 810649131}
   m_Layer: 0
   m_Name: HighlightManager
   m_TagString: Untagged
@@ -140,23 +183,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &810649131
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 810649130}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3d8534b55829d34cad52b783c26452c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  peliObjekti:
-  - {fileID: 941320416}
-  cursorSprite: {fileID: 2800000, guid: 4db3eda28ffa49b48bf6de5da315d685, type: 3}
-  highlightColor: {r: 0, g: 0, b: 0, a: 0}
-  defaultColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!4 &810649132
 Transform:
   m_ObjectHideFlags: 0
