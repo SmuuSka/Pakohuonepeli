@@ -8,6 +8,7 @@ public class CheckAnswerScript : MonoBehaviour
 {
     [SerializeField] private List<Text> slot = new List<Text>();
     [SerializeField] private List<Text> answer = new List<Text>();
+    [SerializeField] private List<Text> isAllRight = new List<Text>();
     [Space]
     [Space]
     [SerializeField] private Button nextSlot;
@@ -16,73 +17,62 @@ public class CheckAnswerScript : MonoBehaviour
 
     private CursorScrip cursorManager;
 
-    [SerializeField] private int slotInt;
-    private int slotCount;
+    [SerializeField] private int slotInt, answerInt;
+
+    [SerializeField] private int slotCount, answersGiven;
+
+    private bool checkAnswerIsClicked;
 
     private void Start()
     {
         cursorManager = GameObject.Find("CursorManager").GetComponent<CursorScrip>();
 
-        slot[0].text = " 0 ";
-        slot[1].text = " 0 ";
-        slot[2].text = " 0 ";
-        slot[3].text = " 0 ";
-        slot[4].text = " 0 ";
+        for (int i = 0; i < slot.Count; i++)
+        {
+            slot[i].text = " 0 ";
+        }
 
-        answer[0].text = Random.Range(0, 35).ToString();
-        answer[1].text = Random.Range(0, 35).ToString();
-        answer[2].text = Random.Range(0, 35).ToString();
-        answer[3].text = Random.Range(0, 35).ToString();
-        answer[4].text = Random.Range(0, 35).ToString();
+        for (int i = 0; i < answer.Count; i++)
+        {
+            answer[i].text = Random.Range(0, 35).ToString();
+        }
 
         slotInt = 0;
         slotCount = slot.Count;
 
         nextSlot.onClick.AddListener(GoNext);
         previousSlot.onClick.AddListener(GoBack);
-        sendAnswer.onClick.AddListener(CheckAnswer);
+        sendAnswer.onClick.AddListener(CheckAnswer2);
 
-        
-
-        //if (slot.Count > 0)
-        //{
-        //    LockWheelNumber();
-        //    for (int i = 0; i < slotCount; i++)
-        //    {
-        //        if (slot[slotInt].text == answer[slotInt].text)
-        //        {
-        //            slot[slotInt].color = Color.green;
-        //            slot.Remove(slot[slotInt]);
-        //            answer.Remove(answer[slotInt]);
-        //        }
-        //    }
-        //}
-
+        sendAnswer.gameObject.SetActive(false);
 
     }
 
-    private void CheckAnswer()
-    {
-        if (slot.Count != 0)
-        {
-            LockWheelNumber();
-            for (int i = 0; i < slotCount; i++)
-            {
-                Debug.Log("SlotCount" + slotCount);
-                if (slot[slotInt].text == answer[slotInt].text)
-                {
-                    slot[slotInt].color = Color.green;
-                    slot.Remove(slot[slotInt]);
-                    answer.Remove(answer[slotInt]);
-                    slotInt--;
-                    if (slotInt < 0)
-                    {
-                        slotInt += 1;
-                    }
-                }
-            }
-        }
-    }
+    //private void CheckAnswer()
+    //{
+
+    //    if (slot.Count != 0)
+    //    {
+    //        LockWheelNumber();
+    //        for (int i = 0; i < slotCount; i++)
+    //        {
+    //            Debug.Log("SlotCount" + slotCount);
+    //            if (slot[slotInt].text == answer[slotInt].text)
+    //            {
+    //                slot[slotInt].color = Color.green;
+    //                isAllRight.Add(slot[slotInt]);
+    //                slot.Remove(slot[slotInt]);
+    //                answer.Remove(answer[slotInt]);
+    //                slotInt--;
+    //                if (slotInt < 0)
+    //                {
+    //                    slotInt += 1;
+    //                }
+    //            }
+    //        }
+    //    }
+    //}
+
 
     private void Update()
     {
@@ -91,9 +81,11 @@ public class CheckAnswerScript : MonoBehaviour
         {
             LockWheelNumber();
         }
-        else
+
+        if (answersGiven >= 4)
         {
-            SceneManager.LoadScene(1);
+            sendAnswer.gameObject.SetActive(true);
+
         }
     }
 
@@ -103,6 +95,7 @@ public class CheckAnswerScript : MonoBehaviour
         {
             Debug.Log("Slot Int " + slotInt);
             slotInt += 1;
+            answersGiven += 1;
         }
         
     }
@@ -120,5 +113,30 @@ public class CheckAnswerScript : MonoBehaviour
         slot[slotInt].text = cursorManager.currentValue.ToString();
         slot[slotInt].color = Color.yellow;
         Debug.Log("Current Slot " + slotInt);
+    }
+
+    private void CheckAnswer2()
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            if (slot[i].text == answer[i].text)
+            {
+                Debug.Log("Oikein " + i);
+            }
+            else
+            {
+                Debug.Log("Reset");
+                slotInt = 0;
+                answersGiven = 0;
+                sendAnswer.gameObject.SetActive(false);
+                cursorManager.currentValue = 0;
+                cursorManager.target.transform.rotation = Quaternion.Euler(0,0,0);
+                for (int t = 0; t < slot.Count; t++)
+                {
+                    slot[t].text = " 0 ";
+                }
+                break;
+            }
+        }
     }
 }

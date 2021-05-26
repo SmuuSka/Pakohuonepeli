@@ -6,7 +6,7 @@ public class CursorScrip : MonoBehaviour
 {
     [SerializeField] private Camera mainCamera; //Ei liity hiireen
     [SerializeField] private Texture2D cursorSprite;
-    [SerializeField] private GameObject target; //Ei liity hiireen
+    [SerializeField] public GameObject target; //Ei liity hiireen
     
     public float currentValue, maxValue, minValue; //Ei liity hiireen
 
