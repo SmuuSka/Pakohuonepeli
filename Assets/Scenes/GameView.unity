@@ -1293,7 +1293,7 @@ MonoBehaviour:
   previousSlot: {fileID: 942087411}
   sendAnswer: {fileID: 83097093}
   slotInt: 0
-  answerInt: 0
+  currentSlotInt: 0
   slotCount: 0
   answersGiven: 0
 --- !u!1 &778896752
