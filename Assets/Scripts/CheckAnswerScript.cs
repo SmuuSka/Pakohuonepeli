@@ -17,7 +17,7 @@ public class CheckAnswerScript : MonoBehaviour
 
     private CursorScrip cursorManager;
 
-    [SerializeField] private int slotInt, answerInt;
+    [SerializeField] private int slotInt, currentSlotInt;
 
     [SerializeField] private int slotCount, answersGiven;
 
@@ -80,13 +80,15 @@ public class CheckAnswerScript : MonoBehaviour
         if (slot.Count > 0)
         {
             LockWheelNumber();
+  
         }
 
         if (answersGiven >= 4)
         {
             sendAnswer.gameObject.SetActive(true);
-
         }
+
+
     }
 
     public void GoNext()
@@ -111,32 +113,35 @@ public class CheckAnswerScript : MonoBehaviour
     private void LockWheelNumber()
     {
         slot[slotInt].text = cursorManager.currentValue.ToString();
-        slot[slotInt].color = Color.yellow;
         Debug.Log("Current Slot " + slotInt);
     }
 
     private void CheckAnswer2()
     {
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < answer.Count; i++)
         {
             if (slot[i].text == answer[i].text)
             {
-                Debug.Log("Oikein " + i);
+                slot[i].color = Color.green;
+                //isAllRight.Add(slot[i]);
             }
             else
             {
-                Debug.Log("Reset");
-                slotInt = 0;
-                answersGiven = 0;
-                sendAnswer.gameObject.SetActive(false);
-                cursorManager.currentValue = 0;
-                cursorManager.target.transform.rotation = Quaternion.Euler(0,0,0);
-                for (int t = 0; t < slot.Count; t++)
-                {
-                    slot[t].text = " 0 ";
-                }
+                ResetAnswers();
                 break;
             }
+        }
+    }
+    private void ResetAnswers()
+    {
+        slotInt = 0;
+        answersGiven = 0;
+        sendAnswer.gameObject.SetActive(false);
+        cursorManager.currentValue = 0;
+        cursorManager.target.transform.rotation = Quaternion.Euler(0, 0, 0);
+        for (int t = 0; t < slot.Count; t++)
+        {
+            slot[t].text = " 0 ";
         }
     }
 }
