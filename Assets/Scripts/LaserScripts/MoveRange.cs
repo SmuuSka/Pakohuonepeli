@@ -7,8 +7,8 @@ public class MoveRange : MonoBehaviour
     private bool canMove = true;
     private bool dirUp = true;
     public float speed = 2f;
-    public float maxY = 0.15f;
-    public float minY = 0f;
+    public float maxY = -0.5f;
+    public float minY = -0.73f;
     Rigidbody2D rb;
     [SerializeField] GameObject[] haitat = new GameObject[0];
     private int luku = 0;
@@ -44,12 +44,12 @@ public class MoveRange : MonoBehaviour
             haitat[luku].transform.Translate(-Vector2.up * speed * Time.deltaTime);
         }
 
-        if (haitat[luku].transform.position.y >= 1.5f)
+        if (haitat[luku].transform.position.y >= 1f)
         {
             dirUp = false;
         }
 
-        if (haitat[luku].transform.position.y <= -1.3f)
+        if (haitat[luku].transform.position.y <= -2.1f)
         {
             dirUp = true;
         }
@@ -63,7 +63,7 @@ public class MoveRange : MonoBehaviour
             case 0:
                 if (Input.GetKeyDown(KeyCode.Space) && haitat[luku].transform.position.y < maxY && haitat[luku].transform.position.y > minY)
                 {
-                    haitat[luku].transform.position = new Vector2(haitat[luku].transform.position.x, 0.048f);
+                    haitat[luku].transform.position = new Vector2(haitat[luku].transform.position.x, -0.615f);
                     rb.constraints = RigidbodyConstraints2D.FreezeAll;
                     greens[count].SetActive(true);
                     canMove = false;
@@ -76,7 +76,7 @@ public class MoveRange : MonoBehaviour
                 canMove = true;
                 if (Input.GetKeyDown(KeyCode.Space) && haitat[luku].transform.position.y < maxY && haitat[luku].transform.position.y > minY)
                 {
-                    haitat[luku].transform.position = new Vector2(haitat[luku].transform.position.x, 0.048f);
+                    haitat[luku].transform.position = new Vector2(haitat[luku].transform.position.x, -0.615f);
                     rb.constraints = RigidbodyConstraints2D.FreezeAll;
                     greens[count].SetActive(true);
                     canMove = false;
@@ -89,7 +89,7 @@ public class MoveRange : MonoBehaviour
                 canMove = true;
                 if (Input.GetKeyDown(KeyCode.Space) && haitat[luku].transform.position.y < maxY && haitat[luku].transform.position.y > minY)
                 {
-                    haitat[luku].transform.position = new Vector2(haitat[luku].transform.position.x, 0.048f);
+                    haitat[luku].transform.position = new Vector2(haitat[luku].transform.position.x, -0.615f);
                     rb.constraints = RigidbodyConstraints2D.FreezeAll;
                     greens[count].SetActive(true);
                     canMove = false;
@@ -102,7 +102,7 @@ public class MoveRange : MonoBehaviour
                 canMove = true;
                 if (Input.GetKeyDown(KeyCode.Space) && haitat[luku].transform.position.y < maxY && haitat[luku].transform.position.y > minY)
                 {
-                    haitat[luku].transform.position = new Vector2(haitat[luku].transform.position.x, 0.048f);
+                    haitat[luku].transform.position = new Vector2(haitat[luku].transform.position.x, -0.615f);
                     rb.constraints = RigidbodyConstraints2D.FreezeAll;
                     greens[count].SetActive(true);
                     canMove = false;
@@ -115,7 +115,7 @@ public class MoveRange : MonoBehaviour
                 canMove = true;
                 if (Input.GetKeyDown(KeyCode.Space) && haitat[luku].transform.position.y < maxY && haitat[luku].transform.position.y > minY)
                 {
-                    haitat[luku].transform.position = new Vector2(haitat[luku].transform.position.x, 0.048f);
+                    haitat[luku].transform.position = new Vector2(haitat[luku].transform.position.x, -0.615f);
                     rb.constraints = RigidbodyConstraints2D.FreezeAll;
                     greens[count].SetActive(true);
                     canMove = false;
@@ -128,11 +128,24 @@ public class MoveRange : MonoBehaviour
                 canMove = true;
                 if (Input.GetKeyDown(KeyCode.Space) && haitat[luku].transform.position.y < maxY && haitat[luku].transform.position.y > minY)
                 {
-                    haitat[luku].transform.position = new Vector2(haitat[luku].transform.position.x, 0.048f);
+                    haitat[luku].transform.position = new Vector2(haitat[luku].transform.position.x, -0.615f);
                     rb.constraints = RigidbodyConstraints2D.FreezeAll;
                     greens[count].SetActive(true);
                     canMove = false;
                     speed = 4.5f;
+                    count++;
+                    luku++;
+                }
+                break;
+            case 6:
+                canMove = true;
+                if (Input.GetKeyDown(KeyCode.Space) && haitat[luku].transform.position.y < maxY && haitat[luku].transform.position.y > minY)
+                {
+                    haitat[luku].transform.position = new Vector2(haitat[luku].transform.position.x, -0.615f);
+                    rb.constraints = RigidbodyConstraints2D.FreezeAll;
+                    greens[count].SetActive(true);
+                    canMove = false;
+                    speed = 5f;
                     count++;
                     luku++;
                     goal.SetActive(true);
