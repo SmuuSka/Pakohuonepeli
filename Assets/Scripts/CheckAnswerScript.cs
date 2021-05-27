@@ -8,7 +8,6 @@ public class CheckAnswerScript : MonoBehaviour
 {
     [SerializeField] private List<Text> slot = new List<Text>();
     [SerializeField] private List<Text> answer = new List<Text>();
-    [SerializeField] private List<Text> isAllRight = new List<Text>();
     [Space]
     [Space]
     [SerializeField] private Button nextSlot;
@@ -21,10 +20,12 @@ public class CheckAnswerScript : MonoBehaviour
 
     [SerializeField] private int slotCount, answersGiven;
 
+
     private bool checkAnswerIsClicked;
 
     private void Start()
     {
+        currentSlotInt = slotInt;
         cursorManager = GameObject.Find("CursorManager").GetComponent<CursorScrip>();
 
         for (int i = 0; i < slot.Count; i++)
@@ -76,19 +77,20 @@ public class CheckAnswerScript : MonoBehaviour
 
     private void Update()
     {
+        if (slotInt != currentSlotInt)
+        {
+
+        }
         
         if (slot.Count > 0)
         {
             LockWheelNumber();
-  
         }
 
         if (answersGiven >= 4)
         {
             sendAnswer.gameObject.SetActive(true);
         }
-
-
     }
 
     public void GoNext()
@@ -99,7 +101,6 @@ public class CheckAnswerScript : MonoBehaviour
             slotInt += 1;
             answersGiven += 1;
         }
-        
     }
     public void GoBack()
     {
@@ -113,6 +114,7 @@ public class CheckAnswerScript : MonoBehaviour
     private void LockWheelNumber()
     {
         slot[slotInt].text = cursorManager.currentValue.ToString();
+
         Debug.Log("Current Slot " + slotInt);
     }
 
@@ -128,7 +130,7 @@ public class CheckAnswerScript : MonoBehaviour
             else
             {
                 ResetAnswers();
-                break;
+                //break;
             }
         }
     }
