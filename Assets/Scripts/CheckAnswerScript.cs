@@ -79,7 +79,7 @@ public class CheckAnswerScript : MonoBehaviour
     {
         if (slotInt != currentSlotInt)
         {
-
+            slot[slotInt].color = Color.green;
         }
         
         if (slot.Count > 0)
