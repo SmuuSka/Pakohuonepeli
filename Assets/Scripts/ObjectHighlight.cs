@@ -13,6 +13,7 @@ public class ObjectHighlight : MonoBehaviour
 
     void Start()
     {
+       
         
     }
     private void Update()
