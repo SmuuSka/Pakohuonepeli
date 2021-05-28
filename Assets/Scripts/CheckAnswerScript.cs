@@ -20,11 +20,15 @@ public class CheckAnswerScript : MonoBehaviour
 
     [SerializeField] private int slotCount, answersGiven;
 
+    private Color slotDefaultColor;
+
 
     private bool checkAnswerIsClicked;
+    private bool okAll;
 
     private void Start()
     {
+        slotDefaultColor = slot[slotInt].color;
         currentSlotInt = slotInt;
         cursorManager = GameObject.Find("CursorManager").GetComponent<CursorScrip>();
 
@@ -77,11 +81,41 @@ public class CheckAnswerScript : MonoBehaviour
 
     private void Update()
     {
-        if (slotInt != currentSlotInt)
+        Debug.Log(slotInt);
+        Debug.Log(currentSlotInt);
+        if (!okAll)
         {
-            slot[slotInt].color = Color.green;
+            switch (currentSlotInt)
+            {
+                case 0:
+                    slot[slotInt].color = Color.yellow;
+                    slot[1].color = slotDefaultColor;
+                    slot[4].color = slotDefaultColor;
+                    break;
+                case 1:
+                    slot[0].color = slotDefaultColor;
+                    slot[slotInt].color = Color.yellow;
+                    slot[2].color = slotDefaultColor;
+                    break;
+                case 2:
+                    slot[1].color = slotDefaultColor;
+                    slot[slotInt].color = Color.yellow;
+                    slot[3].color = slotDefaultColor;
+                    break;
+                case 3:
+                    slot[2].color = slotDefaultColor;
+                    slot[slotInt].color = Color.yellow;
+                    slot[4].color = slotDefaultColor;
+                    break;
+                case 4:
+                    slot[3].color = slotDefaultColor;
+                    slot[slotInt].color = Color.yellow;
+                    break;
+            }
         }
-        
+
+
+        currentSlotInt = slotInt;
         if (slot.Count > 0)
         {
             LockWheelNumber();
@@ -114,17 +148,20 @@ public class CheckAnswerScript : MonoBehaviour
     private void LockWheelNumber()
     {
         slot[slotInt].text = cursorManager.currentValue.ToString();
-
         Debug.Log("Current Slot " + slotInt);
     }
 
     private void CheckAnswer2()
     {
+        
         for (int i = 0; i < answer.Count; i++)
         {
             if (slot[i].text == answer[i].text)
             {
                 slot[i].color = Color.green;
+                okAll = true;
+                SceneManager.LoadScene(0);
+
                 //isAllRight.Add(slot[i]);
             }
             else
