@@ -3,29 +3,39 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class ObjectHighlight : MonoBehaviour
 {
     [SerializeField] private GameObject highlight;
-
-    private bool moveToTask;
+    private bool highlightObject;
+  
 
     void Start()
     {
-        highlight.SetActive(false);
+        
     }
-    void Update()
+    private void Update()
     {
+ 
 
+        if (!highlightObject)
+        {
+            highlight.SetActive(false);
+        }
+
+        if (highlightObject)
+        {
+            highlight.SetActive(true);
+        }
     }
-
     private void OnMouseEnter()
     {
-        highlight.SetActive(true);
+        highlightObject = true;
     }
-
     private void OnMouseExit()
     {
-        highlight.SetActive(false);
+        highlightObject = false;
     }
+    
 }

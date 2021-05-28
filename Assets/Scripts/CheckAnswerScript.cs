@@ -25,6 +25,8 @@ public class CheckAnswerScript : MonoBehaviour
 
     private bool checkAnswerIsClicked;
     private bool okAll;
+    private bool switchScene = false;
+    [SerializeField] private int rightAnswers;
 
     private void Start()
     {
@@ -81,8 +83,11 @@ public class CheckAnswerScript : MonoBehaviour
 
     private void Update()
     {
+        AllOkay();
+
         Debug.Log(slotInt);
         Debug.Log(currentSlotInt);
+        Debug.Log("ok all " + okAll);
         if (!okAll)
         {
             switch (currentSlotInt)
@@ -159,18 +164,32 @@ public class CheckAnswerScript : MonoBehaviour
             if (slot[i].text == answer[i].text)
             {
                 slot[i].color = Color.green;
-                okAll = true;
-                SceneManager.LoadScene(0);
-
-                //isAllRight.Add(slot[i]);
+                rightAnswers++;
+                
+                
+                //okAll = true;
+                //StartCoroutine(delay());
+                
             }
             else
             {
                 ResetAnswers();
+                rightAnswers = 0;
                 //break;
             }
         }
     }
+
+    private void AllOkay()
+    {
+        while (rightAnswers > answersGiven)
+        {
+            okAll = true;
+            StartCoroutine(delay());
+            break;
+        }
+    }
+
     private void ResetAnswers()
     {
         slotInt = 0;
@@ -182,5 +201,11 @@ public class CheckAnswerScript : MonoBehaviour
         {
             slot[t].text = " 0 ";
         }
+    }
+
+    private IEnumerator delay()
+    {
+        yield return new WaitForSeconds(3);
+        SceneManager.LoadScene(1);
     }
 }
