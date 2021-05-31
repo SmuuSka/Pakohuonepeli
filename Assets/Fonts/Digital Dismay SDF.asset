@@ -68,9 +68,9 @@ Material:
     - _OutlineWidth: 0
     - _PerspectiveFilter: 0.875
     - _Reflectivity: 10
-    - _ScaleRatioA: 1
-    - _ScaleRatioB: 1
-    - _ScaleRatioC: 1
+    - _ScaleRatioA: 0.8333333
+    - _ScaleRatioB: 0.6770833
+    - _ScaleRatioC: 0.6770833
     - _ScaleX: 1
     - _ScaleY: 1
     - _ShaderFlags: 0
@@ -115,9 +115,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
   m_Name: Digital Dismay SDF
   m_EditorClassIdentifier: 
-  hashCode: 0
+  hashCode: -983897856
   material: {fileID: -1889210339327558612}
-  materialHashCode: 0
+  materialHashCode: 1576916128
   m_Version: 1.1.0
   m_SourceFontFileGUID: 4def068e5f8d94d4cb529dc7a596b767
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: 4def068e5f8d94d4cb529dc7a596b767, type: 3}
