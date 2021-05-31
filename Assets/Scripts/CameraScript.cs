@@ -8,7 +8,7 @@ public class CameraScript : MonoBehaviour
     [SerializeField] private Camera playerCamera;
 
     private float smoothSpeed = 0.125f;
-    private Vector3 offset = new Vector3(0,0,-10);
+    private Vector3 offset = new Vector3(0,1.5f,-10);
     private Vector3 velocity = Vector3.zero;
 
     private void LateUpdate()

@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class RobotMoveScript : MonoBehaviour
 {
+    [SerializeField] private Transform playerFlip;
+
     private Rigidbody2D playerRb;
     private float horizontalInput;
-    public float forceMultiplier = 200f, forceMultiplierMinus = -200;
+    private float forceMultiplier = 200f, forceMultiplierMinus = -200;
+    
 
     private void Start()
     {
@@ -24,10 +27,12 @@ public class RobotMoveScript : MonoBehaviour
     {
         if (Input.GetAxisRaw("Horizontal") > 0)
         {
+            playerFlip.rotation = new Quaternion(0, 0, 0, 0);
             playerRb.velocity = Vector2.right * horizontalInput * forceMultiplier * Time.deltaTime;
         }
         if (Input.GetAxisRaw("Horizontal") < 0)
         {
+            playerFlip.rotation = new Quaternion(0, 180, 0, 0);
             playerRb.velocity = Vector2.left * horizontalInput * forceMultiplierMinus * Time.deltaTime;
         }
     }
