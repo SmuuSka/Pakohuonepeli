@@ -8,18 +8,47 @@ using UnityEngine.UI;
 public class ObjectHighlight : MonoBehaviour
 {
     [SerializeField] private GameObject highlight;
-    private bool highlightObject;
+    private bool highlightObject, mouseOnObject;
 
-    private void Start()
+
+    void Start()
     {
-        highlight.SetActive(false);
+
+
+    }
+    private void Update()
+    {
+        if (mouseOnObject)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                SceneManager.LoadScene(1);
+            }
+        }
+
+
+        
+
+        if (!highlightObject)
+        {
+            highlight.SetActive(false);
+        }
+
+        if (highlightObject)
+        {
+            highlight.SetActive(true);
+        }
     }
     private void OnMouseEnter()
     {
-        highlight.SetActive(true);
+        highlightObject = true;
+        mouseOnObject = true;
+
     }
     private void OnMouseExit()
     {
-        highlight.SetActive(false);
+        highlightObject = false;
+        mouseOnObject = false;
     }
+
 }
