@@ -24,9 +24,9 @@ public class CheckAnswerScript : MonoBehaviour
     private Color slotDefaultColor;
 
 
-    private bool checkAnswerIsClicked;
+    //private bool checkAnswerIsClicked;
     private bool okAll;
-    private bool switchScene = false;
+    //private bool switchScene = false;
     [SerializeField] private int rightAnswers;
 
     private void Start()
@@ -86,9 +86,6 @@ public class CheckAnswerScript : MonoBehaviour
     {
         AllOkay();
 
-        Debug.Log(slotInt);
-        Debug.Log(currentSlotInt);
-        Debug.Log("ok all " + okAll);
         if (!okAll)
         {
             switch (currentSlotInt)
@@ -137,7 +134,6 @@ public class CheckAnswerScript : MonoBehaviour
     {
         if (slotInt < slot.Count - 1)
         {
-            Debug.Log("Slot Int " + slotInt);
             slotInt += 1;
             answersGiven += 1;
         }
@@ -146,7 +142,6 @@ public class CheckAnswerScript : MonoBehaviour
     {
         if (slotInt > 0)
         {
-            Debug.Log("Slot Int " + slotInt);
             slotInt -= 1;
         }
     }
@@ -154,7 +149,6 @@ public class CheckAnswerScript : MonoBehaviour
     private void LockWheelNumber()
     {
         slot[slotInt].text = cursorManager.currentValue.ToString();
-        Debug.Log("Current Slot " + slotInt);
     }
 
     private void CheckAnswer2()
