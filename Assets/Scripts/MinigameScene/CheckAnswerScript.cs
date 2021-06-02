@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class CheckAnswerScript : MonoBehaviour
 {
-    [SerializeField] private List<Text> slot = new List<Text>();
-    [SerializeField] private List<Text> answer = new List<Text>();
+    [SerializeField] private List<TMP_Text> slot = new List<TMP_Text>();
+    [SerializeField] private List<TMP_Text> answer = new List<TMP_Text>();
     [Space]
     [Space]
     [SerializeField] private Button nextSlot;
@@ -32,7 +33,7 @@ public class CheckAnswerScript : MonoBehaviour
     {
         slotDefaultColor = slot[slotInt].color;
         currentSlotInt = slotInt;
-        cursorManager = GameObject.Find("CursorManager").GetComponent<CursorScrip>();
+        cursorManager = GameObject.Find("näyttö_game").GetComponent<CursorScrip>();
 
         for (int i = 0; i < slot.Count; i++)
         {
@@ -206,6 +207,6 @@ public class CheckAnswerScript : MonoBehaviour
     private IEnumerator delay()
     {
         yield return new WaitForSeconds(3);
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(0);
     }
 }

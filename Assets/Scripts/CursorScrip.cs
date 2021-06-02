@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class CursorScrip : MonoBehaviour
 {
-    [SerializeField] private Camera mainCamera; //Ei liity hiireen
-    [SerializeField] private Texture2D cursorSprite;
+    //[SerializeField] private Camera mainCamera; //Ei liity hiireen
+    //[SerializeField] private Texture2D cursorSprite;
     [SerializeField] public GameObject target; //Ei liity hiireen
     
     public float currentValue, maxValue, minValue; //Ei liity hiireen
@@ -16,7 +16,7 @@ public class CursorScrip : MonoBehaviour
     {
 
         //Cursor.visible = false; // Piilottaa alkuperäisen kursorin
-        Cursor.SetCursor(cursorSprite, new Vector2(0,0),CursorMode.ForceSoftware);
+        //Cursor.SetCursor(cursorSprite, new Vector2(0,0),CursorMode.ForceSoftware);
         
     }
 
@@ -24,9 +24,9 @@ public class CursorScrip : MonoBehaviour
     void Update()
     {
         //Debug.Log("Value: " + currentValue);
-        Vector3 mouseWorldPos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
-        mouseWorldPos.z = 0f;
-        transform.position = mouseWorldPos;
+        //Vector3 mouseWorldPos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+        //mouseWorldPos.z = 0f;
+        //transform.position = mouseWorldPos;
         //cursorSprite.transform.position = mouseWorldPos;
         SpinTheLock();
 
