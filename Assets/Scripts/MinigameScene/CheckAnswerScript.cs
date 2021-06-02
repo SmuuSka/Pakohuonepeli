@@ -33,7 +33,7 @@ public class CheckAnswerScript : MonoBehaviour
     {
         slotDefaultColor = slot[slotInt].color;
         currentSlotInt = slotInt;
-        cursorManager = GameObject.Find("näyttö_game").GetComponent<CursorScrip>();
+        cursorManager = GameObject.Find("näyttö").GetComponent<CursorScrip>();
 
         for (int i = 0; i < slot.Count; i++)
         {
@@ -191,7 +191,7 @@ public class CheckAnswerScript : MonoBehaviour
         answersGiven = 0;
         sendAnswer.gameObject.SetActive(false);
         cursorManager.currentValue = 0;
-        cursorManager.target.transform.rotation = Quaternion.Euler(0, 0, 0);
+        //cursorManager.target.transform.rotation = Quaternion.Euler(0, 0, 0);
         for (int t = 0; t < slot.Count; t++)
         {
             slot[t].text = " 0 ";

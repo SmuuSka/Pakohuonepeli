@@ -6,7 +6,7 @@ public class CursorScrip : MonoBehaviour
 {
     //[SerializeField] private Camera mainCamera; //Ei liity hiireen
     //[SerializeField] private Texture2D cursorSprite;
-    [SerializeField] public GameObject target; //Ei liity hiireen
+    //[SerializeField] public GameObject target; //Ei liity hiireen
     
     public float currentValue, maxValue, minValue; //Ei liity hiireen
 
@@ -38,7 +38,7 @@ public class CursorScrip : MonoBehaviour
         if (mouseWheel > 0)
         {
             currentValue++;
-            target.transform.Rotate(new Vector3(0, 0, transform.rotation.z + 10f));
+            //target.transform.Rotate(new Vector3(0, 0, transform.rotation.z + 10f));
             if (currentValue == 36)
             {
                 currentValue = 0;
@@ -47,7 +47,7 @@ public class CursorScrip : MonoBehaviour
         if (mouseWheel < 0)
         {
             currentValue--;
-            target.transform.Rotate(new Vector3(0, 0, transform.rotation.z - 10f));
+            //target.transform.Rotate(new Vector3(0, 0, transform.rotation.z - 10f));
 
             if (currentValue == -1)
             {
