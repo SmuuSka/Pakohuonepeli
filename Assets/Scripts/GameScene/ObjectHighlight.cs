@@ -9,20 +9,24 @@ public class ObjectHighlight : MonoBehaviour
 {
     [SerializeField] private GameObject highlight;
     private bool highlightObject, mouseOnObject;
+    private static int sceneIndex;
 
 
     void Start()
     {
-
-
+        Debug.Log("Scene index " + sceneIndex);
     }
     private void Update()
     {
+        
+
         if (mouseOnObject)
         {
             if (Input.GetMouseButtonDown(0))
             {
+                sceneIndex++;
                 SceneManager.LoadScene(1);
+                
             }
         }
 
