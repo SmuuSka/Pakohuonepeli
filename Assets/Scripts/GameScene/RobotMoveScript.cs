@@ -30,9 +30,9 @@ public class RobotMoveScript : MonoBehaviour
         
         if (Physics2D.Raycast(transform.position, transform.TransformDirection(Vector2.right), 3f, mask))
         {
-            if (hit.distance <= 3f && GameObject.Find("/Huone_Final_1/Oik_ovi").tag == "Door")
+            if (hit.distance <= 3f && GameObject.FindGameObjectWithTag("Door"))
             {
-                GameObject.Find("/Huone_Final_1/Oik_ovi").SetActive(false);
+                GameObject.FindGameObjectWithTag("Door").SetActive(false);
             }
         }  
     }

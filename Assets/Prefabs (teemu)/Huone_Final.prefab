@@ -210,7 +210,7 @@ GameObject:
   - component: {fileID: 3229248514669238395}
   m_Layer: 10
   m_Name: Oik_ovi
-  m_TagString: Untagged
+  m_TagString: Door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -269,7 +269,7 @@ GameObject:
   - component: {fileID: 1153022916650961409}
   m_Layer: 10
   m_Name: Vas_ovi
-  m_TagString: Untagged
+  m_TagString: Door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
