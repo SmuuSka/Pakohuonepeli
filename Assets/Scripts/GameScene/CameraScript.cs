@@ -13,9 +13,17 @@ public class CameraScript : MonoBehaviour
 
     private void LateUpdate()
     {
-        Vector3 desiredPosition = target.position + offset;
-        Vector3 smoothedPosition = Vector3.SmoothDamp(transform.position, desiredPosition, ref velocity, smoothSpeed * Time.deltaTime);
-        transform.position = smoothedPosition;
+        if (target.transform.position.x < 0)
+        {
+            playerCamera.transform.position = new Vector3(0,playerCamera.transform.position.y,-10);
+
+        }
+        else if (target.transform.position.x >= 0)
+        {
+            Vector3 desiredPosition = target.position + offset;
+            Vector3 smoothedPosition = Vector3.SmoothDamp(transform.position, desiredPosition, ref velocity, smoothSpeed * Time.deltaTime);
+            transform.position = smoothedPosition;
+        }
     }
 }
 

@@ -8,31 +8,18 @@ using UnityEngine.UI;
 public class ObjectHighlight : MonoBehaviour
 {
     [SerializeField] private GameObject highlight;
-    private bool highlightObject, mouseOnObject;
-    private static int sceneIndex;
+    [SerializeField] private Color stroke;
+    private bool highlightObject;
+    public bool mouseOnObject;
+    
 
 
     void Start()
     {
-        Debug.Log("Scene index " + sceneIndex);
+
     }
     private void Update()
     {
-        
-
-        if (mouseOnObject)
-        {
-            if (Input.GetMouseButtonDown(0))
-            {
-                sceneIndex++;
-                SceneManager.LoadScene(1);
-                
-            }
-        }
-
-
-        
-
         if (!highlightObject)
         {
             highlight.SetActive(false);
@@ -47,6 +34,7 @@ public class ObjectHighlight : MonoBehaviour
     {
         highlightObject = true;
         mouseOnObject = true;
+        highlight.GetComponent<SpriteRenderer>().color = stroke;
 
     }
     private void OnMouseExit()
