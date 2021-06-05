@@ -13,6 +13,8 @@ public class CameraScript : MonoBehaviour
 
     private void LateUpdate()
     {
+        playerCamera.transform.position = target.position + offset;
+
         if (target.transform.position.x < 0)
         {
             playerCamera.transform.position = new Vector3(0,playerCamera.transform.position.y,-10);
