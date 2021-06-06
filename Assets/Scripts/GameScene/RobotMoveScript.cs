@@ -66,11 +66,19 @@ public class RobotMoveScript : MonoBehaviour
     {
         if (setTrue)
         {
-            GameObject.Find("/Huone_Final/Oik_ovi").transform.position = new Vector2(GameObject.Find("/Huone_Final/Oik_ovi").transform.position.x, GameObject.Find("/Huone_Final/Oik_ovi").transform.position.y - 1f * Time.deltaTime);
-            if (GameObject.Find("/Huone_Final/Oik_ovi").transform.position.y < -6.5f)
+            //GameObject.Find("/Huone_Final/Oik_ovi").transform.position = new Vector2(GameObject.Find("/Huone_Final/Oik_ovi").transform.position.x, GameObject.Find("/Huone_Final/Oik_ovi").transform.position.y - 1f * Time.deltaTime);
+            GameObject.Find("/Huone_Final/Oik_ovi/Ovi_ylä").transform.position = new Vector2(GameObject.Find("/Huone_Final/Oik_ovi/Ovi_ylä").transform.position.x, GameObject.Find("/Huone_Final/Oik_ovi/Ovi_ylä").transform.position.y + 1f * Time.deltaTime);
+            GameObject.Find("/Huone_Final/Oik_ovi/Ovi_ala").transform.position = new Vector2(GameObject.Find("/Huone_Final/Oik_ovi/Ovi_ala").transform.position.x, GameObject.Find("/Huone_Final/Oik_ovi/Ovi_ala").transform.position.y - 1f * Time.deltaTime);
+
+            if (GameObject.Find("/Huone_Final/Oik_ovi/Ovi_ylä").transform.position.y > 5f && GameObject.Find("/Huone_Final/Oik_ovi/Ovi_ala").transform.position.y < -3f)
             {
                 setTrue = false;
             }
+
+            //if (GameObject.Find("/Huone_Final/Oik_ovi").transform.position.y < -6.5f)
+            //{
+            //    setTrue = false;
+            //}
         }
     }
 }
