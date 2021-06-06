@@ -585,7 +585,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1672394291, guid: b5e0919562b74224aa1ceada9b8c1abd, type: 3}
       propertyPath: leftDoorCanBeOpened
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1672394291, guid: b5e0919562b74224aa1ceada9b8c1abd, type: 3}
       propertyPath: rightDoorCanBeOpened
@@ -740,9 +740,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1672394291, guid: b5e0919562b74224aa1ceada9b8c1abd, type: 3}
+      propertyPath: leftDoorCanBeOpened
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1672394291, guid: b5e0919562b74224aa1ceada9b8c1abd, type: 3}
+      propertyPath: rightDoorCanBeOpened
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2808885764952022554, guid: b5e0919562b74224aa1ceada9b8c1abd, type: 3}
       propertyPath: m_Name
-      value: Huone_Final (1)
+      value: Huone_Final_1
       objectReference: {fileID: 0}
     - target: {fileID: 2808885764952022555, guid: b5e0919562b74224aa1ceada9b8c1abd, type: 3}
       propertyPath: m_RootOrder

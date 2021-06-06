@@ -11,7 +11,7 @@ public class RobotMoveScript : MonoBehaviour
     private Rigidbody2D playerRb;
     private float horizontalInput;
     private float forceMultiplier = 200f, forceMultiplierMinus = -200;
-    private bool setTrue;
+    private bool setTrueRight, setTrueLeft;
 
     private void Start()
     {
@@ -22,7 +22,7 @@ public class RobotMoveScript : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(setTrue);
+        Debug.Log(setTrueRight);
         horizontalInput = Input.GetAxisRaw("Horizontal");
         Debug.DrawRay(transform.position, transform.TransformDirection(Vector2.right) * 3f, Color.red);
         LayerMask mask = LayerMask.GetMask("Room");
@@ -33,17 +33,29 @@ public class RobotMoveScript : MonoBehaviour
             Debug.Log(hit.collider.name);
             if (hit.collider.name == "Oik_ovi" && GameObject.Find("Huone_Final").GetComponent<RoomScript>().rightDoorCanBeOpened == true)
             {
-                setTrue = true;
+                setTrueRight = true;
+                if (GameObject.Find("/Huone_Final/Oik_ovi/Ovi_ylä").transform.position.y > 4f && GameObject.Find("/Huone_Final/Oik_ovi/Ovi_ala").transform.position.y < -4f)
+                {
+                    setTrueRight = false;
+                    GameObject.Find("/Huone_Final/Oik_ovi").GetComponent<BoxCollider2D>().enabled = false;
+                }
+
             }
             if (hit.collider.name == "Oik_ovi" && GameObject.Find("Huone_Final").GetComponent<RoomScript>().rightDoorCanBeOpened == false)
             {
                 Debug.Log("Ovea ei voi avata");
             }
- 
-            //if (hit.distance <= 3f)
-            //{
-            //    Debug.Log("Vasen Ovi");
-            //}
+
+
+            if (hit.collider.name == "Vas_ovi" && GameObject.Find("Huone_Final_1").GetComponent<RoomScript>().leftDoorCanBeOpened == true)
+            {
+                setTrueLeft = true;
+                if (GameObject.Find("/Huone_Final_1/Vas_ovi/Ovi_ylä").transform.position.y > 4f && GameObject.Find("/Huone_Final_1/Vas_ovi/Ovi_ala").transform.position.y < -4f)
+                {
+                    setTrueLeft = false;
+                    GameObject.Find("/Huone_Final_1/Vas_ovi").GetComponent<BoxCollider2D>().enabled = false;
+                }
+            }
         }
         OpenDoor();
     }
@@ -64,21 +76,20 @@ public class RobotMoveScript : MonoBehaviour
 
     private void OpenDoor()
     {
-        if (setTrue)
+        if (setTrueRight)
         {
             //GameObject.Find("/Huone_Final/Oik_ovi").transform.position = new Vector2(GameObject.Find("/Huone_Final/Oik_ovi").transform.position.x, GameObject.Find("/Huone_Final/Oik_ovi").transform.position.y - 1f * Time.deltaTime);
             GameObject.Find("/Huone_Final/Oik_ovi/Ovi_ylä").transform.position = new Vector2(GameObject.Find("/Huone_Final/Oik_ovi/Ovi_ylä").transform.position.x, GameObject.Find("/Huone_Final/Oik_ovi/Ovi_ylä").transform.position.y + 1f * Time.deltaTime);
             GameObject.Find("/Huone_Final/Oik_ovi/Ovi_ala").transform.position = new Vector2(GameObject.Find("/Huone_Final/Oik_ovi/Ovi_ala").transform.position.x, GameObject.Find("/Huone_Final/Oik_ovi/Ovi_ala").transform.position.y - 1f * Time.deltaTime);
-
-            if (GameObject.Find("/Huone_Final/Oik_ovi/Ovi_ylä").transform.position.y > 5f && GameObject.Find("/Huone_Final/Oik_ovi/Ovi_ala").transform.position.y < -3f)
-            {
-                setTrue = false;
-            }
-
+        }
+        if (setTrueLeft)
+        {
+            GameObject.Find("/Huone_Final_1/Vas_ovi/Ovi_ylä").transform.position = new Vector2(GameObject.Find("/Huone_Final_1/Vas_ovi/Ovi_ylä").transform.position.x, GameObject.Find("/Huone_Final_1/Vas_ovi/Ovi_ylä").transform.position.y + 1f * Time.deltaTime);
+            GameObject.Find("/Huone_Final_1/Vas_ovi/Ovi_ala").transform.position = new Vector2(GameObject.Find("/Huone_Final_1/Vas_ovi/Ovi_ala").transform.position.x, GameObject.Find("/Huone_Final_1/Vas_ovi/Ovi_ala").transform.position.y - 1f * Time.deltaTime);
+        }
             //if (GameObject.Find("/Huone_Final/Oik_ovi").transform.position.y < -6.5f)
             //{
             //    setTrue = false;
             //}
-        }
     }
 }
