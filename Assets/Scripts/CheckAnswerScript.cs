@@ -30,6 +30,7 @@ public class CheckAnswerScript : MonoBehaviour
 
     private void Start()
     {
+        
         slotDefaultColor = slot[slotInt].color;
         currentSlotInt = slotInt;
         cursorManager = GameObject.Find("CursorManager").GetComponent<CursorScrip>();
