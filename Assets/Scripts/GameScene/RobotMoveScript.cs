@@ -11,7 +11,7 @@ public class RobotMoveScript : MonoBehaviour
     private Rigidbody2D playerRb;
     private float horizontalInput;
     private float forceMultiplier = 200f, forceMultiplierMinus = -200;
-    
+    private bool setTrue;
 
     private void Start()
     {
@@ -22,19 +22,30 @@ public class RobotMoveScript : MonoBehaviour
 
     private void Update()
     {
-        
+        Debug.Log(setTrue);
         horizontalInput = Input.GetAxisRaw("Horizontal");
         Debug.DrawRay(transform.position, transform.TransformDirection(Vector2.right) * 3f, Color.red);
         LayerMask mask = LayerMask.GetMask("Room");
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.TransformDirection(Vector2.right), 3f, 9);
-        
-        if (Physics2D.Raycast(transform.position, transform.TransformDirection(Vector2.right), 3f, mask))
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.TransformDirection(Vector2.right), 3f, mask);
+        //Physics2D.Raycast(transform.position, transform.TransformDirection(Vector2.right), 3f, mask
+        if (hit)
         {
-            if (hit.distance <= 3f && GameObject.FindGameObjectWithTag("Door"))
+            Debug.Log(hit.collider.name);
+            if (hit.collider.name == "Oik_ovi" && GameObject.Find("Huone_Final").GetComponent<RoomScript>().rightDoorCanBeOpened == true)
             {
-                GameObject.FindGameObjectWithTag("Door").SetActive(false);
+                setTrue = true;
             }
-        }  
+            if (hit.collider.name == "Oik_ovi" && GameObject.Find("Huone_Final").GetComponent<RoomScript>().rightDoorCanBeOpened == false)
+            {
+                Debug.Log("Ovea ei voi avata");
+            }
+ 
+            //if (hit.distance <= 3f)
+            //{
+            //    Debug.Log("Vasen Ovi");
+            //}
+        }
+        OpenDoor();
     }
 
     private void FixedUpdate()
@@ -53,6 +64,13 @@ public class RobotMoveScript : MonoBehaviour
 
     private void OpenDoor()
     {
-
+        if (setTrue)
+        {
+            GameObject.Find("/Huone_Final/Oik_ovi").transform.position = new Vector2(GameObject.Find("/Huone_Final/Oik_ovi").transform.position.x, GameObject.Find("/Huone_Final/Oik_ovi").transform.position.y - 1f * Time.deltaTime);
+            if (GameObject.Find("/Huone_Final/Oik_ovi").transform.position.y < -6.5f)
+            {
+                setTrue = false;
+            }
+        }
     }
 }
