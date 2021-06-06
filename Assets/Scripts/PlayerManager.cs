@@ -1,10 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerManager : MonoBehaviour
 {
     public GameObject currentInterObj = null;
+
+    public GameObject currentPickObj = null;
 
     public Pickup currentPickupScript = null;
 
@@ -26,7 +29,14 @@ public class PlayerManager : MonoBehaviour
                 
             }
         }
+        else if (Input.GetMouseButtonDown(0) && currentPickObj)
+        {
+            SceneManager.LoadScene("SlidePuzzle");
+            
+            
+        }
     }
+    
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -37,6 +47,11 @@ public class PlayerManager : MonoBehaviour
             currentPickupScript = currentInterObj.GetComponent<Pickup>();
             
         }
+        else if (other.CompareTag("Minigame"))
+        {
+            currentPickObj = other.gameObject;
+
+        }
     }
     private void OnTriggerExit2D(Collider2D other)
     {
@@ -45,7 +60,13 @@ public class PlayerManager : MonoBehaviour
             if (other.gameObject == currentInterObj)
             {
                 currentInterObj = null;
+                currentPickupScript = null;
             }
         }
+        else if (other.CompareTag("Minigame"))
+        {
+            currentPickObj = null;
+        }
     }
+   
 }
