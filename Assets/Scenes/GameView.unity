@@ -1459,6 +1459,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Huone_assets_5
       objectReference: {fileID: 0}
+    - target: {fileID: 4494759913640952595, guid: 5473546b79da66344a41c67ebde29c0e, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4494759913640952595, guid: 5473546b79da66344a41c67ebde29c0e, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.05
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5473546b79da66344a41c67ebde29c0e, type: 3}
 --- !u!1001 &4538056060833781103
@@ -1525,6 +1533,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 9031163160929121073, guid: cdb42e43e0c6c344995fada184a7e369, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 9031163160929121073, guid: cdb42e43e0c6c344995fada184a7e369, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.03
+      objectReference: {fileID: 0}
     - target: {fileID: 9031163161335207622, guid: cdb42e43e0c6c344995fada184a7e369, type: 3}
       propertyPath: m_RootOrder
       value: 3

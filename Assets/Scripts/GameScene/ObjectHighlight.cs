@@ -7,15 +7,22 @@ using UnityEngine.UI;
 
 public class ObjectHighlight : MonoBehaviour
 {
+    private Vector3 player;
     [SerializeField] private GameObject highlight;
     [SerializeField] private Color stroke;
-    private bool highlightObject;
+    private bool highlightObject, tooFarForInteract;
     public bool mouseOnObject;
+
+    private Camera cam;
     
 
 
     void Start()
     {
+        player = GameObject.Find("Robot side-8").GetComponent<Transform>().position;
+
+        cam = Camera.main;
+
         if (PlayerData.lockerTaskDone)
         {
             Destroy(GameObject.FindGameObjectWithTag("Locker"));
@@ -23,6 +30,8 @@ public class ObjectHighlight : MonoBehaviour
     }
     private void Update()
     {
+        RobotTooFar();
+        
         if (!highlightObject)
         {
             highlight.SetActive(false);
@@ -32,6 +41,8 @@ public class ObjectHighlight : MonoBehaviour
         {
             highlight.SetActive(true);
         }
+
+
 
     }
     private void OnMouseEnter()
@@ -49,16 +60,26 @@ public class ObjectHighlight : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (!PlayerData.lockerTaskDone)
+        if (!tooFarForInteract)
         {
-            if (mouseOnObject && this.gameObject.tag == "Locker")
+            if (!PlayerData.lockerTaskDone)
             {
-                
-                Vector2 pos = GameObject.Find("Robot side-8").GetComponent<Transform>().transform.position;
-                PlayerData.playerTransformPos = pos;
-                SceneManager.LoadScene("LockScene");
-                PlayerData.lockerTaskDone = true;
+                if (mouseOnObject && this.gameObject.tag == "Locker")
+                {
+
+                    Vector2 pos = GameObject.Find("Robot side-8").GetComponent<Transform>().transform.position;
+                    PlayerData.playerTransformPos = pos;
+                    SceneManager.LoadScene("LockScene");
+                    PlayerData.lockerTaskDone = true;
+                }
             }
         }
+    }
+
+    
+
+    private void RobotTooFar()
+    {
+
     }
 }

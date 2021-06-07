@@ -32,8 +32,7 @@ public class RobotMoveScript : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(PlayerData.playerTransformPos);
-        Debug.Log(setTrueRight);
+        
         horizontalInput = Input.GetAxisRaw("Horizontal");
         Debug.DrawRay(transform.position, transform.TransformDirection(Vector2.right) * 3f, Color.red);
         LayerMask mask = LayerMask.GetMask("Room");
