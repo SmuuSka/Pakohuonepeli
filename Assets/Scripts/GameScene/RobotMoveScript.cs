@@ -4,17 +4,27 @@ using UnityEngine;
 
 public class RobotMoveScript : MonoBehaviour
 {
-    [SerializeField] private Transform playerFlip;
+    [SerializeField] private Transform playerPos;
+    
 
-    [SerializeField] private Transform castPoint;
+    //[SerializeField] private Transform castPoint;
 
     private Rigidbody2D playerRb;
     private float horizontalInput;
     private float forceMultiplier = 200f, forceMultiplierMinus = -200;
     private bool setTrueRight, setTrueLeft;
+    
 
     private void Start()
     {
+        if (PlayerData.playerTransformPos == null)
+        {
+            transform.position = playerPos.position;
+        }
+        else
+        {
+            playerPos.position = PlayerData.playerTransformPos;
+        }
         playerRb = GetComponent<Rigidbody2D>();
         
 
@@ -22,6 +32,7 @@ public class RobotMoveScript : MonoBehaviour
 
     private void Update()
     {
+        Debug.Log(PlayerData.playerTransformPos);
         Debug.Log(setTrueRight);
         horizontalInput = Input.GetAxisRaw("Horizontal");
         Debug.DrawRay(transform.position, transform.TransformDirection(Vector2.right) * 3f, Color.red);
@@ -64,12 +75,12 @@ public class RobotMoveScript : MonoBehaviour
     {
         if (Input.GetAxisRaw("Horizontal") > 0)
         {
-            playerFlip.rotation = new Quaternion(0, 0, 0, 0);
+            playerPos.rotation = new Quaternion(0, 0, 0, 0);
             playerRb.velocity = Vector2.right * horizontalInput * forceMultiplier * Time.deltaTime;
         }
         if (Input.GetAxisRaw("Horizontal") < 0)
         {
-            playerFlip.rotation = new Quaternion(0, 180, 0, 0);
+            playerPos.rotation = new Quaternion(0, 180, 0, 0);
             playerRb.velocity = Vector2.left * horizontalInput * forceMultiplierMinus * Time.deltaTime;
         }
     }

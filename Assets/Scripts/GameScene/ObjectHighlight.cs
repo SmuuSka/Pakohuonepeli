@@ -48,6 +48,8 @@ public class ObjectHighlight : MonoBehaviour
     {
         if (mouseOnObject && this.gameObject.tag == "Locker")
         {
+            Vector2 pos = GameObject.Find("Robot side-8").GetComponent<Transform>().transform.position;
+            PlayerData.playerTransformPos = pos;
             SceneManager.LoadScene("LockScene");
         }
     }
