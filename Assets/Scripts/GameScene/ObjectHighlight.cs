@@ -16,7 +16,10 @@ public class ObjectHighlight : MonoBehaviour
 
     void Start()
     {
-
+        if (PlayerData.lockerTaskDone)
+        {
+            Destroy(GameObject.FindGameObjectWithTag("Locker"));
+        }
     }
     private void Update()
     {
@@ -28,8 +31,8 @@ public class ObjectHighlight : MonoBehaviour
         if (highlightObject)
         {
             highlight.SetActive(true);
-            
         }
+
     }
     private void OnMouseEnter()
     {
@@ -46,11 +49,16 @@ public class ObjectHighlight : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (mouseOnObject && this.gameObject.tag == "Locker")
+        if (!PlayerData.lockerTaskDone)
         {
-            Vector2 pos = GameObject.Find("Robot side-8").GetComponent<Transform>().transform.position;
-            PlayerData.playerTransformPos = pos;
-            SceneManager.LoadScene("LockScene");
+            if (mouseOnObject && this.gameObject.tag == "Locker")
+            {
+                
+                Vector2 pos = GameObject.Find("Robot side-8").GetComponent<Transform>().transform.position;
+                PlayerData.playerTransformPos = pos;
+                SceneManager.LoadScene("LockScene");
+                PlayerData.lockerTaskDone = true;
+            }
         }
     }
 }
