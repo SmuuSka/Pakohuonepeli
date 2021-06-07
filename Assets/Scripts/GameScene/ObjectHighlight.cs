@@ -46,9 +46,9 @@ public class ObjectHighlight : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (mouseOnObject && GameObject.FindGameObjectWithTag("Locker"))
+        if (mouseOnObject && this.gameObject.tag == "Locker")
         {
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene("LockScene");
         }
     }
 }
