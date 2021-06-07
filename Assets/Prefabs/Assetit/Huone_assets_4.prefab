@@ -119,7 +119,7 @@ GameObject:
   - component: {fileID: 9031163161335207617}
   m_Layer: 8
   m_Name: Huone_assets_4
-  m_TagString: Untagged
+  m_TagString: Grill
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

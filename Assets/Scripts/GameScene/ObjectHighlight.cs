@@ -28,6 +28,7 @@ public class ObjectHighlight : MonoBehaviour
         if (highlightObject)
         {
             highlight.SetActive(true);
+            
         }
     }
     private void OnMouseEnter()
@@ -43,4 +44,11 @@ public class ObjectHighlight : MonoBehaviour
         mouseOnObject = false;
     }
 
+    private void OnMouseDown()
+    {
+        if (mouseOnObject && GameObject.FindGameObjectWithTag("Locker"))
+        {
+            SceneManager.LoadScene(1);
+        }
+    }
 }

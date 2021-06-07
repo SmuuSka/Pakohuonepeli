@@ -6,6 +6,9 @@ TagManager:
   tags:
   - LeftDoor
   - RightDoor
+  - Locker
+  - Toolbox
+  - Grill
   layers:
   - Default
   - TransparentFX
