@@ -50,5 +50,10 @@ public class ObjectHighlight : MonoBehaviour
         {
             SceneManager.LoadScene("LockScene");
         }
+
+        if (mouseOnObject && this.gameObject.tag == "Toolbox")
+        {
+            SceneManager.LoadScene("LaserLock");
+        }
     }
 }

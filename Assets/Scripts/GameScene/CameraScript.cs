@@ -11,6 +11,13 @@ public class CameraScript : MonoBehaviour
     private Vector3 offset = new Vector3(0,1.5f,-10);
     private Vector3 velocity = Vector3.zero;
 
+
+    private void Start()
+    {
+        Debug.Log(playerCamera.fieldOfView);
+    }
+
+
     private void LateUpdate()
     {
         playerCamera.transform.position = target.position + offset;
