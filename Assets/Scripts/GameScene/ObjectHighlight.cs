@@ -30,6 +30,7 @@ public class ObjectHighlight : MonoBehaviour
     }
     private void Update()
     {
+        
         RobotTooFar();
         
         if (!highlightObject)
@@ -80,6 +81,9 @@ public class ObjectHighlight : MonoBehaviour
 
     private void RobotTooFar()
     {
+        Plane plane = new Plane(Vector3.zero, player);
+        Debug.Log(plane);
+   
 
     }
 }
