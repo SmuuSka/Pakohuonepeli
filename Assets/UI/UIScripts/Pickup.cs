@@ -1,0 +1,33 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Pickup : MonoBehaviour
+{
+
+    public GameObject itemButton;
+    public Inventory inventory;
+    public void Additem(GameObject item)
+    {
+        bool itemAdded = false;
+
+        for (int i = 0; i < inventory.slots.Length; i++)
+        {
+            if (inventory.isFull[i] == false)
+            {
+                inventory.isFull[i] = true;
+                
+                Instantiate(itemButton, inventory.slots[i].transform, false);
+                itemAdded = true;
+                
+                break;
+            }
+        }
+
+        if (itemAdded)
+        {
+            Debug.Log("Added to inventory");
+            Destroy(gameObject);
+        }
+    }
+}
