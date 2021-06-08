@@ -26,14 +26,14 @@ public class Lukitus : MonoBehaviour
         switch (luku)
         {
             case 0:
-                if (sylinterit[luku].transform.position.y > 0.05f)
+                if (sylinterit[luku].transform.position.y > 0.35f)
                 {
                     rb.constraints = RigidbodyConstraints2D.FreezeAll;
                     luku++;
                 }
                 break;
             case 1:
-                if (sylinterit[luku].transform.position.y > -0.25f)
+                if (sylinterit[luku].transform.position.y > 0.36f)
                 {
                     rb = sylinterit[luku].GetComponent<Rigidbody2D>();
                     rb.constraints = RigidbodyConstraints2D.FreezeAll;
@@ -41,7 +41,7 @@ public class Lukitus : MonoBehaviour
                 }
                 break;
             case 2:
-                if (sylinterit[luku].transform.position.y > -0.38f)
+                if (sylinterit[luku].transform.position.y > 0.36f)
                 {
                     rb = sylinterit[luku].GetComponent<Rigidbody2D>();
                     rb.constraints = RigidbodyConstraints2D.FreezeAll;
@@ -49,7 +49,7 @@ public class Lukitus : MonoBehaviour
                 }
                 break;
             case 3:
-                if (sylinterit[luku].transform.position.y > -0.52f)
+                if (sylinterit[luku].transform.position.y > 0.36f)
                 {
                     rb = sylinterit[luku].GetComponent<Rigidbody2D>();
                     rb.constraints = RigidbodyConstraints2D.FreezeAll;
@@ -57,7 +57,7 @@ public class Lukitus : MonoBehaviour
                 }
                 break;
             case 4:
-                if (sylinterit[luku].transform.position.y > -0.15f)
+                if (sylinterit[luku].transform.position.y > 0.36f)
                 {
                     rb = sylinterit[luku].GetComponent<Rigidbody2D>();
                     rb.constraints = RigidbodyConstraints2D.FreezeAll;
@@ -65,21 +65,13 @@ public class Lukitus : MonoBehaviour
                 }
                 break;
             case 5:
-                if (sylinterit[luku].transform.position.y > 0f)
+                if (sylinterit[luku].transform.position.y > 0.36f)
                 {
                     rb = sylinterit[luku].GetComponent<Rigidbody2D>();
                     rb.constraints = RigidbodyConstraints2D.FreezeAll;
                     luku++;
                 }
-                break;
-            case 6:
-                if (sylinterit[luku].transform.position.y > 0f)
-                {
-                    rb = sylinterit[luku].GetComponent<Rigidbody2D>();
-                    rb.constraints = RigidbodyConstraints2D.FreezeAll;
-                    luku++;
-                }
-                break;
+                break;           
             default:
                 break;
         }
