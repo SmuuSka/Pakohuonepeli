@@ -45,6 +45,7 @@ public class ObjectHighlight : MonoBehaviour
 
 
 
+
     }
     private void OnMouseEnter()
     {
@@ -73,6 +74,12 @@ public class ObjectHighlight : MonoBehaviour
                     SceneManager.LoadScene("LockScene");
                     PlayerData.lockerTaskDone = true;
                 }
+
+                if (mouseOnObject && this.gameObject.tag == "Toolbox")
+                {
+                    SceneManager.LoadScene("Tiirikka");
+                }
+                    
             }
         }
     }
