@@ -62,27 +62,19 @@ public class ObjectHighlight : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (!tooFarForInteract)
+        if (mouseOnObject && this.gameObject.tag == "Locker")
         {
-            if (!PlayerData.lockerTaskDone)
-            {
-                if (mouseOnObject && this.gameObject.tag == "Locker")
-                {
-
-                    Vector2 pos = GameObject.Find("Robot side-8").GetComponent<Transform>().transform.position;
-                    PlayerData.playerTransformPos = pos;
-                    SceneManager.LoadScene("LockScene");
-                    PlayerData.lockerTaskDone = true;
-                }
-
-                if (mouseOnObject && this.gameObject.tag == "Toolbox")
-                {
-                    SceneManager.LoadScene("Tiirikka");
-                }
-                    
-            }
+            Vector2 pos = GameObject.Find("Robot side-8").GetComponent<Transform>().transform.position;
+            PlayerData.playerTransformPos = pos;
+            SceneManager.LoadScene("LockScene");
+            PlayerData.lockerTaskDone = true;
         }
+        if (mouseOnObject && this.gameObject.tag == "Toolbox")
+        {
+            SceneManager.LoadScene("Tiirikka");
+        }   
     }
+    
 
     
 
