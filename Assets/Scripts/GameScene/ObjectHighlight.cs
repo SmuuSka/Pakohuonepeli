@@ -80,9 +80,8 @@ public class ObjectHighlight : MonoBehaviour
 
     private void RobotTooFar()
     {
-        Plane plane = new Plane(Vector3.zero, player);
-        Debug.Log(plane);
-   
-
+        var mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
+        Ray2D ray = new Ray2D(cam.transform.position, mousePos);
+        Debug.DrawRay(cam.transform.position, mousePos, Color.green);
     }
 }
