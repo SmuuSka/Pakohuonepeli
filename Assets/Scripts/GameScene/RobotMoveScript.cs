@@ -70,13 +70,11 @@ public class RobotMoveScript : MonoBehaviour
             {
                 setTrueRight = true;
                 setTrueLeft = true;
-                if (GameObject.Find("/Huone_Final/Oik_ovi/Ovi_ylä").transform.position.y > 4f && GameObject.Find("/Huone_Final/Oik_ovi/Ovi_ala").transform.position.y < -4f && GameObject.Find("/Huone_Final_1/Vas_ovi/Ovi_ylä").transform.position.y > 4f && GameObject.Find("/Huone_Final_1/Vas_ovi/Ovi_ala").transform.position.y < -4f)
+                
+                if (GameObject.Find("/Huone_Final/Oik_ovi/Ovi_ylä").transform.position.y > 7 && GameObject.Find("/Huone_Final/Oik_ovi/Ovi_ala").transform.position.y < -11 && GameObject.Find("/Huone_Final_1/Vas_ovi/Ovi_ylä").transform.position.y > 7 && GameObject.Find("/Huone_Final_1/Vas_ovi/Ovi_ala").transform.position.y < -11)
                 {
                     setTrueRight = false;
                     setTrueLeft = false;
-                    GameObject.Find("/Huone_Final/Oik_ovi").GetComponent<BoxCollider2D>().enabled = false;
-                    GameObject.Find("/Huone_Final_1/Vas_ovi").GetComponent<BoxCollider2D>().enabled = false;
-                    sendPulse = true;
                 }
             }
         }
@@ -117,20 +115,27 @@ public class RobotMoveScript : MonoBehaviour
     {
         if (setTrueRight)
         {
-            //GameObject.Find("/Huone_Final/Oik_ovi").transform.position = new Vector2(GameObject.Find("/Huone_Final/Oik_ovi").transform.position.x, GameObject.Find("/Huone_Final/Oik_ovi").transform.position.y - 1f * Time.deltaTime);
-            GameObject.Find("/Huone_Final/Oik_ovi/Ovi_ylä").transform.position = new Vector2(GameObject.Find("/Huone_Final/Oik_ovi/Ovi_ylä").transform.position.x, GameObject.Find("/Huone_Final/Oik_ovi/Ovi_ylä").transform.position.y + 1f * Time.deltaTime);
-            GameObject.Find("/Huone_Final/Oik_ovi/Ovi_ala").transform.position = new Vector2(GameObject.Find("/Huone_Final/Oik_ovi/Ovi_ala").transform.position.x, GameObject.Find("/Huone_Final/Oik_ovi/Ovi_ala").transform.position.y - 1f * Time.deltaTime);
+            Vector2 startUpperRight = GameObject.Find("/Huone_Final/Oik_ovi/Ovi_ylä").transform.position;
+            Vector2 finalUpperRight = new Vector2(GameObject.Find("/Huone_Final/Oik_ovi/Ovi_ylä").transform.position.x, GameObject.Find("/Huone_Final/Oik_ovi/Ovi_ylä").transform.position.y + 4f);
+            GameObject.Find("/Huone_Final/Oik_ovi/Ovi_ylä").transform.position = Vector2.Lerp(startUpperRight, finalUpperRight, 0.1f * Time.deltaTime);
+
+            Vector2 startLowerRight = GameObject.Find("/Huone_Final/Oik_ovi/Ovi_ala").transform.position;
+            Vector2 finalLowerRight = new Vector2(GameObject.Find("/Huone_Final/Oik_ovi/Ovi_ala").transform.position.x, GameObject.Find("/Huone_Final/Oik_ovi/Ovi_ala").transform.position.y - 4f);
+            GameObject.Find("/Huone_Final/Oik_ovi/Ovi_ala").transform.position = Vector2.Lerp(startLowerRight, finalLowerRight, 0.1f * Time.deltaTime);
         }
+
         if (setTrueLeft)
         {
-            GameObject.Find("/Huone_Final_1/Vas_ovi/Ovi_ylä").transform.position = new Vector2(GameObject.Find("/Huone_Final_1/Vas_ovi/Ovi_ylä").transform.position.x, GameObject.Find("/Huone_Final_1/Vas_ovi/Ovi_ylä").transform.position.y + 1f * Time.deltaTime);
-            GameObject.Find("/Huone_Final_1/Vas_ovi/Ovi_ala").transform.position = new Vector2(GameObject.Find("/Huone_Final_1/Vas_ovi/Ovi_ala").transform.position.x, GameObject.Find("/Huone_Final_1/Vas_ovi/Ovi_ala").transform.position.y - 1f * Time.deltaTime);
+            Vector2 startUpperLeft = GameObject.Find("/Huone_Final_1/Vas_ovi/Ovi_ylä").transform.position;
+            Vector2 finalUpperLeft = new Vector2(GameObject.Find("/Huone_Final_1/Vas_ovi/Ovi_ylä").transform.position.x, GameObject.Find("/Huone_Final_1/Vas_ovi/Ovi_ylä").transform.position.y + 4f);
+            GameObject.Find("/Huone_Final_1/Vas_ovi/Ovi_ylä").transform.position = Vector2.Lerp(startUpperLeft, finalUpperLeft, 0.1f * Time.deltaTime);
+
+            Vector2 startLowerLeft = GameObject.Find("/Huone_Final_1/Vas_ovi/Ovi_ala").transform.position;
+            Vector2 finalLowerLeft = new Vector2(GameObject.Find("/Huone_Final_1/Vas_ovi/Ovi_ala").transform.position.x, GameObject.Find("/Huone_Final_1/Vas_ovi/Ovi_ala").transform.position.y - 4f);
+            GameObject.Find("/Huone_Final_1/Vas_ovi/Ovi_ala").transform.position = Vector2.Lerp(startLowerLeft, finalLowerLeft, 0.1f * Time.deltaTime);
         }
-            //if (GameObject.Find("/Huone_Final/Oik_ovi").transform.position.y < -6.5f)
-            //{
-            //    setTrue = false;
-            //}
     }
+
     private IEnumerator ShutTheDoor()
     {
         
