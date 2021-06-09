@@ -5,7 +5,8 @@ using UnityEngine;
 public class RobotMoveScript : MonoBehaviour
 {
     [SerializeField] private Transform playerPos;
-    [SerializeField] private ContactFilter2D doorAreaFilter;
+    [SerializeField] private Collider2D playerCollider;
+    [SerializeField] private ContactFilter2D doorZoneFilter;
     
 
     //[SerializeField] private Transform castPoint;
@@ -13,7 +14,8 @@ public class RobotMoveScript : MonoBehaviour
     private Rigidbody2D playerRb;
     private float horizontalInput;
     private float forceMultiplier = 200f, forceMultiplierMinus = -200;
-    private bool setTrueRight, setTrueLeft;
+    private bool setTrueRight, setTrueLeft, isInsideDoorZone;
+    private Collider2D[] doorZoneDetectionResults = new Collider2D[16] ;
     
     
 
@@ -41,6 +43,13 @@ public class RobotMoveScript : MonoBehaviour
         //Debug.Log("Player Pos " + playerPos.position);
         DoorLogic();
         OpenDoor();
+        UpdateIsInsideDoorZone();
+    }
+
+    private void UpdateIsInsideDoorZone()
+    {
+        isInsideDoorZone = playerCollider.OverlapCollider(doorZoneFilter, doorZoneDetectionResults) > 0;
+        Debug.Log("Inside" + isInsideDoorZone);
     }
 
     private void DoorLogic()
@@ -49,7 +58,6 @@ public class RobotMoveScript : MonoBehaviour
         Debug.DrawRay(transform.position, transform.TransformDirection(Vector2.right) * 3f, Color.red);
         LayerMask maskRoom = LayerMask.GetMask("Room");
         RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.TransformDirection(Vector2.right), 3f, maskRoom);
-        Debug.Log(hit.distance);
         //Physics2D.Raycast(transform.position, transform.TransformDirection(Vector2.right), 3f, mask
 
         if (hit)

@@ -421,7 +421,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.5911267, y: 0.0052051544}
+  m_Offset: {x: -0.05229795, y: 0.0052051544}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -432,8 +432,24 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 4.3578644, y: 18.648476}
+  m_Size: {x: 2.4654343, y: 18.648476}
   m_EdgeRadius: 0
+--- !u!58 &726371579
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 726371577}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 2.5994778
 --- !u!1001 &742778052
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1214,6 +1230,26 @@ PrefabInstance:
       propertyPath: playerFlip
       value: 
       objectReference: {fileID: 664207076}
+    - target: {fileID: 1198958345116569473, guid: 6d204d50b72e52740b3d0af993a0342d, type: 3}
+      propertyPath: playerCollider
+      value: 
+      objectReference: {fileID: 726371579}
+    - target: {fileID: 1198958345116569473, guid: 6d204d50b72e52740b3d0af993a0342d, type: 3}
+      propertyPath: doorAreaFilter.useLayerMask
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1198958345116569473, guid: 6d204d50b72e52740b3d0af993a0342d, type: 3}
+      propertyPath: doorZoneFilter.useLayerMask
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1198958345116569473, guid: 6d204d50b72e52740b3d0af993a0342d, type: 3}
+      propertyPath: doorAreaFilter.layerMask.m_Bits
+      value: 2048
+      objectReference: {fileID: 0}
+    - target: {fileID: 1198958345116569473, guid: 6d204d50b72e52740b3d0af993a0342d, type: 3}
+      propertyPath: doorZoneFilter.layerMask.m_Bits
+      value: 2048
+      objectReference: {fileID: 0}
     - target: {fileID: 1232477862482108882, guid: 6d204d50b72e52740b3d0af993a0342d, type: 3}
       propertyPath: m_Layer
       value: 9
