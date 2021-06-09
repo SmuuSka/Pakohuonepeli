@@ -71,10 +71,12 @@ public class RobotMoveScript : MonoBehaviour
                 setTrueRight = true;
                 setTrueLeft = true;
                 
-                if (GameObject.Find("/Huone_Final/Oik_ovi/Ovi_ylä").transform.position.y > 7 && GameObject.Find("/Huone_Final/Oik_ovi/Ovi_ala").transform.position.y < -11 && GameObject.Find("/Huone_Final_1/Vas_ovi/Ovi_ylä").transform.position.y > 7 && GameObject.Find("/Huone_Final_1/Vas_ovi/Ovi_ala").transform.position.y < -11)
+                if (GameObject.Find("/Huone_Final/Oik_ovi/Ovi_ylä").transform.position.y > 4 && GameObject.Find("/Huone_Final/Oik_ovi/Ovi_ala").transform.position.y < -6 && GameObject.Find("/Huone_Final_1/Vas_ovi/Ovi_ylä").transform.position.y > 4 && GameObject.Find("/Huone_Final_1/Vas_ovi/Ovi_ala").transform.position.y < -6)
                 {
                     setTrueRight = false;
                     setTrueLeft = false;
+                    GameObject.Find("/Huone_Final/Oik_ovi").GetComponent<BoxCollider2D>().enabled = false;
+                    GameObject.Find("/Huone_Final_1/Vas_ovi").GetComponent<BoxCollider2D>().enabled = false;
                 }
             }
         }
@@ -135,17 +137,19 @@ public class RobotMoveScript : MonoBehaviour
             GameObject.Find("/Huone_Final_1/Vas_ovi/Ovi_ala").transform.position = Vector2.Lerp(startLowerLeft, finalLowerLeft, 0.1f * Time.deltaTime);
         }
     }
+    private void CloseDoor()
+    {
+
+    }
 
     private IEnumerator ShutTheDoor()
     {
         
         if (!isInsideDoorZone)
         {
-            
             yield return new WaitForSeconds(1);
             
             GameObject.Find("/Huone_Final/Oik_ovi/Ovi_ylä").transform.position = new Vector2(GameObject.Find("/Huone_Final/Oik_ovi/Ovi_ylä").transform.position.x, GameObject.Find("/Huone_Final/Oik_ovi/Ovi_ylä").transform.position.y - 1f * Time.deltaTime);
-            
         }
     }
 }
