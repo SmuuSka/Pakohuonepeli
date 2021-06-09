@@ -5,6 +5,7 @@ using UnityEngine;
 public class RobotMoveScript : MonoBehaviour
 {
     [SerializeField] private Transform playerPos;
+    [SerializeField] private ContactFilter2D doorAreaFilter;
     
 
     //[SerializeField] private Transform castPoint;
@@ -14,9 +15,12 @@ public class RobotMoveScript : MonoBehaviour
     private float forceMultiplier = 200f, forceMultiplierMinus = -200;
     private bool setTrueRight, setTrueLeft;
     
+    
 
     private void Start()
     {
+       
+
         if (PlayerData.playerTransformPos == null)
         {
             transform.position = playerPos.position;
@@ -32,8 +36,9 @@ public class RobotMoveScript : MonoBehaviour
 
     private void Update()
     {
-        
         horizontalInput = Input.GetAxisRaw("Horizontal");
+        playerPos.position = new Vector2(transform.position.x, transform.position.y);
+        //Debug.Log("Player Pos " + playerPos.position);
         DoorLogic();
         OpenDoor();
     }
@@ -42,13 +47,14 @@ public class RobotMoveScript : MonoBehaviour
     {
 
         Debug.DrawRay(transform.position, transform.TransformDirection(Vector2.right) * 3f, Color.red);
-        LayerMask mask = LayerMask.GetMask("Room");
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.TransformDirection(Vector2.right), 3f, mask);
+        LayerMask maskRoom = LayerMask.GetMask("Room");
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.TransformDirection(Vector2.right), 3f, maskRoom);
+        Debug.Log(hit.distance);
         //Physics2D.Raycast(transform.position, transform.TransformDirection(Vector2.right), 3f, mask
+
         if (hit)
         {
-            Debug.Log(hit.collider.name);
-            if (hit.collider.name == "Oik_ovi" && GameObject.Find("Huone_Final").GetComponent<RoomScript>().rightDoorCanBeOpened == true)
+            if (hit.rigidbody.CompareTag("OpenableDoor"))
             {
                 setTrueRight = true;
                 setTrueLeft = true;
@@ -111,5 +117,10 @@ public class RobotMoveScript : MonoBehaviour
             //{
             //    setTrue = false;
             //}
+    }
+
+    private void DoorArea()
+    {
+        
     }
 }

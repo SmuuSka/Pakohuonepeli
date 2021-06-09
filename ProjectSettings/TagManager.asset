@@ -9,6 +9,7 @@ TagManager:
   - Locker
   - Toolbox
   - Grill
+  - OpenableDoor
   layers:
   - Default
   - TransparentFX
@@ -21,7 +22,7 @@ TagManager:
   - ObjectLayer
   - Player
   - Room
-  - 
+  - DoorZone
   - 
   - 
   - 
