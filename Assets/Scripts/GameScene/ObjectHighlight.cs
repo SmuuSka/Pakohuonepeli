@@ -7,9 +7,8 @@ using UnityEngine.UI;
 
 public class ObjectHighlight : MonoBehaviour
 {
-    private Vector3 player;
+    private Vector3 playerPos;
     [SerializeField] private GameObject highlight;
-    [SerializeField] private Color stroke;
     private bool highlightObject, tooFarForInteract;
     public bool mouseOnObject;
 
@@ -19,7 +18,8 @@ public class ObjectHighlight : MonoBehaviour
 
     void Start()
     {
-        player = GameObject.Find("Robot side-8").GetComponent<Transform>().position;
+
+        
 
         cam = Camera.main;
 
@@ -30,9 +30,8 @@ public class ObjectHighlight : MonoBehaviour
     }
     private void Update()
     {
-        
-        RobotTooFar();
-        
+        playerPos = new Vector2(GameObject.Find("Robot side-8").GetComponent<Transform>().transform.position.x, GameObject.Find("Robot side-8").GetComponent<Transform>().transform.position.y);
+
         if (!highlightObject)
         {
             highlight.SetActive(false);
@@ -51,7 +50,6 @@ public class ObjectHighlight : MonoBehaviour
     {
         highlightObject = true;
         mouseOnObject = true;
-        highlight.GetComponent<SpriteRenderer>().color = stroke;
 
     }
     private void OnMouseExit()
@@ -62,26 +60,23 @@ public class ObjectHighlight : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (mouseOnObject && this.gameObject.tag == "Locker")
+        if (mouseOnObject && this.gameObject.transform.position.x - playerPos.x < 2f)
         {
-            Vector2 pos = GameObject.Find("Robot side-8").GetComponent<Transform>().transform.position;
-            PlayerData.playerTransformPos = pos;
-            SceneManager.LoadScene("LockScene");
-            PlayerData.lockerTaskDone = true;
+            if (this.gameObject.tag == "Locker")
+            {
+                Vector2 pos = GameObject.Find("Robot side-8").GetComponent<Transform>().transform.position;
+                PlayerData.playerTransformPos = pos;
+                SceneManager.LoadScene("LockScene");
+                PlayerData.lockerTaskDone = true;
+            }
+            if (this.gameObject.tag == "Toolbox")
+            {
+                SceneManager.LoadScene("Tiirikka");
+            }
         }
-        if (mouseOnObject && this.gameObject.tag == "Toolbox")
+        else
         {
-            SceneManager.LoadScene("Tiirikka");
-        }   
-    }
-    
-
-    
-
-    private void RobotTooFar()
-    {
-        var mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
-        Ray2D ray = new Ray2D(cam.transform.position, mousePos);
-        Debug.DrawRay(cam.transform.position, mousePos, Color.green);
+            Debug.Log("Olet liian kaukana");
+        }
     }
 }

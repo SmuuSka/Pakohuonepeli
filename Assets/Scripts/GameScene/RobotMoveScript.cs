@@ -34,6 +34,13 @@ public class RobotMoveScript : MonoBehaviour
     {
         
         horizontalInput = Input.GetAxisRaw("Horizontal");
+        DoorLogic();
+        OpenDoor();
+    }
+
+    private void DoorLogic()
+    {
+
         Debug.DrawRay(transform.position, transform.TransformDirection(Vector2.right) * 3f, Color.red);
         LayerMask mask = LayerMask.GetMask("Room");
         RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.TransformDirection(Vector2.right), 3f, mask);
@@ -44,31 +51,34 @@ public class RobotMoveScript : MonoBehaviour
             if (hit.collider.name == "Oik_ovi" && GameObject.Find("Huone_Final").GetComponent<RoomScript>().rightDoorCanBeOpened == true)
             {
                 setTrueRight = true;
-                if (GameObject.Find("/Huone_Final/Oik_ovi/Ovi_ylä").transform.position.y > 4f && GameObject.Find("/Huone_Final/Oik_ovi/Ovi_ala").transform.position.y < -4f)
+                setTrueLeft = true;
+                if (GameObject.Find("/Huone_Final/Oik_ovi/Ovi_ylä").transform.position.y > 4f && GameObject.Find("/Huone_Final/Oik_ovi/Ovi_ala").transform.position.y < -4f && GameObject.Find("/Huone_Final_1/Vas_ovi/Ovi_ylä").transform.position.y > 4f && GameObject.Find("/Huone_Final_1/Vas_ovi/Ovi_ala").transform.position.y < -4f)
                 {
                     setTrueRight = false;
-                    GameObject.Find("/Huone_Final/Oik_ovi").GetComponent<BoxCollider2D>().enabled = false;
-                }
-
-            }
-            if (hit.collider.name == "Oik_ovi" && GameObject.Find("Huone_Final").GetComponent<RoomScript>().rightDoorCanBeOpened == false)
-            {
-                Debug.Log("Ovea ei voi avata");
-            }
-
-
-            if (hit.collider.name == "Vas_ovi" && GameObject.Find("Huone_Final_1").GetComponent<RoomScript>().leftDoorCanBeOpened == true)
-            {
-                setTrueLeft = true;
-                if (GameObject.Find("/Huone_Final_1/Vas_ovi/Ovi_ylä").transform.position.y > 4f && GameObject.Find("/Huone_Final_1/Vas_ovi/Ovi_ala").transform.position.y < -4f)
-                {
                     setTrueLeft = false;
+                    GameObject.Find("/Huone_Final/Oik_ovi").GetComponent<BoxCollider2D>().enabled = false;
                     GameObject.Find("/Huone_Final_1/Vas_ovi").GetComponent<BoxCollider2D>().enabled = false;
                 }
             }
         }
-        OpenDoor();
     }
+            //if (hit.collider.name == "Oik_ovi" && GameObject.Find("Huone_Final").GetComponent<RoomScript>().rightDoorCanBeOpened == false)
+            //{
+            //    Debug.Log("Ovea ei voi avata");
+            //}
+
+
+            //if (hit.collider.name == "Vas_ovi" && GameObject.Find("Huone_Final_1").GetComponent<RoomScript>().leftDoorCanBeOpened == true)
+            //{
+            //    setTrueLeft = true;
+            //    if (GameObject.Find("/Huone_Final_1/Vas_ovi/Ovi_ylä").transform.position.y > 4f && GameObject.Find("/Huone_Final_1/Vas_ovi/Ovi_ala").transform.position.y < -4f)
+            //    {
+            //        setTrueLeft = false;
+            //        GameObject.Find("/Huone_Final_1/Vas_ovi").GetComponent<BoxCollider2D>().enabled = false;
+            //    }
+            //}
+       
+    
 
     private void FixedUpdate()
     {
