@@ -867,6 +867,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2808885765079401243, guid: b5e0919562b74224aa1ceada9b8c1abd, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2808885765459080006, guid: b5e0919562b74224aa1ceada9b8c1abd, type: 3}
       propertyPath: m_TagString
       value: OpenableDoor
@@ -1212,6 +1216,14 @@ PrefabInstance:
     - target: {fileID: 2808885765623721412, guid: b5e0919562b74224aa1ceada9b8c1abd, type: 3}
       propertyPath: m_TagString
       value: OpenableDoor
+      objectReference: {fileID: 0}
+    - target: {fileID: 2808885765729679334, guid: b5e0919562b74224aa1ceada9b8c1abd, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -5.52
+      objectReference: {fileID: 0}
+    - target: {fileID: 2808885766127521024, guid: b5e0919562b74224aa1ceada9b8c1abd, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b5e0919562b74224aa1ceada9b8c1abd, type: 3}

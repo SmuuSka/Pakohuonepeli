@@ -16,8 +16,7 @@ public class RobotMoveScript : MonoBehaviour
     private float forceMultiplier = 200f, forceMultiplierMinus = -200;
     private bool setTrueRight, setTrueLeft, isInsideDoorZone;
     private Collider2D[] doorZoneDetectionResults = new Collider2D[16] ;
-    
-    
+    private bool sendPulse;
 
     private void Start()
     {
@@ -44,6 +43,11 @@ public class RobotMoveScript : MonoBehaviour
         DoorLogic();
         OpenDoor();
         UpdateIsInsideDoorZone();
+
+        if (sendPulse)
+        {
+            StartCoroutine(ShutTheDoor());
+        }
     }
 
     private void UpdateIsInsideDoorZone()
@@ -72,6 +76,7 @@ public class RobotMoveScript : MonoBehaviour
                     setTrueLeft = false;
                     GameObject.Find("/Huone_Final/Oik_ovi").GetComponent<BoxCollider2D>().enabled = false;
                     GameObject.Find("/Huone_Final_1/Vas_ovi").GetComponent<BoxCollider2D>().enabled = false;
+                    sendPulse = true;
                 }
             }
         }
@@ -126,9 +131,16 @@ public class RobotMoveScript : MonoBehaviour
             //    setTrue = false;
             //}
     }
-
-    private void DoorArea()
+    private IEnumerator ShutTheDoor()
     {
         
+        if (!isInsideDoorZone)
+        {
+            
+            yield return new WaitForSeconds(1);
+            
+            GameObject.Find("/Huone_Final/Oik_ovi/Ovi_ylä").transform.position = new Vector2(GameObject.Find("/Huone_Final/Oik_ovi/Ovi_ylä").transform.position.x, GameObject.Find("/Huone_Final/Oik_ovi/Ovi_ylä").transform.position.y - 1f * Time.deltaTime);
+            
+        }
     }
 }
