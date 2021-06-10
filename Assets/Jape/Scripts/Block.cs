@@ -12,8 +12,9 @@ public class Block : MonoBehaviour
     {
         coord = startingCoord;
 
-        GetComponent<MeshRenderer>().material.shader = Shader.Find("Shader Graphs/HologramShader");
-        GetComponent<MeshRenderer>().material.mainTexture = image;
+        GetComponent<MeshRenderer>().material = Resources.Load<Material>("Holo_Mat");
+        GetComponent<MeshRenderer>().material.SetTexture("_mainTex", image); ;
+        
     }
 
     public void MoveToPosition(Vector2 target, float duration)

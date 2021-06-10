@@ -22,7 +22,7 @@
             "typeInfo": {
                 "fullName": "UnityEditor.ShaderGraph.Internal.ColorShaderProperty"
             },
-            "JSONnodeData": "{\n    \"m_Guid\": {\n        \"m_GuidSerialized\": \"be351860-6d12-4dac-a3c4-6171995c5b36\"\n    },\n    \"m_Name\": \"Hologram Color\",\n    \"m_DefaultReferenceName\": \"Color_DC120963\",\n    \"m_OverrideReferenceName\": \"\",\n    \"m_GeneratePropertyBlock\": true,\n    \"m_Precision\": 0,\n    \"m_GPUInstanced\": false,\n    \"m_Hidden\": false,\n    \"m_Value\": {\n        \"r\": 0.23019738495349885,\n        \"g\": 0.7169811725616455,\n        \"b\": 0.17856886982917787,\n        \"a\": 1.0\n    },\n    \"m_ColorMode\": 1\n}"
+            "JSONnodeData": "{\n    \"m_Guid\": {\n        \"m_GuidSerialized\": \"be351860-6d12-4dac-a3c4-6171995c5b36\"\n    },\n    \"m_Name\": \"Hologram Color\",\n    \"m_DefaultReferenceName\": \"Color_DC120963\",\n    \"m_OverrideReferenceName\": \"\",\n    \"m_GeneratePropertyBlock\": true,\n    \"m_Precision\": 0,\n    \"m_GPUInstanced\": false,\n    \"m_Hidden\": false,\n    \"m_Value\": {\n        \"r\": 0.3905493915081024,\n        \"g\": 0.650943398475647,\n        \"b\": 0.36538803577423098,\n        \"a\": 1.0\n    },\n    \"m_ColorMode\": 1\n}"
         }
     ],
     "m_SerializedKeywords": [],
