@@ -12,7 +12,7 @@ public class Block : MonoBehaviour
     {
         coord = startingCoord;
 
-        GetComponent<MeshRenderer>().material.shader = Shader.Find("Unlit/Texture");
+        GetComponent<MeshRenderer>().material.shader = Shader.Find("Shader Graphs/HologramShader");
         GetComponent<MeshRenderer>().material.mainTexture = image;
     }
 
