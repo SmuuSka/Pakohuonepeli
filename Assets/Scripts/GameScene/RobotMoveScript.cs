@@ -53,13 +53,14 @@ public class RobotMoveScript : MonoBehaviour
     private void CheckHitRaycast()
     {
 
-        Debug.DrawRay(transform.position, transform.TransformDirection(Vector2.right) * 3f, Color.red);
+        Debug.DrawRay(playerPos.position, transform.TransformDirection(Vector2.right) * 3f, Color.red);
         LayerMask maskRoom = LayerMask.GetMask("Room");
         RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.TransformDirection(Vector2.right), 3f, maskRoom);
         //Physics2D.Raycast(transform.position, transform.TransformDirection(Vector2.right), 3f, mask
 
         if (hit)
         {
+            Debug.Log("tag " + hit.rigidbody.gameObject.tag);
             if (hit.rigidbody.CompareTag("OpenableDoor"))
             {
                 hitOpenableDoor = true;

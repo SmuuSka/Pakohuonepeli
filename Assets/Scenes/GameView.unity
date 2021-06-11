@@ -254,6 +254,63 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5473546b79da66344a41c67ebde29c0e, type: 3}
+--- !u!1 &329695268
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 329695270}
+  - component: {fileID: 329695269}
+  m_Layer: 12
+  m_Name: DoorZone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!61 &329695269
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 329695268}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.77781653, y: -0.8225646}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 6.293943, y: 2.8982267}
+  m_EdgeRadius: 0
+--- !u!4 &329695270
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 329695268}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 7.82, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -323,7 +380,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 4.8
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -347,7 +404,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.23000002, y: 0, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -494,6 +551,14 @@ PrefabInstance:
       propertyPath: rightDoorPieces.Array.data[1]
       value: 
       objectReference: {fileID: 1108223501}
+    - target: {fileID: 1242142694801998112, guid: b5e0919562b74224aa1ceada9b8c1abd, type: 3}
+      propertyPath: m_BodyType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1242142694801998112, guid: b5e0919562b74224aa1ceada9b8c1abd, type: 3}
+      propertyPath: m_Constraints
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 2808885764952022554, guid: b5e0919562b74224aa1ceada9b8c1abd, type: 3}
       propertyPath: m_Name
       value: Huone_Final
@@ -501,6 +566,10 @@ PrefabInstance:
     - target: {fileID: 2808885764952022554, guid: b5e0919562b74224aa1ceada9b8c1abd, type: 3}
       propertyPath: m_Layer
       value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2808885764952022554, guid: b5e0919562b74224aa1ceada9b8c1abd, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 2808885764952022555, guid: b5e0919562b74224aa1ceada9b8c1abd, type: 3}
       propertyPath: m_RootOrder
@@ -558,9 +627,17 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 11
       objectReference: {fileID: 0}
+    - target: {fileID: 2808885765459080006, guid: b5e0919562b74224aa1ceada9b8c1abd, type: 3}
+      propertyPath: m_TagString
+      value: OpenableDoor
+      objectReference: {fileID: 0}
     - target: {fileID: 2808885765623721412, guid: b5e0919562b74224aa1ceada9b8c1abd, type: 3}
       propertyPath: m_Layer
       value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2808885765623721412, guid: b5e0919562b74224aa1ceada9b8c1abd, type: 3}
+      propertyPath: m_TagString
+      value: NotOpenableDoor
       objectReference: {fileID: 0}
     - target: {fileID: 2808885765721656745, guid: b5e0919562b74224aa1ceada9b8c1abd, type: 3}
       propertyPath: m_Layer
@@ -577,6 +654,14 @@ PrefabInstance:
     - target: {fileID: 2808885766489743138, guid: b5e0919562b74224aa1ceada9b8c1abd, type: 3}
       propertyPath: m_Layer
       value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4450355426511542253, guid: b5e0919562b74224aa1ceada9b8c1abd, type: 3}
+      propertyPath: m_BodyType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4450355426511542253, guid: b5e0919562b74224aa1ceada9b8c1abd, type: 3}
+      propertyPath: m_Constraints
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 9210049742063169594, guid: b5e0919562b74224aa1ceada9b8c1abd, type: 3}
       propertyPath: m_Layer
@@ -774,9 +859,17 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 11
       objectReference: {fileID: 0}
+    - target: {fileID: 2808885765459080006, guid: b5e0919562b74224aa1ceada9b8c1abd, type: 3}
+      propertyPath: m_TagString
+      value: NotOpenableDoor
+      objectReference: {fileID: 0}
     - target: {fileID: 2808885765623721412, guid: b5e0919562b74224aa1ceada9b8c1abd, type: 3}
       propertyPath: m_Layer
       value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2808885765623721412, guid: b5e0919562b74224aa1ceada9b8c1abd, type: 3}
+      propertyPath: m_TagString
+      value: NotOpenableDoor
       objectReference: {fileID: 0}
     - target: {fileID: 2808885765721656745, guid: b5e0919562b74224aa1ceada9b8c1abd, type: 3}
       propertyPath: m_Layer
@@ -1112,14 +1205,14 @@ MonoBehaviour:
   playerCollider: {fileID: 1232477862991730795}
   doorZoneFilter:
     useTriggers: 0
-    useLayerMask: 0
+    useLayerMask: 1
     useDepth: 0
     useOutsideDepth: 0
     useNormalAngle: 0
     useOutsideNormalAngle: 0
     layerMask:
       serializedVersion: 2
-      m_Bits: 0
+      m_Bits: 4096
     minDepth: 0
     maxDepth: 0
     minNormalAngle: 0
@@ -1317,9 +1410,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -2.5239482, y: -0.710205}
+  m_Offset: {x: -3.24, y: 0.33}
   serializedVersion: 2
-  m_Radius: 9.324236
+  m_Radius: 2.504682
 --- !u!212 &1232477862991730796
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1427,7 +1520,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1232477862991730794}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.4, y: -1.05, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.3, y: 0.3, z: 1}
   m_Children:
   - {fileID: 1232477863012538780}
@@ -2306,7 +2399,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 1232477862991730794}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: e66612dc374bda242a10d065f89674ac, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
