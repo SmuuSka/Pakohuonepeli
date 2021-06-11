@@ -44,6 +44,7 @@ public class RoomScript : MonoBehaviour
             {
                 closeDoor = false;
                 rightDoor.GetComponent<BoxCollider2D>().enabled = true;
+                stop = false;
             }
         }
 
