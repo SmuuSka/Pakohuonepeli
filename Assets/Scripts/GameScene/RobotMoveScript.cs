@@ -19,16 +19,8 @@ public class RobotMoveScript : MonoBehaviour
 
     private void Start()
     {
-        
+        playerPos.position = PlayerData.playerTransformPos;
 
-        if (PlayerData.playerTransformPos == null)
-        {
-            transform.position = playerPos.position;
-        }
-        else
-        {
-            playerPos.position = PlayerData.playerTransformPos;
-        }
         playerRb = GetComponent<Rigidbody2D>();
         
 
@@ -36,7 +28,7 @@ public class RobotMoveScript : MonoBehaviour
 
     private void Update()
     {
-        
+        Debug.Log(PlayerData.playerTransformPos);
         horizontalInput = Input.GetAxisRaw("Horizontal");
         //playerPos.position = new Vector2(transform.position.x, transform.position.y);
         CheckHitRaycast();

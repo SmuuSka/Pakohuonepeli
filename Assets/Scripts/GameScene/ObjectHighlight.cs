@@ -8,7 +8,10 @@ using UnityEngine.UI;
 public class ObjectHighlight : MonoBehaviour
 {
     private Vector3 playerPos;
+
     [SerializeField] private GameObject highlight;
+    [SerializeField] private Transform vent;
+
     private bool highlightObject, tooFarForInteract;
     public bool mouseOnObject;
 
@@ -72,6 +75,11 @@ public class ObjectHighlight : MonoBehaviour
             if (this.gameObject.tag == "Toolbox")
             {
                 SceneManager.LoadScene("Tiirikka");
+            }
+            if (this.gameObject.tag == "Grill")
+            {
+                //playerPos = 
+                //PlayerData.playerTransformPos
             }
         }
         else
