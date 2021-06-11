@@ -19,7 +19,7 @@ public class RoomScript : MonoBehaviour
 
     private void Start()
     {
-        robotData = GameObject.Find("Robot side-8").GetComponent<RobotMoveScript>();
+        robotData = GameObject.Find("Robo").GetComponent<RobotMoveScript>();
 
     }
     private void Update()

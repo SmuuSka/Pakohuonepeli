@@ -7,6 +7,7 @@ public class RobotMoveScript : MonoBehaviour
     [SerializeField] private Transform playerPos;
     [SerializeField] private Collider2D playerCollider;
     [SerializeField] private ContactFilter2D doorZoneFilter;
+    [SerializeField] private BoxCollider2D[] boxColliders = new BoxCollider2D[0];
 
     private Collider2D[] doorZoneDetectionResults = new Collider2D[16];
 
@@ -15,10 +16,11 @@ public class RobotMoveScript : MonoBehaviour
     private float horizontalInput;
     private float forceMultiplier = 200f, forceMultiplierMinus = -200;
     public bool setTrueRight, setTrueLeft, isInsideDoorZone, hitOpenableDoor;
-
+    private bool crawl;
 
     private void Start()
     {
+        
         playerPos.position = PlayerData.playerTransformPos;
 
         playerRb = GetComponent<Rigidbody2D>();
@@ -28,7 +30,26 @@ public class RobotMoveScript : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(PlayerData.playerTransformPos);
+        if (Input.GetKey(KeyCode.LeftControl))
+        {
+            crawl = true;
+        }
+        else
+        {
+            crawl = false;
+        }
+
+        if (!crawl)
+        {
+            boxColliders[0].enabled = true;
+            boxColliders[1].enabled = false;
+        }
+        else
+        {
+            boxColliders[0].enabled = false;
+            boxColliders[1].enabled = true;
+        }
+        //Debug.Log(PlayerData.playerTransformPos);
         horizontalInput = Input.GetAxisRaw("Horizontal");
         //playerPos.position = new Vector2(transform.position.x, transform.position.y);
         CheckHitRaycast();
@@ -74,15 +95,14 @@ public class RobotMoveScript : MonoBehaviour
     {
         if (Input.GetAxisRaw("Horizontal") > 0)
         {
-            playerPos.rotation = new Quaternion(0, 0, 0, 0);
             playerRb.velocity = Vector2.right * horizontalInput * forceMultiplier * Time.deltaTime;
+            transform.rotation = new Quaternion(0, 0, 0, 0);
         }
+
         if (Input.GetAxisRaw("Horizontal") < 0)
         {
-            playerPos.rotation = new Quaternion(0, 180, 0, 0);
             playerRb.velocity = Vector2.left * horizontalInput * forceMultiplierMinus * Time.deltaTime;
+            transform.rotation = new Quaternion(0, 180, 0, 0);
         }
     }
-
-  
 }

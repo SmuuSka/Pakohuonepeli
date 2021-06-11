@@ -7,10 +7,10 @@ using UnityEngine.UI;
 
 public class ObjectHighlight : MonoBehaviour
 {
-    private Vector3 playerPos;
-
     [SerializeField] private GameObject highlight;
     [SerializeField] private Transform vent;
+
+    private Vector2 playerPos;
 
     private bool highlightObject, tooFarForInteract;
     public bool mouseOnObject;
@@ -21,8 +21,7 @@ public class ObjectHighlight : MonoBehaviour
 
     void Start()
     {
-
-        
+        playerPos = GameObject.Find("Robo").GetComponent<Transform>().transform.position;
 
         cam = Camera.main;
 
@@ -33,7 +32,7 @@ public class ObjectHighlight : MonoBehaviour
     }
     private void Update()
     {
-        playerPos = new Vector2(GameObject.Find("Robot side-8").GetComponent<Transform>().transform.position.x, GameObject.Find("Robot side-8").GetComponent<Transform>().transform.position.y);
+        Debug.Log("playerPos " + playerPos);
 
         if (!highlightObject)
         {
@@ -67,7 +66,7 @@ public class ObjectHighlight : MonoBehaviour
         {
             if (this.gameObject.tag == "Locker")
             {
-                Vector2 pos = GameObject.Find("Robot side-8").GetComponent<Transform>().transform.position;
+                Vector2 pos = GameObject.Find("Robo").GetComponent<Transform>().transform.position;
                 PlayerData.playerTransformPos = pos;
                 SceneManager.LoadScene("LockScene");
                 PlayerData.lockerTaskDone = true;
@@ -78,8 +77,11 @@ public class ObjectHighlight : MonoBehaviour
             }
             if (this.gameObject.tag == "Grill")
             {
-                //playerPos = 
-                //PlayerData.playerTransformPos
+                Debug.Log("Grill");
+                Vector2 pos = GameObject.Find("Robo").GetComponent<Transform>().transform.position;
+                GameObject.Find("Robo").GetComponent<Transform>().transform.position = vent.position;
+                
+
             }
         }
         else
