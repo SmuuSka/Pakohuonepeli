@@ -27,7 +27,7 @@ public class Pickup : MonoBehaviour
         if (itemAdded)
         {
             Debug.Log("Added to inventory");
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 }

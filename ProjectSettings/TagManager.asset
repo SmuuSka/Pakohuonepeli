@@ -10,6 +10,7 @@ TagManager:
   - Toolbox
   - Grill
   - Hand
+  - Interactable
   layers:
   - Default
   - TransparentFX
