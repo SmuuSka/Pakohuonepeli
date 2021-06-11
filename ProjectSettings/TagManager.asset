@@ -3,7 +3,12 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - RightDoor
+  - LeftDoor
+  - Locker
+  - Grill
+  - Toolbox
   layers:
   - Default
   - TransparentFX
@@ -13,8 +18,8 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
+  - Object
+  - Player
   - 
   - 
   - 
@@ -40,4 +45,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Object
+    uniqueID: 3091668445
     locked: 0

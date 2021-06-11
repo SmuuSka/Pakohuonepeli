@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3326811208520369843}
   - component: {fileID: 3326811208520369842}
   m_Layer: 0
-  m_Name: Huone_assets_3
+  m_Name: LockerOpen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -69,7 +69,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1392630637
-  m_SortingLayer: 1
+  m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 2162036046669925559, guid: 45ae2a21d781b3a40861d2d7ff922c8d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

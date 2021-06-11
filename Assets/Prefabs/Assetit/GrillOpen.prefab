@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4538056061742369269}
   - component: {fileID: 4538056061742369270}
   m_Layer: 0
-  m_Name: Huone_assets_0
+  m_Name: GrillOpen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -69,7 +69,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1639010917
-  m_SortingLayer: 2
+  m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 1611545902269552830, guid: 45ae2a21d781b3a40861d2d7ff922c8d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

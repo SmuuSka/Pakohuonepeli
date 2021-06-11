@@ -70,7 +70,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1639010917
-  m_SortingLayer: 2
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 2801728437618649870, guid: 45ae2a21d781b3a40861d2d7ff922c8d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -118,7 +118,7 @@ GameObject:
   - component: {fileID: 9031163161335207621}
   - component: {fileID: 9031163161335207617}
   m_Layer: 8
-  m_Name: Huone_assets_4
+  m_Name: Grill
   m_TagString: Grill
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -177,7 +177,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1639010917
-  m_SortingLayer: 2
+  m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 2801728437618649870, guid: 45ae2a21d781b3a40861d2d7ff922c8d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -250,5 +250,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlight: {fileID: 9031163160929121078}
-  stroke: {r: 1, g: 0.87771475, b: 0, a: 1}
   mouseOnObject: 0
