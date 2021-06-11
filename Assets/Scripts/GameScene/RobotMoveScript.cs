@@ -10,13 +10,15 @@ public class RobotMoveScript : MonoBehaviour
     [SerializeField] private BoxCollider2D[] boxColliders = new BoxCollider2D[0];
 
     private Collider2D[] doorZoneDetectionResults = new Collider2D[16];
-
-    
     private Rigidbody2D playerRb;
+
     private float horizontalInput;
     private float forceMultiplier = 200f, forceMultiplierMinus = -200;
-    public bool setTrueRight, setTrueLeft, isInsideDoorZone, hitOpenableDoor;
+
     private bool crawl;
+
+    public bool setTrueRight, setTrueLeft, isInsideDoorZone, hitOpenableDoor;
+    private bool facingRight;
 
     private void Start()
     {
@@ -54,7 +56,7 @@ public class RobotMoveScript : MonoBehaviour
         //playerPos.position = new Vector2(transform.position.x, transform.position.y);
         CheckHitRaycast();
         UpdateIsInsideDoorZone();
-
+        Flip();
     }
 
     private void UpdateIsInsideDoorZone()
@@ -96,13 +98,21 @@ public class RobotMoveScript : MonoBehaviour
         if (Input.GetAxisRaw("Horizontal") > 0)
         {
             playerRb.velocity = Vector2.right * horizontalInput * forceMultiplier * Time.deltaTime;
-            transform.rotation = new Quaternion(0, 0, 0, 0);
+            
         }
 
         if (Input.GetAxisRaw("Horizontal") < 0)
         {
             playerRb.velocity = Vector2.left * horizontalInput * forceMultiplierMinus * Time.deltaTime;
-            transform.rotation = new Quaternion(0, 180, 0, 0);
+        }
+    }
+
+    private void Flip()
+    {
+        if ((Input.GetAxisRaw("Horizontal") > 0 && facingRight) || (Input.GetAxisRaw("Horizontal") < 0 && !facingRight))
+        {
+            facingRight = !facingRight;
+            transform.Rotate(new Vector3(0, 180, 0));
         }
     }
 }

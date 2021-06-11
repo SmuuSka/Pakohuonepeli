@@ -43,6 +43,7 @@ public class RoomScript : MonoBehaviour
             if (rightDoorPieces[0].transform.position.y <= 0.43f)
             {
                 closeDoor = false;
+                rightDoor.GetComponent<BoxCollider2D>().enabled = true;
             }
         }
 
