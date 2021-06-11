@@ -9,6 +9,8 @@ TagManager:
   - Locker
   - Grill
   - Toolbox
+  - Hand
+  - Interactable
   layers:
   - Default
   - TransparentFX
@@ -20,8 +22,8 @@ TagManager:
   - 
   - Object
   - Player
-  - 
-  - 
+  - Hand
+  - Room
   - 
   - 
   - 
