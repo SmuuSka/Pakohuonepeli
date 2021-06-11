@@ -228,6 +228,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 2800000, guid: 83800b0c7275bc444ac4daae4c66aca2, type: 3}
   blocksPerLine: 3
+  shuffleLength: 20
+  defaultMoveDuration: 0.2
+  shuffleMoveDuration: 0.1
 --- !u!4 &822052458
 Transform:
   m_ObjectHideFlags: 0
@@ -381,7 +384,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1364588858}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.36, y: -0.26, z: 0}
+  m_LocalPosition: {x: -4.47, y: -0.7, z: 0}
   m_LocalScale: {x: 0.25, y: 0.25, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

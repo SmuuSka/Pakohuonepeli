@@ -13,7 +13,7 @@ public class Block : MonoBehaviour
         coord = startingCoord;
 
         GetComponent<MeshRenderer>().material = Resources.Load<Material>("Holo_Mat");
-        GetComponent<MeshRenderer>().material.SetTexture("_mainTex", image); ;
+        GetComponent<MeshRenderer>().material.SetTexture("_mainTex", image); 
         
     }
 
