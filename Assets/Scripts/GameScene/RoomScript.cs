@@ -11,10 +11,9 @@ public class RoomScript : MonoBehaviour
     [SerializeField] public GameObject[] rightDoorPieces = new GameObject[2];
     [SerializeField] private GameObject[] leftDoorPieces = new GameObject[2];
 
-
-
-    private bool sendPulse;
     public bool stop;
+
+    private bool closeDoor;
 
 
 
@@ -25,8 +24,6 @@ public class RoomScript : MonoBehaviour
     }
     private void Update()
     {
-        Debug.Log(rightDoorPieces[0].transform.position.y);
-
         if (rightDoorPieces[0].transform.position.y > 3.5f || leftDoorPieces[0].transform.position.y > 3.5f)
         {
             stop = true;
@@ -38,55 +35,53 @@ public class RoomScript : MonoBehaviour
         {
             OpenDoor();
         }
-       
+        Debug.Log("Oven y pos " + rightDoorPieces[0].transform.position.y);
 
-
-        if (sendPulse)
+        if (closeDoor)
         {
-            
+            CloseDoor();
+            if (rightDoorPieces[0].transform.position.y <= 0.43f)
+            {
+                closeDoor = false;
+            }
         }
+
+
+
     }
     private void OpenDoor()
     {
-        
-        if (robotData.hitOpenableDoor && rightDoor.GetComponent<DoorCanBeOpened>().theDoorCanBeOpened)
+
+        if (robotData.hitOpenableDoor && rightDoor.CompareTag("OpenableDoor"))
         {
             robotData.hitOpenableDoor = false;
             int upperDoor = 0;
             int lowerDoor = 1;
 
-            Vector2 startPosRightUpper = rightDoorPieces[upperDoor].transform.position;
-            rightDoorPieces[upperDoor].transform.position = Vector2.Lerp(startPosRightUpper, new Vector2(startPosRightUpper.x, startPosRightUpper.y + 4), doorSpeed * Time.deltaTime);
+            
+            rightDoorPieces[upperDoor].transform.position = new Vector2(rightDoorPieces[upperDoor].transform.position.x, rightDoorPieces[upperDoor].transform.position.y + 1f * Time.deltaTime);
+            
+            rightDoorPieces[lowerDoor].transform.position = new Vector2(rightDoorPieces[lowerDoor].transform.position.x, rightDoorPieces[lowerDoor].transform.position.y - 1f * Time.deltaTime);
 
-            Vector2 startPosRightLower = rightDoorPieces[lowerDoor].transform.position;
-            rightDoorPieces[lowerDoor].transform.position = Vector2.Lerp(startPosRightLower, new Vector2(startPosRightLower.x, startPosRightLower.y - 4), doorSpeed * Time.deltaTime);
         } 
     }
     private void CloseDoor()
     {
         int upperDoor = 0;
         int lowerDoor = 1;
-        
-        Vector2 startPosRightUpper = rightDoorPieces[upperDoor].transform.position;
-        rightDoorPieces[upperDoor].transform.position = Vector2.Lerp(startPosRightUpper, new Vector2(startPosRightUpper.x, startPosRightUpper.y - 10f), doorSpeed * Time.deltaTime);
 
-        Vector2 startPosRightLower = rightDoorPieces[lowerDoor].transform.position;
-        rightDoorPieces[lowerDoor].transform.position = Vector2.Lerp(startPosRightLower, new Vector2(startPosRightLower.x, startPosRightLower.y + 10f), doorSpeed * Time.deltaTime);
-        
+        rightDoorPieces[upperDoor].transform.position = new Vector2(rightDoorPieces[upperDoor].transform.position.x, rightDoorPieces[upperDoor].transform.position.y - 1f * Time.deltaTime);
+
+        rightDoorPieces[lowerDoor].transform.position = new Vector2(rightDoorPieces[lowerDoor].transform.position.x, rightDoorPieces[lowerDoor].transform.position.y + 1f * Time.deltaTime);
+
     }
     private IEnumerator ShutTheDoor()
     {
-        Debug.Log("Toimii tähän asti");
+        
         if (!robotData.isInsideDoorZone && stop)
         {
-            Debug.Log("Toimii tähän asti");
             yield return new WaitForSeconds(1);
-            CloseDoor();
-            if (rightDoorPieces[0].transform.position.y < 0.5f)
-            {
-                rightDoor.GetComponent<BoxCollider2D>().enabled = true;
-                leftDoor.GetComponent<BoxCollider2D>().enabled = true;
-            }
+            closeDoor = true;
         }
     }
 }
