@@ -13,7 +13,7 @@ public class RoomScript : MonoBehaviour
     [SerializeField] private Transform playerPos;
     
     private bool doorIsOpen;
-    
+    private bool closingDoor;
 
     private void Start()
     {
@@ -23,9 +23,9 @@ public class RoomScript : MonoBehaviour
     }
     private void Update()
     {
-        
+        Debug.Log(this.rightDoorPieces[0].transform.localPosition.y);
         var distance = Vector2.Distance(playerPos.position, this.rightDoor.transform.position);
-        Debug.Log(distance);
+        //Debug.Log(distance);
 
         if (distance < 4)
         {
@@ -33,6 +33,16 @@ public class RoomScript : MonoBehaviour
             {
                 OpenDoor();
             }
+        }
+
+        if (doorIsOpen)
+        {
+            StartCoroutine(ShutTheDoor());
+        }
+
+        if (closingDoor)
+        {
+            CloseDoor();
         }
     }
     public void OpenDoor()
@@ -52,17 +62,18 @@ public class RoomScript : MonoBehaviour
     }
     private void CloseDoor()
     {
+        //Debug.Log(this.rightDoorPieces[0].transform.localPosition.y);
         int upperDoor = 0;
         int lowerDoor = 1;
 
-        rightDoorPieces[upperDoor].transform.position = new Vector2(rightDoorPieces[upperDoor].transform.position.x, rightDoorPieces[upperDoor].transform.position.y - 1f * Time.deltaTime);
+        this.rightDoorPieces[upperDoor].transform.position = new Vector2(rightDoorPieces[upperDoor].transform.position.x, rightDoorPieces[upperDoor].transform.position.y - 1f * Time.deltaTime);
 
-        rightDoorPieces[lowerDoor].transform.position = new Vector2(rightDoorPieces[lowerDoor].transform.position.x, rightDoorPieces[lowerDoor].transform.position.y + 1f * Time.deltaTime);
+        this.rightDoorPieces[lowerDoor].transform.position = new Vector2(rightDoorPieces[lowerDoor].transform.position.x, rightDoorPieces[lowerDoor].transform.position.y + 1f * Time.deltaTime);
 
-        if (rightDoorPieces[0].transform.position.y < 0.4f)
+        if (this.rightDoorPieces[upperDoor].transform.localPosition.y < 0.9f)
         {
-            
-            
+            closingDoor = false;
+            this.rightDoor.GetComponent<BoxCollider2D>().enabled = true;
         }
     }
     private IEnumerator ShutTheDoor()
@@ -70,6 +81,8 @@ public class RoomScript : MonoBehaviour
         if (!robotData.isInsideDoorZone)
         {
             yield return new WaitForSeconds(1);
+            doorIsOpen = false;
+            closingDoor = true;
         }
     }
 }
