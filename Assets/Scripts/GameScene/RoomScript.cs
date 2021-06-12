@@ -11,36 +11,32 @@ public class RoomScript : MonoBehaviour
     [SerializeField] public GameObject[] rightDoorPieces = new GameObject[2];
     [SerializeField] private GameObject[] leftDoorPieces = new GameObject[2];
     [SerializeField] private Transform playerPos;
-
+    
     private bool doorIsOpen;
+    
 
     private void Start()
     {
         robotData = GameObject.Find("Robo").GetComponent<RobotMoveScript>();
         playerPos = GameObject.Find("Robo").GetComponent<Transform>();
+        
     }
     private void Update()
     {
-
-        
-
-        if (robotData.hitOpenableDoorRight && !doorIsOpen && robotData.isInsideDoorZone)
+        if (robotData.hitOpenableDoorRight && !doorIsOpen)
         {
-            if (GameObject.FindGameObjectWithTag("OpenableDoorRight") && this.gameObject.transform.position.x - playerPos.position.x < 3)
+            if (GameObject.FindGameObjectWithTag("OpenableDoorRight"))
             {
                 OpenDoor();
             }
-
         }
-
     }
     private void OpenDoor()
     {
-        
             int upperDoor = 0;
             int lowerDoor = 1;
 
-        rightDoorPieces[upperDoor].transform.position = new Vector2(rightDoorPieces[upperDoor].transform.position.x, rightDoorPieces[upperDoor].transform.position.y + 1f * Time.deltaTime);
+            rightDoorPieces[upperDoor].transform.position = new Vector2(rightDoorPieces[upperDoor].transform.position.x, rightDoorPieces[upperDoor].transform.position.y + 1f * Time.deltaTime);
             
             rightDoorPieces[lowerDoor].transform.position = new Vector2(rightDoorPieces[lowerDoor].transform.position.x, rightDoorPieces[lowerDoor].transform.position.y - 1f * Time.deltaTime);
 
