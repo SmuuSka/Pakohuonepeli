@@ -11,6 +11,7 @@ public class RobotMoveScript : MonoBehaviour
 
     private Collider2D[] doorZoneDetectionResults = new Collider2D[16];
     private Rigidbody2D playerRb;
+    public RaycastHit2D hit;
 
     private float horizontalInput;
     private float forceMultiplier = 200f, forceMultiplierMinus = -200;
@@ -22,12 +23,7 @@ public class RobotMoveScript : MonoBehaviour
 
     private void Start()
     {
-        
-        //playerPos.position = PlayerData.playerTransformPos;
-
         playerRb = GetComponent<Rigidbody2D>();
-        
-
     }
 
     private void Update()
@@ -70,7 +66,7 @@ public class RobotMoveScript : MonoBehaviour
 
         Debug.DrawRay(playerPos.position, transform.TransformDirection(Vector2.right) * 3f, Color.red);
         LayerMask maskRoom = LayerMask.GetMask("Room");
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.TransformDirection(Vector2.right), 3f, maskRoom);
+        hit = Physics2D.Raycast(transform.position, transform.TransformDirection(Vector2.right), 3f, maskRoom);
         
 
         if (hit)

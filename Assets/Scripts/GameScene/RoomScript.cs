@@ -23,27 +23,31 @@ public class RoomScript : MonoBehaviour
     }
     private void Update()
     {
-        if (robotData.hitOpenableDoorRight && !doorIsOpen)
+        
+        var distance = Vector2.Distance(playerPos.position, this.rightDoor.transform.position);
+        Debug.Log(distance);
+
+        if (distance < 4)
         {
-            if (GameObject.FindGameObjectWithTag("OpenableDoorRight"))
+            if (robotData.hitOpenableDoorRight && !doorIsOpen)
             {
                 OpenDoor();
             }
         }
     }
-    private void OpenDoor()
+    public void OpenDoor()
     {
             int upperDoor = 0;
             int lowerDoor = 1;
 
-            rightDoorPieces[upperDoor].transform.position = new Vector2(rightDoorPieces[upperDoor].transform.position.x, rightDoorPieces[upperDoor].transform.position.y + 1f * Time.deltaTime);
+            this.rightDoorPieces[upperDoor].transform.position = new Vector2(rightDoorPieces[upperDoor].transform.position.x, rightDoorPieces[upperDoor].transform.position.y + 1f * Time.deltaTime);
             
-            rightDoorPieces[lowerDoor].transform.position = new Vector2(rightDoorPieces[lowerDoor].transform.position.x, rightDoorPieces[lowerDoor].transform.position.y - 1f * Time.deltaTime);
+            this.rightDoorPieces[lowerDoor].transform.position = new Vector2(rightDoorPieces[lowerDoor].transform.position.x, rightDoorPieces[lowerDoor].transform.position.y - 1f * Time.deltaTime);
 
-            if (rightDoorPieces[upperDoor].transform.localPosition.y > 6.6f)
+            if (this.rightDoorPieces[upperDoor].transform.localPosition.y > 6.6f)
             {
                 doorIsOpen = true;
-                rightDoor.GetComponent<BoxCollider2D>().enabled = false;
+                this.rightDoor.GetComponent<BoxCollider2D>().enabled = false;
             }
     }
     private void CloseDoor()
