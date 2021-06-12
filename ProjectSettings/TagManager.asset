@@ -9,8 +9,10 @@ TagManager:
   - Toolbox
   - Hand
   - Interactable
-  - OpenableDoor
-  - NotOpenableDoor
+  - RightDoor
+  - LeftDoor
+  - OpenableDoorLeft
+  - OpenableDoorRight
   layers:
   - Default
   - TransparentFX

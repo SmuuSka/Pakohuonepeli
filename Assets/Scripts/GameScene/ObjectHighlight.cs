@@ -32,8 +32,6 @@ public class ObjectHighlight : MonoBehaviour
     }
     private void Update()
     {
-        Debug.Log("playerPos " + playerPos);
-
         if (!highlightObject)
         {
             highlight.SetActive(false);

@@ -10,62 +10,45 @@ public class RoomScript : MonoBehaviour
     [SerializeField] private GameObject rightDoor, leftDoor;
     [SerializeField] public GameObject[] rightDoorPieces = new GameObject[2];
     [SerializeField] private GameObject[] leftDoorPieces = new GameObject[2];
+    [SerializeField] private Transform playerPos;
 
-    public bool stop;
-
-    private bool closeDoor;
-
-
+    private bool doorIsOpen;
 
     private void Start()
     {
         robotData = GameObject.Find("Robo").GetComponent<RobotMoveScript>();
-
+        playerPos = GameObject.Find("Robo").GetComponent<Transform>();
     }
     private void Update()
     {
-        if (rightDoorPieces[0].transform.position.y > 3.5f || leftDoorPieces[0].transform.position.y > 3.5f)
-        {
-            stop = true;
-            rightDoor.GetComponent<BoxCollider2D>().enabled = false;
-            leftDoor.GetComponent<BoxCollider2D>().enabled = false;
-            StartCoroutine(ShutTheDoor());
-        }
-        if (!stop)
-        {
-            OpenDoor();
-        }
-        Debug.Log("Oven y pos " + rightDoorPieces[0].transform.position.y);
 
-        if (closeDoor)
+        
+
+        if (robotData.hitOpenableDoorRight && !doorIsOpen && robotData.isInsideDoorZone)
         {
-            CloseDoor();
-            if (rightDoorPieces[0].transform.position.y <= 0.43f)
+            if (GameObject.FindGameObjectWithTag("OpenableDoorRight") && this.gameObject.transform.position.x - playerPos.position.x < 3)
             {
-                closeDoor = false;
-                rightDoor.GetComponent<BoxCollider2D>().enabled = true;
-                stop = false;
+                OpenDoor();
             }
+
         }
-
-
 
     }
     private void OpenDoor()
     {
-
-        if (robotData.hitOpenableDoor && rightDoor.CompareTag("OpenableDoor"))
-        {
-            robotData.hitOpenableDoor = false;
+        
             int upperDoor = 0;
             int lowerDoor = 1;
 
-            
-            rightDoorPieces[upperDoor].transform.position = new Vector2(rightDoorPieces[upperDoor].transform.position.x, rightDoorPieces[upperDoor].transform.position.y + 1f * Time.deltaTime);
+        rightDoorPieces[upperDoor].transform.position = new Vector2(rightDoorPieces[upperDoor].transform.position.x, rightDoorPieces[upperDoor].transform.position.y + 1f * Time.deltaTime);
             
             rightDoorPieces[lowerDoor].transform.position = new Vector2(rightDoorPieces[lowerDoor].transform.position.x, rightDoorPieces[lowerDoor].transform.position.y - 1f * Time.deltaTime);
 
-        } 
+            if (rightDoorPieces[upperDoor].transform.localPosition.y > 6.6f)
+            {
+                doorIsOpen = true;
+                rightDoor.GetComponent<BoxCollider2D>().enabled = false;
+            }
     }
     private void CloseDoor()
     {
@@ -76,14 +59,17 @@ public class RoomScript : MonoBehaviour
 
         rightDoorPieces[lowerDoor].transform.position = new Vector2(rightDoorPieces[lowerDoor].transform.position.x, rightDoorPieces[lowerDoor].transform.position.y + 1f * Time.deltaTime);
 
+        if (rightDoorPieces[0].transform.position.y < 0.4f)
+        {
+            
+            
+        }
     }
     private IEnumerator ShutTheDoor()
     {
-        
-        if (!robotData.isInsideDoorZone && stop)
+        if (!robotData.isInsideDoorZone)
         {
             yield return new WaitForSeconds(1);
-            closeDoor = true;
         }
     }
 }

@@ -17,13 +17,13 @@ public class RobotMoveScript : MonoBehaviour
 
     private bool crawl;
 
-    public bool setTrueRight, setTrueLeft, isInsideDoorZone, hitOpenableDoor;
+    public bool setTrueRight, setTrueLeft, isInsideDoorZone, hitOpenableDoorRight;
     private bool facingRight;
 
     private void Start()
     {
         
-        playerPos.position = PlayerData.playerTransformPos;
+        //playerPos.position = PlayerData.playerTransformPos;
 
         playerRb = GetComponent<Rigidbody2D>();
         
@@ -51,9 +51,9 @@ public class RobotMoveScript : MonoBehaviour
             boxColliders[0].enabled = false;
             boxColliders[1].enabled = true;
         }
-        //Debug.Log(PlayerData.playerTransformPos);
+        
         horizontalInput = Input.GetAxisRaw("Horizontal");
-        //playerPos.position = new Vector2(transform.position.x, transform.position.y);
+        
         CheckHitRaycast();
         UpdateIsInsideDoorZone();
         Flip();
@@ -71,24 +71,18 @@ public class RobotMoveScript : MonoBehaviour
         Debug.DrawRay(playerPos.position, transform.TransformDirection(Vector2.right) * 3f, Color.red);
         LayerMask maskRoom = LayerMask.GetMask("Room");
         RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.TransformDirection(Vector2.right), 3f, maskRoom);
-        //Physics2D.Raycast(transform.position, transform.TransformDirection(Vector2.right), 3f, mask
+        
 
         if (hit)
         {
             Debug.Log("tag " + hit.rigidbody.gameObject.tag);
-            if (hit.rigidbody.CompareTag("OpenableDoor"))
+            if (hit.rigidbody.CompareTag("OpenableDoorRight"))
             {
-                hitOpenableDoor = true;
-                //if (GameObject.FindGameObjectWithTag("Room").GetComponent<RoomScript>().stop)
-                //{
-                //    hitOpenableDoor = false;
-                //}
-                //setTrueRight = true;
-                //setTrueLeft = true;
+                hitOpenableDoorRight = true;
             }
             else
             {
-                hitOpenableDoor = false;
+                hitOpenableDoorRight = false;
             }
         }
     }
