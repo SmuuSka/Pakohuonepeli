@@ -12,8 +12,9 @@ public class RoomScript : MonoBehaviour
     [SerializeField] private GameObject[] leftDoorPieces = new GameObject[2];
     [SerializeField] private Transform playerPos;
     
-    private bool doorIsOpen;
-    private bool closingDoor;
+    private bool doorIsOpenRight, doorIsOpenLeft;
+    private bool closingDoorRight, closingDoorLeft;
+    private bool doorRight, doorLeft;
 
     private void Start()
     {
@@ -23,44 +24,85 @@ public class RoomScript : MonoBehaviour
     }
     private void Update()
     {
-        Debug.Log(this.rightDoorPieces[0].transform.localPosition.y);
-        var distance = Vector2.Distance(playerPos.position, this.rightDoor.transform.position);
-        //Debug.Log(distance);
+        Debug.Log("RoboRight " + robotData.hitOpenableDoorRight);
+        Debug.Log("RoboLeft " + robotData.hitOpenableDoorLeft);
 
-        if (distance < 4)
+        var distanceRight = Vector2.Distance(playerPos.position, this.rightDoor.transform.position);
+        var distanceLeft = Vector2.Distance(playerPos.position, this.leftDoor.transform.position);
+
+        if (distanceRight < 4)  
         {
-            if (robotData.hitOpenableDoorRight && !doorIsOpen)
+            if (robotData.hitOpenableDoorRight && !doorIsOpenRight)
             {
-                OpenDoor();
+                doorRight = true;
+                OpenDoorRight();
             }
         }
 
-        if (doorIsOpen)
+        if (distanceLeft < 4)
+        { 
+            if (robotData.hitOpenableDoorLeft && !doorIsOpenLeft)
+            {
+                doorLeft = true;
+                OpenDoorLeft();
+            }
+        }
+
+
+        if (doorIsOpenRight)
         {
             StartCoroutine(ShutTheDoor());
         }
 
-        if (closingDoor)
+        if (doorIsOpenLeft)
         {
-            CloseDoor();
+            StartCoroutine(ShutTheDoor());
+        }
+
+        if (closingDoorRight)
+        {
+            CloseDoorRight();
+        }
+        if (closingDoorLeft)
+        {
+            CloseDoorLeft();
         }
     }
-    public void OpenDoor()
+    public void OpenDoorRight()
     {
-            int upperDoor = 0;
-            int lowerDoor = 1;
-
+        int upperDoor = 0;
+        int lowerDoor = 1;
+        if (rightDoor)
+        {
             this.rightDoorPieces[upperDoor].transform.position = new Vector2(rightDoorPieces[upperDoor].transform.position.x, rightDoorPieces[upperDoor].transform.position.y + 1f * Time.deltaTime);
-            
+
             this.rightDoorPieces[lowerDoor].transform.position = new Vector2(rightDoorPieces[lowerDoor].transform.position.x, rightDoorPieces[lowerDoor].transform.position.y - 1f * Time.deltaTime);
 
             if (this.rightDoorPieces[upperDoor].transform.localPosition.y > 6.6f)
             {
-                doorIsOpen = true;
+                doorIsOpenRight = true;
                 this.rightDoor.GetComponent<BoxCollider2D>().enabled = false;
             }
+        }
     }
-    private void CloseDoor()
+    public void OpenDoorLeft()
+    {
+        int upperDoor = 0;
+        int lowerDoor = 1;
+        if (leftDoor)
+        {
+            this.leftDoorPieces[upperDoor].transform.position = new Vector2(leftDoorPieces[upperDoor].transform.position.x, leftDoorPieces[upperDoor].transform.position.y + 1f * Time.deltaTime);
+
+            this.leftDoorPieces[lowerDoor].transform.position = new Vector2(leftDoorPieces[lowerDoor].transform.position.x, leftDoorPieces[lowerDoor].transform.position.y - 1f * Time.deltaTime);
+
+            if (this.leftDoorPieces[upperDoor].transform.localPosition.y > 6.6f)
+            {
+                doorIsOpenLeft = true;
+                this.leftDoor.GetComponent<BoxCollider2D>().enabled = false;
+            }
+        }
+    }
+    private void CloseDoorRight()
     {
         //Debug.Log(this.rightDoorPieces[0].transform.localPosition.y);
         int upperDoor = 0;
@@ -72,17 +114,39 @@ public class RoomScript : MonoBehaviour
 
         if (this.rightDoorPieces[upperDoor].transform.localPosition.y < 0.9f)
         {
-            closingDoor = false;
+            closingDoorRight = false;
             this.rightDoor.GetComponent<BoxCollider2D>().enabled = true;
+        }
+    }
+
+    private void CloseDoorLeft()
+    {
+        int upperDoor = 0;
+        int lowerDoor = 1;
+
+        this.leftDoorPieces[upperDoor].transform.position = new Vector2(leftDoorPieces[upperDoor].transform.position.x, leftDoorPieces[upperDoor].transform.position.y - 1f * Time.deltaTime);
+
+        this.leftDoorPieces[lowerDoor].transform.position = new Vector2(leftDoorPieces[lowerDoor].transform.position.x, leftDoorPieces[lowerDoor].transform.position.y + 1f * Time.deltaTime);
+
+        if (this.leftDoorPieces[upperDoor].transform.localPosition.y < 0.9f)
+        {
+            closingDoorLeft = false;
+            this.leftDoor.GetComponent<BoxCollider2D>().enabled = true;
         }
     }
     private IEnumerator ShutTheDoor()
     {
-        if (!robotData.isInsideDoorZone)
+        if (!robotData.isInsideDoorZone && doorRight)
         {
             yield return new WaitForSeconds(1);
-            doorIsOpen = false;
-            closingDoor = true;
+            doorIsOpenRight = false;
+            closingDoorRight = true;
+        }
+        else if (!robotData.isInsideDoorZone && doorLeft)
+        {
+            yield return new WaitForSeconds(1);
+            doorIsOpenLeft = false;
+            closingDoorLeft = true;
         }
     }
 }

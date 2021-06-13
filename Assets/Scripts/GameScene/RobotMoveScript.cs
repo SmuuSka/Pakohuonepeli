@@ -8,6 +8,7 @@ public class RobotMoveScript : MonoBehaviour
     [SerializeField] private Collider2D playerCollider;
     [SerializeField] private ContactFilter2D doorZoneFilter;
     [SerializeField] private BoxCollider2D[] boxColliders = new BoxCollider2D[0];
+    [SerializeField] private CircleCollider2D circleCollider;
 
     private Collider2D[] doorZoneDetectionResults = new Collider2D[16];
     private Rigidbody2D playerRb;
@@ -18,7 +19,7 @@ public class RobotMoveScript : MonoBehaviour
 
     private bool crawl;
 
-    public bool setTrueRight, setTrueLeft, isInsideDoorZone, hitOpenableDoorRight;
+    public bool setTrueRight, setTrueLeft, isInsideDoorZone, hitOpenableDoorRight, hitOpenableDoorLeft;
     private bool facingRight;
 
     private void Start()
@@ -41,11 +42,13 @@ public class RobotMoveScript : MonoBehaviour
         {
             boxColliders[0].enabled = true;
             boxColliders[1].enabled = false;
+            circleCollider.enabled = true;
         }
         else
         {
             boxColliders[0].enabled = false;
             boxColliders[1].enabled = true;
+            circleCollider.enabled = false;
         }
         
         horizontalInput = Input.GetAxisRaw("Horizontal");
@@ -71,14 +74,18 @@ public class RobotMoveScript : MonoBehaviour
 
         if (hit)
         {
-            Debug.Log("tag " + hit.rigidbody.gameObject.tag);
             if (hit.rigidbody.CompareTag("OpenableDoorRight"))
             {
                 hitOpenableDoorRight = true;
             }
+            else if (hit.rigidbody.CompareTag("OpenableDoorLeft"))
+            {
+                hitOpenableDoorLeft = true;
+            }
             else
             {
                 hitOpenableDoorRight = false;
+                hitOpenableDoorLeft = false;
             }
         }
     }
