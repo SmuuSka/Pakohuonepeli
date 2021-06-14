@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class ObjectHighlight : MonoBehaviour
 {
-    [SerializeField] private GameObject highlight;
+    [SerializeField] private GameObject highlight, Screwdriver;
     [SerializeField] private Transform vent;
 
     private Vector2 playerPos;
@@ -21,6 +21,7 @@ public class ObjectHighlight : MonoBehaviour
 
     void Start()
     {
+        Screwdriver.SetActive(false);
         playerPos = GameObject.Find("Robo").GetComponent<Transform>().transform.position;
 
         cam = Camera.main;
@@ -28,6 +29,12 @@ public class ObjectHighlight : MonoBehaviour
         if (PlayerData.lockerTaskDone)
         {
             Destroy(GameObject.FindGameObjectWithTag("Locker"));
+        }
+
+        if (PlayerData.ToolboxTaskDone)
+        {
+            Destroy(GameObject.FindGameObjectWithTag("Toolbox"));
+            Screwdriver.SetActive(true);
         }
     }
     private void Update()
@@ -69,8 +76,10 @@ public class ObjectHighlight : MonoBehaviour
             }
             if (this.gameObject.tag == "Toolbox")
             {
-                Debug.Log("osuu");                
+                Vector2 pos = GameObject.Find("Robo").GetComponent<Transform>().transform.position;
+                PlayerData.playerTransformPos = pos;                
                 SceneManager.LoadScene("Tiirikka");
+                PlayerData.ToolboxTaskDone = true;
             }
             if (this.gameObject.tag == "Grill")
             {

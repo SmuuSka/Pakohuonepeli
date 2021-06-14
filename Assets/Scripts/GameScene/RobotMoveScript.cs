@@ -15,7 +15,7 @@ public class RobotMoveScript : MonoBehaviour
     public RaycastHit2D hit;
 
     private float horizontalInput;
-    private float forceMultiplier = 200f, forceMultiplierMinus = -200;
+    private float forceMultiplier = 400f, forceMultiplierMinus = -400;
 
     private bool crawl;
 
