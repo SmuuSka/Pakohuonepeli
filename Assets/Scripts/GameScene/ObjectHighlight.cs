@@ -86,6 +86,7 @@ public class ObjectHighlight : MonoBehaviour
                 Debug.Log("Grill");
                 Vector2 pos = GameObject.Find("Robo").GetComponent<Transform>().transform.position;
                 GameObject.Find("Robo").GetComponent<Transform>().transform.position = vent.position;
+                GameObject.Find("Main Camera").GetComponent<CameraScript>().gameCamera.transform.position = new Vector3(GameObject.Find("Main Camera").GetComponent<CameraScript>().nextPos[1].position.x, GameObject.Find("Main Camera").GetComponent<CameraScript>().target.transform.position.y, -10);
             }
 
 
