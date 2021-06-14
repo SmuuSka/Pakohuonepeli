@@ -12,7 +12,7 @@ public class ObjectHighlight : MonoBehaviour
 
     private Vector2 playerPos;
 
-    private bool highlightObject, tooFarForInteract;
+    private bool highlightObject;
     public bool mouseOnObject;
 
     private Camera cam;
@@ -32,6 +32,8 @@ public class ObjectHighlight : MonoBehaviour
     }
     private void Update()
     {
+        playerPos = new Vector2(GameObject.Find("Robo").GetComponent<Transform>().transform.position.x, GameObject.Find("Robo").GetComponent<Transform>().transform.position.y);
+
         if (!highlightObject)
         {
             highlight.SetActive(false);
@@ -41,10 +43,6 @@ public class ObjectHighlight : MonoBehaviour
         {
             highlight.SetActive(true);
         }
-
-
-
-
     }
     private void OnMouseEnter()
     {
@@ -71,6 +69,7 @@ public class ObjectHighlight : MonoBehaviour
             }
             if (this.gameObject.tag == "Toolbox")
             {
+                Debug.Log("osuu");                
                 SceneManager.LoadScene("Tiirikka");
             }
             if (this.gameObject.tag == "Grill")
@@ -78,13 +77,14 @@ public class ObjectHighlight : MonoBehaviour
                 Debug.Log("Grill");
                 Vector2 pos = GameObject.Find("Robo").GetComponent<Transform>().transform.position;
                 GameObject.Find("Robo").GetComponent<Transform>().transform.position = vent.position;
-                
-
             }
+
+
         }
         else
         {
             Debug.Log("Olet liian kaukana");
         }
+
     }
 }
