@@ -4,7 +4,6 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Locker
   - Grill
   - Toolbox
   - Hand
@@ -13,6 +12,7 @@ TagManager:
   - LeftDoor
   - OpenableDoorLeft
   - OpenableDoorRight
+  - Lock
   layers:
   - Default
   - TransparentFX

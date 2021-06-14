@@ -62,7 +62,7 @@ public class ObjectHighlight : MonoBehaviour
     {
         if (mouseOnObject && this.gameObject.transform.position.x - playerPos.x < 2f)
         {
-            if (this.gameObject.tag == "Locker")
+            if (this.gameObject.tag == "Lock")
             {
                 Vector2 pos = GameObject.Find("Robo").GetComponent<Transform>().transform.position;
                 PlayerData.playerTransformPos = pos;

@@ -1270,6 +1270,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LockerWithLock
       objectReference: {fileID: 0}
+    - target: {fileID: 1568792814570198800, guid: ce6856badfa05794da76d319eebf50f1, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 1568792814570198802, guid: ce6856badfa05794da76d319eebf50f1, type: 3}
       propertyPath: m_SortingLayer
       value: 1
@@ -1329,6 +1333,10 @@ PrefabInstance:
     - target: {fileID: 1568792815057788616, guid: ce6856badfa05794da76d319eebf50f1, type: 3}
       propertyPath: m_SortingLayerID
       value: -1203298851
+      objectReference: {fileID: 0}
+    - target: {fileID: 1568792815057788622, guid: ce6856badfa05794da76d319eebf50f1, type: 3}
+      propertyPath: m_TagString
+      value: Lock
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ce6856badfa05794da76d319eebf50f1, type: 3}
