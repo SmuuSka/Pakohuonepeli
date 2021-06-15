@@ -81,7 +81,7 @@ public class ObjectHighlight : MonoBehaviour
                 SceneManager.LoadScene("Tiirikka");
                 PlayerData.ToolboxTaskDone = true;
             }
-            if (this.gameObject.tag == "Grill")
+            if (this.gameObject.tag == "Grill" && GameObject.Find("Hand").GetComponent<Inventory>().isFull[0] == true)
             {
                 Debug.Log("Grill");
                 Vector2 pos = GameObject.Find("Robo").GetComponent<Transform>().transform.position;
