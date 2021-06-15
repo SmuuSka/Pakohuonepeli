@@ -9,13 +9,11 @@ public class Lukitus : MonoBehaviour
     private int luku = 0;
 
 
-    // Start is called before the first frame update
     void Start()
     {
         rb = sylinterit[luku].GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         OnLukossa();
