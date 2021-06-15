@@ -7,6 +7,11 @@ public class Pickup : MonoBehaviour
 
     public GameObject itemButton;
     public Inventory inventory;
+
+    private void Start()
+    {
+        inventory = GameObject.FindGameObjectWithTag("Hand").GetComponent<Inventory>();
+    }
     public void Additem(GameObject item)
     {
         bool itemAdded = false;
