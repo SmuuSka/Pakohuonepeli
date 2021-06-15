@@ -9,12 +9,12 @@ public class CameraScript : MonoBehaviour
     [SerializeField] public Transform[] nextPos = new Transform[0];
 
     private float smoothSpeed = 0.125f;
-    private Vector3 offset = new Vector3(0,0,-10);
+    private Vector3 offset = new Vector3(0, -1.5f, -10);
     private Vector3 velocity = Vector3.zero;
 
     private void Start()
     {
-        gameCamera.transform.position = new Vector3(nextPos[0].position.x, target.transform.position.y, -10);
+        gameCamera.transform.position = new Vector3(nextPos[0].position.x, target.transform.position.y + 0.74f, -10);
     }
 
     private void Update()

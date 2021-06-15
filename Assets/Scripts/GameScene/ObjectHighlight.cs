@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class ObjectHighlight : MonoBehaviour
 {
-    [SerializeField] private GameObject highlight, Screwdriver;
+    [SerializeField] private GameObject highlight;
     [SerializeField] private Transform vent;
 
     private Vector2 playerPos;
@@ -21,7 +21,7 @@ public class ObjectHighlight : MonoBehaviour
 
     void Start()
     {
-        Screwdriver.SetActive(false);
+        //Screwdriver.SetActive(false);
         playerPos = GameObject.Find("Robo").GetComponent<Transform>().transform.position;
 
         cam = Camera.main;
@@ -34,7 +34,7 @@ public class ObjectHighlight : MonoBehaviour
         if (PlayerData.ToolboxTaskDone)
         {
             Destroy(GameObject.FindGameObjectWithTag("Toolbox"));
-            Screwdriver.SetActive(true);
+            //Screwdriver.SetActive(true);
         }
     }
     private void Update()
