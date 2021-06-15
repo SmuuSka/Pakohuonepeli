@@ -81,12 +81,17 @@ public class ObjectHighlight : MonoBehaviour
                 SceneManager.LoadScene("Tiirikka");
                 PlayerData.ToolboxTaskDone = true;
             }
-            if (this.gameObject.tag == "Grill" && GameObject.Find("Hand").GetComponent<Inventory>().isFull[0] == true)
+            if (this.gameObject.tag == "Grill" && GameObject.Find("Hand").GetComponent<Inventory>().isFull[0] == true && GameObject.Find("Canvas").GetComponentInChildren<UICursorScript>().cursorActive == true)
             {
                 Debug.Log("Grill");
+                Cursor.SetCursor(null, Vector2.zero, CursorMode.ForceSoftware);
                 Vector2 pos = GameObject.Find("Robo").GetComponent<Transform>().transform.position;
                 GameObject.Find("Robo").GetComponent<Transform>().transform.position = vent.position;
                 GameObject.Find("Main Camera").GetComponent<CameraScript>().gameCamera.transform.position = new Vector3(GameObject.Find("Main Camera").GetComponent<CameraScript>().nextPos[1].position.x, GameObject.Find("Main Camera").GetComponent<CameraScript>().target.transform.position.y, -10);
+            }
+            if (this.gameObject.tag == "Propel")
+            {
+                
             }
 
 
