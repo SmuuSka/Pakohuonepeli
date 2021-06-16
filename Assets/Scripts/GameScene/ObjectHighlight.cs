@@ -70,7 +70,9 @@ public class ObjectHighlight : MonoBehaviour
             if (this.gameObject.tag == "Lock")
             {
                 Vector2 pos = GameObject.Find("Robo").GetComponent<Transform>().transform.position;
+                //Vector3 cameraPos = GameObject.Find("Main Camera").GetComponent<Transform>().transform.position;
                 PlayerData.playerTransformPos = pos;
+                //PlayerData.gameCameraTransformPos = cameraPos;
                 SceneManager.LoadScene("LockScene");
                 PlayerData.lockerTaskDone = true;
             }

@@ -8,40 +8,43 @@ public class CameraScript : MonoBehaviour
     [SerializeField] public Camera gameCamera;
     [SerializeField] public Transform[] nextPos = new Transform[0];
 
-    private float smoothSpeed = 0.125f;
-    private Vector3 offset = new Vector3(0, -1.5f, -10);
-    private Vector3 velocity = Vector3.zero;
-
     private void Start()
     {
-        gameCamera.transform.position = new Vector3(nextPos[0].position.x, target.transform.position.y + 0.74f, -10);
+        gameCamera.transform.position = new Vector3(nextPos[0].position.x, nextPos[0].position.y, -10);
+        //PlayerData.gameCameraTransformPos = gameCamera.transform.position;
+        //gameCamera.transform.position = PlayerData.gameCameraTransformPos;
     }
+
 
     private void Update()
     {
+        Debug.Log("CameraPos " + gameCamera.transform.position);
         Debug.Log("targetPos " + nextPos[0].transform.position);
     }
     private void LateUpdate()
     {
-        //gameCamera.transform.position = nextPos[0].position + offset;
 
-        //if (target.transform.position.x < 0)
-        //{
-            //gameCamera.transform.position = new Vector3(nextPos[0].position.x, gameCamera.transform.position.y,-10);
-
-        //}
         if (target.transform.position.x > 27 && target.transform.position.x < 40)
         {
             gameCamera.transform.position = new Vector3(nextPos[2].position.x, nextPos[2].position.y, -10);
-            //Vector3 desiredPosition = target.position + offset;
-            //Vector3 smoothedPosition = Vector3.SmoothDamp(transform.position, desiredPosition, ref velocity, smoothSpeed * Time.deltaTime);
-            //transform.position = smoothedPosition;
         }
-        if (target.transform.position.x > 40 && target.transform.position.y < -2)
+        if (target.transform.position.x > 40 && target.transform.position.x < 62.5f)
         {
             gameCamera.transform.position = new Vector3(nextPos[3].position.x, nextPos[3].position.y, -10);
-            target.position = new Vector2(GameObject.Find("/Huone_Final (1)/SpawnPos").transform.position.x, GameObject.Find("/Huone_Final (1)/SpawnPos").transform.position.y);
-            
+
+            if (target.transform.position.y < -2)
+            {
+                target.position = GameObject.Find("Huone_Final (1)/SpawnPos").transform.position;
+            }
+
+        }
+        if (target.transform.position.x > 62.5f && target.transform.position.x < 80.7f)
+        {
+            gameCamera.transform.position = new Vector3(nextPos[4].position.x, nextPos[4].position.y, -10);
+        }
+        if (target.transform.position.x > 80.7f)
+        {
+            gameCamera.transform.position = new Vector3(nextPos[5].position.x, nextPos[5].position.y, -10);
         }
     }
 }
