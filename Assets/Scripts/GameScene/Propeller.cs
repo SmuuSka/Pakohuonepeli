@@ -21,6 +21,7 @@ public class Propeller : MonoBehaviour
         if (other)
         {
             Destroy(this.gameObject);
+            GameObject.Find("/Ventti (1)/Dropzone").GetComponent<BoxCollider2D>().enabled = false;
         }
     }
 }
