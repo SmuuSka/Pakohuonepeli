@@ -24,8 +24,6 @@ public class RoomScript : MonoBehaviour
     }
     private void Update()
     {
-        Debug.Log("RoboRight " + robotData.hitOpenableDoorRight);
-        Debug.Log("RoboLeft " + robotData.hitOpenableDoorLeft);
 
         var distanceRight = Vector2.Distance(playerPos.position, this.rightDoor.transform.position);
         var distanceLeft = Vector2.Distance(playerPos.position, this.leftDoor.transform.position);

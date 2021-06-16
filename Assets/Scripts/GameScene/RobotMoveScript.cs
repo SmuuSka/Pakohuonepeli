@@ -7,12 +7,12 @@ public class RobotMoveScript : MonoBehaviour
     [SerializeField] private Transform playerPos;
     [SerializeField] private Collider2D playerCollider;
     [SerializeField] private ContactFilter2D doorZoneFilter;
-    [SerializeField] private BoxCollider2D[] boxColliders = new BoxCollider2D[0];
-    [SerializeField] private CircleCollider2D circleCollider;
+    [SerializeField] public BoxCollider2D[] boxColliders = new BoxCollider2D[0];
+    [SerializeField] public CircleCollider2D circleCollider;
 
     private Collider2D[] doorZoneDetectionResults = new Collider2D[16];
     private Rigidbody2D playerRb;
-    public RaycastHit2D hit;
+    public RaycastHit2D hit, hitVent;
 
     private float horizontalInput;
     private float forceMultiplier = 400f, forceMultiplierMinus = -400;
@@ -25,46 +25,16 @@ public class RobotMoveScript : MonoBehaviour
     private void Start()
     {
         playerRb = GetComponent<Rigidbody2D>();
-
-        //if (PlayerData.playerTransformPos == null)
-        //{
-        //    transform.position = playerPos.position;
-        //}
-        //else
-        //{
-        //    playerPos.position = PlayerData.playerTransformPos;
-        //}
     }
 
     private void Update()
     {
-        if (Input.GetKey(KeyCode.LeftControl))
-        {
-            crawl = true;
-        }
-        else
-        {
-            crawl = false;
-        }
-
-        if (!crawl)
-        {
-            boxColliders[0].enabled = true;
-            boxColliders[1].enabled = false;
-            circleCollider.enabled = true;
-        }
-        else
-        {
-            boxColliders[0].enabled = false;
-            boxColliders[1].enabled = true;
-            circleCollider.enabled = false;
-        }
-        
         horizontalInput = Input.GetAxisRaw("Horizontal");
         
         CheckHitRaycast();
         UpdateIsInsideDoorZone();
         Flip();
+        
     }
 
     private void UpdateIsInsideDoorZone()
@@ -76,16 +46,19 @@ public class RobotMoveScript : MonoBehaviour
     private void CheckHitRaycast()
     {
 
-        Debug.DrawRay(playerPos.position, transform.TransformDirection(Vector2.right) * 3f, Color.red);
+        Debug.DrawRay(playerPos.position, transform.TransformDirection(Vector2.right) * 1f, Color.red);
         LayerMask maskRoom = LayerMask.GetMask("Room");
-        hit = Physics2D.Raycast(transform.position, transform.TransformDirection(Vector2.right), 3f, maskRoom);
-        
+        LayerMask maskVent = LayerMask.GetMask("CrawlZone");
+        hit = Physics2D.Raycast(transform.position, transform.TransformDirection(Vector2.right), 1f, maskRoom);
+        hitVent = Physics2D.Raycast(transform.position, transform.TransformDirection(Vector2.right), 1f, maskVent);
+
 
         if (hit)
         {
             if (hit.rigidbody.CompareTag("OpenableDoorRight"))
             {
                 hitOpenableDoorRight = true;
+
             }
             else if (hit.rigidbody.CompareTag("OpenableDoorLeft"))
             {
@@ -97,20 +70,22 @@ public class RobotMoveScript : MonoBehaviour
                 hitOpenableDoorLeft = false;
             }
         }
+        if (hitVent)
+        {
+            Debug.Log("Et voi nousta");
+            Crawl();
+        }
+        else
+        {
+            boxColliders[0].enabled = true;
+            boxColliders[1].enabled = false;
+            circleCollider.enabled = true;
+        }
     }
 
     private void FixedUpdate()
     {
-        if (Input.GetAxisRaw("Horizontal") > 0)
-        {
-            playerRb.velocity = Vector2.right * horizontalInput * forceMultiplier * Time.deltaTime;
-            
-        }
-
-        if (Input.GetAxisRaw("Horizontal") < 0)
-        {
-            playerRb.velocity = Vector2.left * horizontalInput * forceMultiplierMinus * Time.deltaTime;
-        }
+        MoveRobo();
     }
 
     private void Flip()
@@ -120,5 +95,24 @@ public class RobotMoveScript : MonoBehaviour
             facingRight = !facingRight;
             transform.Rotate(new Vector3(0, 180, 0));
         }
+    }
+    private void MoveRobo()
+    {
+        if (Input.GetAxisRaw("Horizontal") > 0)
+        {
+            playerRb.velocity = Vector2.right * horizontalInput * forceMultiplier * Time.deltaTime;
+
+        }
+
+        if (Input.GetAxisRaw("Horizontal") < 0)
+        {
+            playerRb.velocity = Vector2.left * horizontalInput * forceMultiplierMinus * Time.deltaTime;
+        }
+    }
+    private void Crawl()
+    {
+            boxColliders[0].enabled = false;
+            boxColliders[1].enabled = true;
+            circleCollider.enabled = false;
     }
 }

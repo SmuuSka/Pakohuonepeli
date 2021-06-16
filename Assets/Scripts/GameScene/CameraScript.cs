@@ -11,15 +11,12 @@ public class CameraScript : MonoBehaviour
     private void Start()
     {
         gameCamera.transform.position = new Vector3(nextPos[0].position.x, nextPos[0].position.y, -10);
-        //PlayerData.gameCameraTransformPos = gameCamera.transform.position;
-        //gameCamera.transform.position = PlayerData.gameCameraTransformPos;
     }
 
 
     private void Update()
     {
-        Debug.Log("CameraPos " + gameCamera.transform.position);
-        Debug.Log("targetPos " + nextPos[0].transform.position);
+
     }
     private void LateUpdate()
     {
