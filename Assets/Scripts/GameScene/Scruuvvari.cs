@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class Scruuvvari : MonoBehaviour
 {
+    
     private void OnTriggerEnter2D(Collider2D col)
     {
         if (col)
         {
             Destroy(this.gameObject);
+            
         }
 
     }
