@@ -769,6 +769,10 @@ PrefabInstance:
       value: Tuuletin
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f1f8643b66e2c6242959a60116723e55, type: 3}
+      propertyPath: m_Layer
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f1f8643b66e2c6242959a60116723e55, type: 3}
       propertyPath: m_TagString
       value: Propel
       objectReference: {fileID: 0}
@@ -791,6 +795,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d14a5d0b690ea67489adf6b97818bcea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &297842327
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 297842322}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.0036176776, y: 0.0000000055879354}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.074350424, y: 0.008842508}
+  m_EdgeRadius: 0
 --- !u!4 &311587632 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8660137344379525403, guid: c7bff06f2c96fee4bb1c9007511a77da, type: 3}
@@ -948,7 +978,7 @@ GameObject:
   - component: {fileID: 466483856}
   m_Layer: 13
   m_Name: Dropzone
-  m_TagString: Untagged
+  m_TagString: DropZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1434,6 +1464,7 @@ GameObject:
   - component: {fileID: 870332531}
   - component: {fileID: 870332530}
   - component: {fileID: 870332529}
+  - component: {fileID: 870332533}
   m_Layer: 15
   m_Name: Scruuvvari
   m_TagString: Untagged
@@ -1543,6 +1574,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 180, y: 0, z: 0}
+--- !u!114 &870332533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 870332528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 274ada7911d6b2448bfc808debff8234, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &929980550
 GameObject:
   m_ObjectHideFlags: 0

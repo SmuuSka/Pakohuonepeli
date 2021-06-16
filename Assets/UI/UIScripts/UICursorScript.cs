@@ -14,6 +14,8 @@ public class UICursorScript : MonoBehaviour
         Cursor.SetCursor(image.sprite.texture, Vector2.zero, CursorMode.ForceSoftware);
         cursorActive = true;
 
+        
+
 
     }
 }

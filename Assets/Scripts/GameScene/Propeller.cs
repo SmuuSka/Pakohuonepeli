@@ -15,4 +15,12 @@ public class Propeller : MonoBehaviour
     {
         transform.Rotate(new Vector3(transform.rotation.x, transform.rotation.y + speed * multiplier * Time.deltaTime, transform.rotation.z));
     }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other)
+        {
+            Destroy(this.gameObject);
+        }
+    }
 }

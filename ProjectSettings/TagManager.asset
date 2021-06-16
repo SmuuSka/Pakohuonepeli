@@ -15,6 +15,7 @@ TagManager:
   - Lock
   - Locker
   - Propel
+  - DropZone
   layers:
   - Default
   - TransparentFX
@@ -32,7 +33,7 @@ TagManager:
   - DropZone
   - Interactable
   - Scruuvvari
-  - 
+  - Propel
   - 
   - 
   - 

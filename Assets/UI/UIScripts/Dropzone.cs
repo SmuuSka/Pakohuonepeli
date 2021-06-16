@@ -12,10 +12,14 @@ public class Dropzone : MonoBehaviour
         ruuvvari = GameObject.Find("Scruuvvari");
         ruuvvari.SetActive(false);
     }
-    private void OnMouseEnter()
+    private void OnMouseDown()
     {
         Debug.Log("HiiriDropzonella");
-        ruuvvari.SetActive(true);
 
+        if (this.gameObject.tag == "DropZone" && GameObject.Find("Hand").GetComponent<Inventory>().isFull[0] == true && GameObject.Find("Canvas").GetComponentInChildren<UICursorScript>().cursorActive == true) 
+        {
+            ruuvvari.SetActive(true);
+            Cursor.SetCursor(null, Vector2.zero, CursorMode.ForceSoftware);
+        }
     }
 }
