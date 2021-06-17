@@ -1,0 +1,418 @@
+fileFormatVersion: 2
+guid: aee2f4ad91d60c94ead686aa65ed6ea9
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5533723178849751581
+    second: Huone_tavaraa_0
+  - first:
+      213: -5247735843943491024
+    second: Huone_tavaraa_1
+  - first:
+      213: -250167586193882277
+    second: Huone_tavaraa_2
+  - first:
+      213: -657165470020343576
+    second: Huone_tavaraa_3
+  - first:
+      213: -7562435621443932409
+    second: Huone_tavaraa_4
+  - first:
+      213: -7267290850372725711
+    second: Huone_tavaraa_5
+  - first:
+      213: -4458843494315999515
+    second: Huone_tavaraa_6
+  - first:
+      213: -1831747438485006158
+    second: Huone_tavaraa_7
+  - first:
+      213: 2839601597390650899
+    second: Huone_tavaraa_8
+  - first:
+      213: -1153482072488080316
+    second: Huone_tavaraa_9
+  - first:
+      213: -5674117949712508522
+    second: Huone_tavaraa_10
+  - first:
+      213: 7864647187349226286
+    second: Huone_tavaraa_11
+  - first:
+      213: 1514405008833989828
+    second: Huone_tavaraa_12
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Huone_tavaraa_0
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 258
+        width: 1208
+        height: 1837
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3eda05776144433b0800000000000000
+      internalID: -5533723178849751581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Huone_tavaraa_1
+      rect:
+        serializedVersion: 2
+        x: 1343
+        y: 1940
+        width: 308
+        height: 144
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03ad9aabd0c4c27b0800000000000000
+      internalID: -5247735843943491024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Huone_tavaraa_2
+      rect:
+        serializedVersion: 2
+        x: 2208
+        y: 1657
+        width: 570
+        height: 427
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b53c892e7e9378cf0800000000000000
+      internalID: -250167586193882277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Huone_tavaraa_3
+      rect:
+        serializedVersion: 2
+        x: 2935
+        y: 1765
+        width: 291
+        height: 295
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e8e8c0ac7741e6f0800000000000000
+      internalID: -657165470020343576
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Huone_tavaraa_4
+      rect:
+        serializedVersion: 2
+        x: 1343
+        y: 1177
+        width: 784
+        height: 720
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70fe21baed4dc0790800000000000000
+      internalID: -7562435621443932409
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Huone_tavaraa_5
+      rect:
+        serializedVersion: 2
+        x: 2251
+        y: 1167
+        width: 214
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1345610b975652b90800000000000000
+      internalID: -7267290850372725711
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Huone_tavaraa_6
+      rect:
+        serializedVersion: 2
+        x: 2847
+        y: 48
+        width: 953
+        height: 1288
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5eebb3447710f12c0800000000000000
+      internalID: -4458843494315999515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Huone_tavaraa_7
+      rect:
+        serializedVersion: 2
+        x: 1355
+        y: 460
+        width: 785
+        height: 662
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b89ed2e8635496e0800000000000000
+      internalID: -1831747438485006158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Huone_tavaraa_8
+      rect:
+        serializedVersion: 2
+        x: 2249
+        y: 1107
+        width: 214
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31ef914ab9a486720800000000000000
+      internalID: 2839601597390650899
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Huone_tavaraa_9
+      rect:
+        serializedVersion: 2
+        x: 2217
+        y: 787
+        width: 531
+        height: 277
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44c019e9a220effe0800000000000000
+      internalID: -1153482072488080316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Huone_tavaraa_10
+      rect:
+        serializedVersion: 2
+        x: 2217
+        y: 89
+        width: 270
+        height: 606
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 699d7b999cb7141b0800000000000000
+      internalID: -5674117949712508522
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Huone_tavaraa_11
+      rect:
+        serializedVersion: 2
+        x: 2536
+        y: 417
+        width: 34
+        height: 152
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e23c9bdb2f6d42d60800000000000000
+      internalID: 7864647187349226286
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Huone_tavaraa_12
+      rect:
+        serializedVersion: 2
+        x: 2617
+        y: 417
+        width: 33
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4cc4f95f45f340510800000000000000
+      internalID: 1514405008833989828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
