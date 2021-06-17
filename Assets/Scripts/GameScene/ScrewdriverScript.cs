@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ScrewdriverScript : MonoBehaviour
+public class CollectibleScript : MonoBehaviour
 {
     private void Start()
     {

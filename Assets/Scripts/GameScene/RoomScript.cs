@@ -18,34 +18,14 @@ public class RoomScript : MonoBehaviour
 
     private void Start()
     {
+        
         robotData = GameObject.Find("Robo").GetComponent<RobotMoveScript>();
         playerPos = GameObject.Find("Robo").GetComponent<Transform>();
         
     }
     private void Update()
     {
-
-        var distanceRight = Vector2.Distance(playerPos.position, this.rightDoor.transform.position);
-        var distanceLeft = Vector2.Distance(playerPos.position, this.leftDoor.transform.position);
-
-        if (distanceRight < 4)  
-        {
-            if (robotData.hitOpenableDoorRight && !doorIsOpenRight)
-            {
-                doorRight = true;
-                OpenDoorRight();
-            }
-        }
-
-        if (distanceLeft < 4)
-        { 
-            if (robotData.hitOpenableDoorLeft && !doorIsOpenLeft)
-            {
-                doorLeft = true;
-                OpenDoorLeft();
-            }
-        }
-
+        DistanceCheck();
 
         if (doorIsOpenRight)
         {
@@ -145,6 +125,29 @@ public class RoomScript : MonoBehaviour
             yield return new WaitForSeconds(1);
             doorIsOpenLeft = false;
             closingDoorLeft = true;
+        }
+    }
+    private void DistanceCheck()
+    {
+        var distanceRight = Vector2.Distance(playerPos.position, this.rightDoor.transform.position);
+        var distanceLeft = Vector2.Distance(playerPos.position, this.leftDoor.transform.position);
+
+        if (distanceRight < 4)
+        {
+            if (robotData.hitOpenableDoorRight && !doorIsOpenRight)
+            {
+                doorRight = true;
+                OpenDoorRight();
+            }
+        }
+
+        if (distanceLeft < 4)
+        {
+            if (robotData.hitOpenableDoorLeft && !doorIsOpenLeft)
+            {
+                doorLeft = true;
+                OpenDoorLeft();
+            }
         }
     }
 }
