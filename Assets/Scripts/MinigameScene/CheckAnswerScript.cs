@@ -14,6 +14,7 @@ public class CheckAnswerScript : MonoBehaviour
     [SerializeField] private Button nextSlot;
     [SerializeField] private Button previousSlot;
     [SerializeField] private Button sendAnswer;
+    [SerializeField] private Button goBack;
 
     private CursorScrip cursorManager;
 
@@ -51,9 +52,15 @@ public class CheckAnswerScript : MonoBehaviour
         nextSlot.onClick.AddListener(GoNext);
         previousSlot.onClick.AddListener(GoBack);
         sendAnswer.onClick.AddListener(CheckAnswer2);
+        goBack.onClick.AddListener(GoBackGameScene);
 
         sendAnswer.gameObject.SetActive(false);
 
+    }
+
+    private void GoBackGameScene()
+    {
+        SceneManager.LoadScene(0);
     }
 
     //private void CheckAnswer()
@@ -202,5 +209,6 @@ public class CheckAnswerScript : MonoBehaviour
     {
         yield return new WaitForSeconds(1.5f);
         SceneManager.LoadScene(0);
+        PlayerData.lockerTaskDone = true;
     }
 }

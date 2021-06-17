@@ -74,7 +74,7 @@ public class ObjectHighlight : MonoBehaviour
                 PlayerData.playerTransformPos = pos;
                 //PlayerData.gameCameraTransformPos = cameraPos;
                 SceneManager.LoadScene("LockScene");
-                PlayerData.lockerTaskDone = true;
+                //PlayerData.lockerTaskDone = true;
             }
             if (this.gameObject.tag == "Toolbox")
             {
