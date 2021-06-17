@@ -20,6 +20,10 @@ public class CameraScript : MonoBehaviour
     }
     private void LateUpdate()
     {
+        if (target.transform.position.x > 12 && target.transform.position.x < 27)
+        {
+            gameCamera.transform.position = new Vector3(nextPos[1].position.x, nextPos[1].position.y, -10);
+        }
 
         if (target.transform.position.x > 27 && target.transform.position.x < 40)
         {
