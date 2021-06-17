@@ -23,13 +23,17 @@ public class Puzzle : MonoBehaviour
     void Start()
     {
         CreatePuzzle();
-    }
-    void Update()
-    {
-        if (state == PuzzleState.Solved && Input.GetKeyDown(KeyCode.Space))
+        if(state == PuzzleState.Solved)
         {
             StartShuffle();
         }
+    }
+    void Update()
+    {
+       /* if (state == PuzzleState.Solved && Input.GetKeyDown(KeyCode.Space))
+        {
+            StartShuffle();
+        }*/
     }
 
     void CreatePuzzle()
