@@ -15,7 +15,8 @@ public class RobotMoveScript : MonoBehaviour
     public RaycastHit2D hit, hitVent;
 
     private float horizontalInput;
-    private float forceMultiplier = 400f, forceMultiplierMinus = -400;
+    //private float forceMultiplier = 400f, forceMultiplierMinus = -400;
+    private int multiplier = 5;
 
     private bool crawl;
 
@@ -99,16 +100,30 @@ public class RobotMoveScript : MonoBehaviour
     }
     private void MoveRobo()
     {
-        if (Input.GetAxisRaw("Horizontal") > 0)
+        if (horizontalInput > 0)
         {
-            playerRb.velocity = Vector2.right * horizontalInput * forceMultiplier * Time.deltaTime;
+
+            playerRb.transform.Translate(Vector2.right * horizontalInput * multiplier * Time.deltaTime);
 
         }
 
-        if (Input.GetAxisRaw("Horizontal") < 0)
+
+        if (horizontalInput < 0)
         {
-            playerRb.velocity = Vector2.left * horizontalInput * forceMultiplierMinus * Time.deltaTime;
+
+            playerRb.transform.Translate(Vector2.left * horizontalInput * multiplier * Time.deltaTime);
         }
+
+        //if (Input.GetAxisRaw("Horizontal") > 0)
+        //{
+        //    playerRb.velocity = Vector2.right * horizontalInput * forceMultiplier * Time.deltaTime;
+
+        //}
+
+        //if (Input.GetAxisRaw("Horizontal") < 0)
+        //{
+        //    playerRb.velocity = Vector2.left * horizontalInput * forceMultiplierMinus * Time.deltaTime;
+        //}
     }
     private void Crawl()
     {
