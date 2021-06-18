@@ -17,6 +17,7 @@ TagManager:
   - Propel
   - DropZone
   - NotOpenable
+  - DropZoneBattery
   layers:
   - Default
   - TransparentFX
@@ -36,7 +37,7 @@ TagManager:
   - Scruuvvari
   - Propel
   - CrawlZone
-  - 
+  - DropZoneBattery
   - 
   - 
   - 
