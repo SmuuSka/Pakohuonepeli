@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: b7b480a4a4617ca4d9bd86063cd0c509
+guid: 0dc99ab9b8ba099479c6b007b1d9377a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6649170421682187575
-    second: puuttuvapalanenkopio_0
+      213: -954178374842338747
+    second: Slide_puzzle_2_Osaa_Ei_Ruutuja_0
+  - first:
+      213: -5204776275205534199
+    second: Slide_puzzle_2_Osaa_Ei_Ruutuja_1
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -23,7 +26,7 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
-  isReadable: 1
+  isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
@@ -104,13 +107,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: puuttuvapalanenkopio_0
+      name: Slide_puzzle_2_Osaa_Ei_Ruutuja_0
       rect:
         serializedVersion: 2
-        x: 215
-        y: 2
-        width: 143
-        height: 122
+        x: 11
+        y: 174
+        width: 351
+        height: 351
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -118,8 +121,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 73da66b0549964c50800000000000000
-      internalID: 6649170421682187575
+      spriteID: 542b923d2d312c2f0800000000000000
+      internalID: -954178374842338747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slide_puzzle_2_Osaa_Ei_Ruutuja_1
+      rect:
+        serializedVersion: 2
+        x: 388
+        y: 167
+        width: 365
+        height: 365
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90e4ef4cd8be4c7b0800000000000000
+      internalID: -5204776275205534199
       vertices: []
       indices: 
       edges: []

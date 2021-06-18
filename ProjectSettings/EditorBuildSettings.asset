@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Tiirikka.unity
     guid: 29b6e9d8c1fd7054bad4cd2cf598b4ab
+  - enabled: 1
+    path: Assets/Scenes/SlidePuzzle.unity
+    guid: f028793394242ff4e8cfe57fa711c912
   m_configObjects: {}
