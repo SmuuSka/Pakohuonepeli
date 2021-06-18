@@ -16,6 +16,7 @@ TagManager:
   - Locker
   - Propel
   - DropZone
+  - NotOpenable
   layers:
   - Default
   - TransparentFX
