@@ -555,7 +555,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 2800000, guid: 704f5da715d0aac48bdbd99e56371f50, type: 3}
   blocksPerLine: 3
-  shuffleLength: 1
+  shuffleLength: 20
   defaultMoveDuration: 0.2
   shuffleMoveDuration: 0.1
 --- !u!4 &822052458

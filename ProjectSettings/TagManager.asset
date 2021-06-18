@@ -18,6 +18,8 @@ TagManager:
   - DropZone
   - NotOpenable
   - DropZoneBattery
+  - SlidePuzzleTausta
+  - LaserTausta
   layers:
   - Default
   - TransparentFX
@@ -38,7 +40,7 @@ TagManager:
   - Propel
   - CrawlZone
   - DropZoneBattery
-  - 
+  - SlidePuzzleTausta
   - 
   - 
   - 
