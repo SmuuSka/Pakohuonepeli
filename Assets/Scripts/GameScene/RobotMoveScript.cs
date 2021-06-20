@@ -43,7 +43,7 @@ public class RobotMoveScript : MonoBehaviour
     private void Start()
     {
         playerRb = GetComponent<Rigidbody2D>();
-        //transform.position = PlayerData.playerTransformPos;
+        transform.position = PlayerData.playerTransformPos;
     }
 
     private void Update()
@@ -72,7 +72,6 @@ public class RobotMoveScript : MonoBehaviour
             tempRightBoxCol2D = playerRaycastHitDoor.collider.GetComponent<BoxCollider2D>();
             tempRightUpperDoor = playerRaycastHitDoor.collider.gameObject.GetComponentInChildren<Transform>().Find("Ovi_ylä").GetComponent<Transform>().position;
             tempRightAnimator.SetBool("rightDoorIsOpening", true);
-            Debug.Log(tempRightUpperDoor.y);
             if (tempRightUpperDoor.y > 3.5f)
             {
                 tempRightBoxCol2D.enabled = false;
