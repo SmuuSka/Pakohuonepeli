@@ -20,6 +20,7 @@ TagManager:
   - DropZoneBattery
   - SlidePuzzleTausta
   - LaserTausta
+  - DoorZone
   layers:
   - Default
   - TransparentFX

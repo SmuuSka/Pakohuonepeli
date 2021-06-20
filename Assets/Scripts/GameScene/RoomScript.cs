@@ -29,12 +29,12 @@ public class RoomScript : MonoBehaviour
 
         if (doorIsOpenRight)
         {
-            StartCoroutine(ShutTheDoor());
+            //StartCoroutine(ShutTheDoor());
         }
 
         if (doorIsOpenLeft)
         {
-            StartCoroutine(ShutTheDoor());
+            //StartCoroutine(ShutTheDoor());
         }
 
         if (closingDoorRight)
@@ -112,21 +112,21 @@ public class RoomScript : MonoBehaviour
             this.leftDoor.GetComponent<BoxCollider2D>().enabled = true;
         }
     }
-    private IEnumerator ShutTheDoor()
-    {
-        if (!robotData.isInsideDoorZone && doorRight)
-        {
-            yield return new WaitForSeconds(1);
-            doorIsOpenRight = false;
-            closingDoorRight = true;
-        }
-        else if (!robotData.isInsideDoorZone && doorLeft)
-        {
-            yield return new WaitForSeconds(1);
-            doorIsOpenLeft = false;
-            closingDoorLeft = true;
-        }
-    }
+    //private IEnumerator ShutTheDoor()
+    //{
+    //    if (!robotData.isPlayerInsideDoorZone && doorRight)
+    //    {
+    //        yield return new WaitForSeconds(1);
+    //        doorIsOpenRight = false;
+    //        closingDoorRight = true;
+    //    }
+    //    else if (!robotData.isPlayerInsideDoorZone && doorLeft)
+    //    {
+    //        yield return new WaitForSeconds(1);
+    //        doorIsOpenLeft = false;
+    //        closingDoorLeft = true;
+    //    }
+    //}
     private void DistanceCheck()
     {
         var distanceRight = Vector2.Distance(playerPos.position, this.rightDoor.transform.position);
