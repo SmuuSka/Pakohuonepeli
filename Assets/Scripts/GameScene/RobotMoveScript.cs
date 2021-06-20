@@ -37,13 +37,13 @@ public class RobotMoveScript : MonoBehaviour
     //--------Door Boolean Variables--------
 
 
-    public bool setTrueRight, setTrueLeft, hitOpenableDoorRight, hitOpenableDoorLeft;
+    //public bool setTrueRight, setTrueLeft, hitOpenableDoorRight, hitOpenableDoorLeft;
     
 
     private void Start()
     {
         playerRb = GetComponent<Rigidbody2D>();
-        transform.position = PlayerData.playerTransformPos;
+        //transform.position = PlayerData.playerTransformPos;
     }
 
     private void Update()
@@ -72,7 +72,8 @@ public class RobotMoveScript : MonoBehaviour
             tempRightBoxCol2D = playerRaycastHitDoor.collider.GetComponent<BoxCollider2D>();
             tempRightUpperDoor = playerRaycastHitDoor.collider.gameObject.GetComponentInChildren<Transform>().Find("Ovi_ylä").GetComponent<Transform>().position;
             tempRightAnimator.SetBool("rightDoorIsOpening", true);
-            if (tempRightUpperDoor.y > 3.8f)
+            Debug.Log(tempRightUpperDoor.y);
+            if (tempRightUpperDoor.y > 3.5f)
             {
                 tempRightBoxCol2D.enabled = false;
                 closeDoorPulse = true;
@@ -86,7 +87,7 @@ public class RobotMoveScript : MonoBehaviour
             tempLeftBoxCol2D = playerRaycastHitDoor.collider.GetComponent<BoxCollider2D>();
             tempLeftUpperDoor = playerRaycastHitDoor.collider.gameObject.GetComponentInChildren<Transform>().Find("Ovi_ylä").GetComponent<Transform>().position;
             tempLeftAnimator.SetBool("leftDoorIsOpening", true);
-            if (tempLeftUpperDoor.y > 3.8f)
+            if (tempLeftUpperDoor.y > 3.5f)
             {
                 tempLeftBoxCol2D.enabled = false;
                 closeDoorPulse = true;
@@ -94,6 +95,18 @@ public class RobotMoveScript : MonoBehaviour
             }
         }
     }
+    private void CloseDoorRight()
+    {
+        tempRightBoxCol2D.enabled = true;
+        tempRightAnimator.SetBool("rightDoorIsOpening", false);
+    }
+    private void CloseDoorLeft()
+    {
+        tempLeftBoxCol2D.enabled = true;
+        tempLeftAnimator.SetBool("leftDoorIsOpening", false);
+
+    }
+
 
     private void DoorController()
     {
@@ -108,18 +121,18 @@ public class RobotMoveScript : MonoBehaviour
 
         if (closeDoorPulse && !isPlayerInsideDoorZone && rightDoor)
         {
-            //CloseDoorRight();
+            CloseDoorRight();
         }
         if (closeDoorPulse && !isPlayerInsideDoorZone && leftDoor)
         {
-            //CloseDoorLeft();
+            CloseDoorLeft();
         }
     }
 
     private void UpdateIsInsideDoorZone()
     {
         isPlayerInsideDoorZone = playerCollider.OverlapCollider(doorZoneFilter, doorZoneDetectionResults) > 0;
-        Debug.Log("Inside" + isPlayerInsideDoorZone);
+        Debug.Log("Ovi alueella" + isPlayerInsideDoorZone);
     }
 
     private void CheckHitRaycastDoor()
