@@ -48,6 +48,7 @@ public class RobotMoveScript : MonoBehaviour
 
     private void Update()
     {
+
         horizontalInput = Input.GetAxisRaw("Horizontal");
 
         //CheckHitRaycast();

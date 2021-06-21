@@ -16,7 +16,11 @@ public class CameraScript : MonoBehaviour
 
     private void Update()
     {
-
+        if (target.transform.position.y < -2)
+        {
+            Vector2 pos = GameObject.Find("Huone_Final (1)/SpawnPos").transform.position;
+            target.position = pos;
+        }
     }
     private void LateUpdate()
     {
@@ -32,12 +36,6 @@ public class CameraScript : MonoBehaviour
         if (target.transform.position.x > 40 && target.transform.position.x < 62.5f)
         {
             gameCamera.transform.position = new Vector3(nextPos[3].position.x, nextPos[3].position.y, -10);
-
-            if (target.transform.position.y < -2)
-            {
-                target.position = GameObject.Find("Huone_Final (1)/SpawnPos").transform.position;
-            }
-
         }
         if (target.transform.position.x > 62.5f && target.transform.position.x < 80.7f)
         {
