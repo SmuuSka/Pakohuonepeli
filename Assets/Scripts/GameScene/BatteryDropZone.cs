@@ -13,7 +13,6 @@ public class BatteryDropZone : MonoBehaviour
     void Start()
     {
         tausta = GameObject.Find("SlidePuzzleTausta");
-        tausta.SetActive(false);
         patteri = GameObject.Find("Patteri");
         patteri.SetActive(false);
         unct = GameObject.Find("Slot").GetComponent<Slot>();
@@ -24,7 +23,6 @@ public class BatteryDropZone : MonoBehaviour
     {
         if (this.gameObject.tag == "DropZoneBattery" && GameObject.Find("Hand").GetComponent<Inventory>().isFull[0] == true && GameObject.Find("Canvas").GetComponentInChildren<UICursorScript>().cursorActive == true)
         {
-            tausta.SetActive(true);
             patteri.SetActive(true);
             Cursor.SetCursor(null, Vector2.zero, CursorMode.ForceSoftware);
             unct.DropItem();
