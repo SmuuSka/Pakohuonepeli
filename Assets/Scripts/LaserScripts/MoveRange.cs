@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MoveRange : MonoBehaviour
 {
@@ -149,6 +150,7 @@ public class MoveRange : MonoBehaviour
                     count++;
                     luku++;
                     goal.SetActive(true);
+                    StartCoroutine(Delay());
                 }
                 break;
             default:
@@ -166,6 +168,12 @@ public class MoveRange : MonoBehaviour
         //    canMove = false;
         //    Debug.Log("osuu");
         //}
+    }
+
+    IEnumerator Delay()
+    {
+        yield return new WaitForSeconds(1.5f);
+        SceneManager.LoadScene("GameView");
     }
 
 }

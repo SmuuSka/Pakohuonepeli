@@ -43,7 +43,7 @@ public class RobotMoveScript : MonoBehaviour
     private void Start()
     {
         playerRb = GetComponent<Rigidbody2D>();
-        //transform.position = PlayerData.playerTransformPos;
+        transform.position = PlayerData.playerTransformPos;
     }
 
     private void Update()
