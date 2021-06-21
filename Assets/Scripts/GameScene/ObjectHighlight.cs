@@ -96,7 +96,7 @@ public class ObjectHighlight : MonoBehaviour
             {
                 Vector2 pos = GameObject.Find("Robo").GetComponent<Transform>().transform.position;
                 PlayerData.playerTransformPos = pos;
-                SceneManager.LoadScene("SlidePuzzle");
+                SceneManager.LoadScene("LaserLock");
             }
 
 
