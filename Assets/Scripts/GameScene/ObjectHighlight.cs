@@ -92,11 +92,18 @@ public class ObjectHighlight : MonoBehaviour
                 GameObject.Find("Robo").GetComponent<Transform>().transform.position = vent.position;
                 GameObject.Find("Main Camera").GetComponent<CameraScript>().gameCamera.transform.position = new Vector3(GameObject.Find("Main Camera").GetComponent<CameraScript>().nextPos[1].position.x, GameObject.Find("Main Camera").GetComponent<CameraScript>().target.transform.position.y, -10);
             }
-            if (this.gameObject.tag == "LaserTausta" && GameObject.Find("Patteri").activeInHierarchy)
+            if (this.gameObject.tag == "LaserTausta")
             {
-                Vector2 pos = GameObject.Find("Robo").GetComponent<Transform>().transform.position;
-                PlayerData.playerTransformPos = pos;
-                SceneManager.LoadScene("LaserLock");
+                if (GameObject.Find("Patteri") == null)
+                {
+                    return;
+                }
+                else
+                {
+                    Vector2 pos = GameObject.Find("Robo").GetComponent<Transform>().transform.position;
+                    PlayerData.playerTransformPos = pos;
+                    SceneManager.LoadScene("LaserLock");
+                }
             }
 
 
