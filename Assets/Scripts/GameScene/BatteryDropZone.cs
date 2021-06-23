@@ -18,6 +18,14 @@ public class BatteryDropZone : MonoBehaviour
         unct = GameObject.Find("Slot").GetComponent<Slot>();
     }
 
+    private void Update()
+    {
+        if (PlayerData.laserTaskDone == true)
+        {
+            patteri.SetActive(true);
+        }
+    }
+
     // Update is called once per frame
     private void OnMouseDown()
     {
@@ -26,6 +34,6 @@ public class BatteryDropZone : MonoBehaviour
             patteri.SetActive(true);
             Cursor.SetCursor(null, Vector2.zero, CursorMode.ForceSoftware);
             unct.DropItem();
-        }
+        }       
     }
 }
