@@ -18,11 +18,16 @@ public class ObjectHighlight : MonoBehaviour
     public bool mouseOnObject;
 
     private Camera cam;
-    private bool secs;
+    private float secs = 10f;
     private bool runtimer;
 
     void Start()
     {
+        while(secs > 0f)
+        {
+            Debug.Log(secs);
+            secs -= Time.deltaTime;
+        }
         robotMoveScript = GameObject.Find("Robo").GetComponent<RobotMoveScript>();
 
 
@@ -143,7 +148,7 @@ public class ObjectHighlight : MonoBehaviour
         if(runtimer == true)
         {
             yield return new WaitForSeconds(1f);
-            secs = true;
+            
         }
         
 
