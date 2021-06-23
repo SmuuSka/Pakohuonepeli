@@ -732,6 +732,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 492641636}
     - target: {fileID: 1198958345116569473, guid: 6d204d50b72e52740b3d0af993a0342d, type: 3}
+      propertyPath: roboAnimator
+      value: 
+      objectReference: {fileID: 492641632}
+    - target: {fileID: 1198958345116569473, guid: 6d204d50b72e52740b3d0af993a0342d, type: 3}
       propertyPath: circleCollider
       value: 
       objectReference: {fileID: 158648991}
@@ -1731,6 +1735,25 @@ BoxCollider2D:
   m_CorrespondingSourceObject: {fileID: 6849433288136755950, guid: 6d204d50b72e52740b3d0af993a0342d, type: 3}
   m_PrefabInstance: {fileID: 158648990}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &492641632
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 492641630}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2671b1d63266d824ebbca4aafa9fcbb6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!4 &492641636 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1232477863089480753, guid: 6d204d50b72e52740b3d0af993a0342d, type: 3}

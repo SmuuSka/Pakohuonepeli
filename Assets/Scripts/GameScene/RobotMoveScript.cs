@@ -8,6 +8,7 @@ public class RobotMoveScript : MonoBehaviour
     //--------Player Variables--------
     [SerializeField] private Transform playerPos;
     [SerializeField] private Collider2D playerCollider;
+    [SerializeField] private Animator roboAnimator;
     private Rigidbody2D playerRb;
     private float horizontalInput;
     private int multiplier = 5;
@@ -42,6 +43,7 @@ public class RobotMoveScript : MonoBehaviour
 
     private void Start()
     {
+        
         playerRb = GetComponent<Rigidbody2D>();
         transform.position = PlayerData.playerTransformPos;
     }
@@ -188,16 +190,20 @@ public class RobotMoveScript : MonoBehaviour
     {
         if (horizontalInput > 0)
         {
-
+            roboAnimator.SetBool("move", true);
             playerRb.transform.Translate(Vector2.right * horizontalInput * multiplier * Time.deltaTime);
 
         }
 
-
-        if (horizontalInput < 0)
+        else if (horizontalInput < 0)
         {
-
+            roboAnimator.SetBool("move", true);
             playerRb.transform.Translate(Vector2.left * horizontalInput * multiplier * Time.deltaTime);
+        }
+
+        else
+        {
+            roboAnimator.SetBool("move", false);
         }
 
         //if (Input.GetAxisRaw("Horizontal") > 0)
