@@ -10,6 +10,8 @@ public class ObjectHighlight : MonoBehaviour
     [SerializeField] private GameObject highlight;
     [SerializeField] private Transform vent;
 
+    private RobotMoveScript robotMoveScript;
+
     private Vector2 playerPos;
 
     private bool highlightObject;
@@ -21,6 +23,9 @@ public class ObjectHighlight : MonoBehaviour
 
     void Start()
     {
+        robotMoveScript = GameObject.Find("Robo").GetComponent<RobotMoveScript>();
+
+
         //Screwdriver.SetActive(false);
         playerPos = GameObject.Find("Robo").GetComponent<Transform>().transform.position;
 
@@ -43,22 +48,26 @@ public class ObjectHighlight : MonoBehaviour
 
         if (!highlightObject)
         {
+            
             highlight.SetActive(false);
         }
 
         if (highlightObject)
         {
+            
             highlight.SetActive(true);
         }
     }
     private void OnMouseEnter()
     {
+        robotMoveScript.roboAnimator.SetBool("interact", true);
         highlightObject = true;
         mouseOnObject = true;
 
     }
     private void OnMouseExit()
     {
+        robotMoveScript.roboAnimator.SetBool("interact", false);
         highlightObject = false;
         mouseOnObject = false;
     }

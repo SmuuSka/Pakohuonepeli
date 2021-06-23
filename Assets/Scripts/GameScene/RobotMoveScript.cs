@@ -8,7 +8,7 @@ public class RobotMoveScript : MonoBehaviour
     //--------Player Variables--------
     [SerializeField] private Transform playerPos;
     [SerializeField] private Collider2D playerCollider;
-    [SerializeField] private Animator roboAnimator;
+    [SerializeField] public Animator roboAnimator;
     private Rigidbody2D playerRb;
     private float horizontalInput;
     private int multiplier = 5;
