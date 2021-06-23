@@ -5083,8 +5083,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a48bf3b1b175e1b43bbdbeda07e08c89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorAnim: {fileID: 0}
-  isAnimating: 0
+  doorAnim: {fileID: 2074774431}
 --- !u!95 &2074774431
 Animator:
   serializedVersion: 3

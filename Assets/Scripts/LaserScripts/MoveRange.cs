@@ -155,6 +155,7 @@ public class MoveRange : MonoBehaviour
                 break;
             default:
                 greens[count].SetActive(true);
+                PlayerData.laserTaskDone = true;
                 break;
         }
         
