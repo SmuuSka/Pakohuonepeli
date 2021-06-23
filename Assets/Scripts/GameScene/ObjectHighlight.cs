@@ -18,8 +18,8 @@ public class ObjectHighlight : MonoBehaviour
     public bool mouseOnObject;
 
     private Camera cam;
-    
-
+    private bool secs;
+    private bool runtimer;
 
     void Start()
     {
@@ -57,10 +57,12 @@ public class ObjectHighlight : MonoBehaviour
             
             highlight.SetActive(true);
         }
+        
+       
     }
     private void OnMouseEnter()
     {
-        robotMoveScript.roboAnimator.SetBool("interact", true);
+        
         highlightObject = true;
         mouseOnObject = true;
 
@@ -74,60 +76,76 @@ public class ObjectHighlight : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (mouseOnObject && this.gameObject.transform.position.x - playerPos.x < 2f)
-        {
-            if (this.gameObject.tag == "Lock")
+            if (mouseOnObject && this.gameObject.transform.position.x - playerPos.x < 3.5f)
             {
-                Vector2 pos = GameObject.Find("Robo").GetComponent<Transform>().transform.position;
-                //Vector3 cameraPos = GameObject.Find("Main Camera").GetComponent<Transform>().transform.position;
-                PlayerData.playerTransformPos = pos;
-                //PlayerData.gameCameraTransformPos = cameraPos;
-                SceneManager.LoadScene("LockScene");
-                //PlayerData.lockerTaskDone = true;
-            }
-            if (this.gameObject.tag == "Toolbox")
-            {
-                Vector2 pos = GameObject.Find("Robo").GetComponent<Transform>().transform.position;
-                PlayerData.playerTransformPos = pos;                
-                SceneManager.LoadScene("Tiirikka");
-                PlayerData.ToolboxTaskDone = true;
-            }
-            if (this.gameObject.tag == "Grill" && GameObject.Find("Hand").GetComponent<Inventory>().isFull[0] == true && GameObject.Find("Canvas").GetComponentInChildren<UICursorScript>().cursorActive == true)
-            {
-                Debug.Log("Grill");
-                Cursor.SetCursor(null, Vector2.zero, CursorMode.ForceSoftware);
-                GameObject.Find("Canvas").GetComponentInChildren<UICursorScript>().cursorActive = false;
-                Vector2 pos = GameObject.Find("Robo").GetComponent<Transform>().transform.position;
-                GameObject.Find("Robo").GetComponent<Transform>().transform.position = vent.position;
-                GameObject.Find("Main Camera").GetComponent<CameraScript>().gameCamera.transform.position = new Vector3(GameObject.Find("Main Camera").GetComponent<CameraScript>().nextPos[1].position.x, GameObject.Find("Main Camera").GetComponent<CameraScript>().target.transform.position.y, -10);
-            }
-            if (this.gameObject.tag == "SlidePuzzleTausta")
-            {
-                Vector2 pos = GameObject.Find("Robo").GetComponent<Transform>().transform.position;
-                PlayerData.playerTransformPos = pos;
-                SceneManager.LoadScene("SlidePuzzle");
-            }
-            if (this.gameObject.tag == "LaserTausta")
-            {
-                if (GameObject.Find("Patteri") == null)
+                robotMoveScript.roboAnimator.SetBool("interact", true);
+                runtimer = true;
+
+                if (this.gameObject.tag == "Lock")
                 {
-                    return;
+                    Vector2 pos = GameObject.Find("Robo").GetComponent<Transform>().transform.position;
+                    //Vector3 cameraPos = GameObject.Find("Main Camera").GetComponent<Transform>().transform.position;
+                    PlayerData.playerTransformPos = pos;
+                    //PlayerData.gameCameraTransformPos = cameraPos;
+                    SceneManager.LoadScene("LockScene");
+                    //PlayerData.lockerTaskDone = true;
                 }
-                else
+                if (this.gameObject.tag == "Toolbox")
+                {
+
+                StartCoroutine(Sec());
+                    Vector2 pos = GameObject.Find("Robo").GetComponent<Transform>().transform.position;
+                    PlayerData.playerTransformPos = pos;
+                    SceneManager.LoadScene("Tiirikka");
+                    PlayerData.ToolboxTaskDone = true;
+                }
+                if (this.gameObject.tag == "Grill" && GameObject.Find("Hand").GetComponent<Inventory>().isFull[0] == true && GameObject.Find("Canvas").GetComponentInChildren<UICursorScript>().cursorActive == true)
+                {
+                    Debug.Log("Grill");
+                    Cursor.SetCursor(null, Vector2.zero, CursorMode.ForceSoftware);
+                    GameObject.Find("Canvas").GetComponentInChildren<UICursorScript>().cursorActive = false;
+                    Vector2 pos = GameObject.Find("Robo").GetComponent<Transform>().transform.position;
+                    GameObject.Find("Robo").GetComponent<Transform>().transform.position = vent.position;
+                    GameObject.Find("Main Camera").GetComponent<CameraScript>().gameCamera.transform.position = new Vector3(GameObject.Find("Main Camera").GetComponent<CameraScript>().nextPos[1].position.x, GameObject.Find("Main Camera").GetComponent<CameraScript>().target.transform.position.y, -10);
+                }
+                if (this.gameObject.tag == "SlidePuzzleTausta")
                 {
                     Vector2 pos = GameObject.Find("Robo").GetComponent<Transform>().transform.position;
                     PlayerData.playerTransformPos = pos;
-                    SceneManager.LoadScene("LaserLock");
+                    SceneManager.LoadScene("SlidePuzzle");
                 }
+                if (this.gameObject.tag == "LaserTausta")
+                {
+                    if (GameObject.Find("Patteri") == null)
+                    {
+                        return;
+                    }
+                    else
+                    {
+                        Vector2 pos = GameObject.Find("Robo").GetComponent<Transform>().transform.position;
+                        PlayerData.playerTransformPos = pos;
+                        SceneManager.LoadScene("LaserLock");
+                    }
+                }
+
+
+
             }
+            else
+            {
+                Debug.Log("Olet liian kaukana" + (this.gameObject.transform.position.x - playerPos.x));
 
-
-
-        }
-        else
+            }
+        
+    }
+    IEnumerator Sec()
+    {
+        if(runtimer == true)
         {
-            Debug.Log("Olet liian kaukana");
+            yield return new WaitForSeconds(1f);
+            secs = true;
         }
+        
 
     }
 }
