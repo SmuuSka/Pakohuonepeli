@@ -228,10 +228,42 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 8820901146857161423, guid: 7f5b249f47a8d77419c8ef5e09ad606c, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: e9285c4081661844d8a02574e0cdcc75, type: 2}
+    - target: {fileID: 8820901146857161423, guid: 7f5b249f47a8d77419c8ef5e09ad606c, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -1889210339327558612, guid: e9285c4081661844d8a02574e0cdcc75, type: 2}
+    - target: {fileID: 8820901146951485276, guid: 7f5b249f47a8d77419c8ef5e09ad606c, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: e9285c4081661844d8a02574e0cdcc75, type: 2}
+    - target: {fileID: 8820901146951485276, guid: 7f5b249f47a8d77419c8ef5e09ad606c, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -1889210339327558612, guid: e9285c4081661844d8a02574e0cdcc75, type: 2}
     - target: {fileID: 8820901147415701267, guid: 7f5b249f47a8d77419c8ef5e09ad606c, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8820901147459018908, guid: 7f5b249f47a8d77419c8ef5e09ad606c, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: e9285c4081661844d8a02574e0cdcc75, type: 2}
+    - target: {fileID: 8820901147459018908, guid: 7f5b249f47a8d77419c8ef5e09ad606c, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -1889210339327558612, guid: e9285c4081661844d8a02574e0cdcc75, type: 2}
+    - target: {fileID: 8820901147502071774, guid: 7f5b249f47a8d77419c8ef5e09ad606c, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: e9285c4081661844d8a02574e0cdcc75, type: 2}
+    - target: {fileID: 8820901147502071774, guid: 7f5b249f47a8d77419c8ef5e09ad606c, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -1889210339327558612, guid: e9285c4081661844d8a02574e0cdcc75, type: 2}
     - target: {fileID: 8820901147671516312, guid: 7f5b249f47a8d77419c8ef5e09ad606c, type: 3}
       propertyPath: m_Name
       value: Lock Wheel
@@ -324,5 +356,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8820901147719338971, guid: 7f5b249f47a8d77419c8ef5e09ad606c, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: e9285c4081661844d8a02574e0cdcc75, type: 2}
+    - target: {fileID: 8820901147719338971, guid: 7f5b249f47a8d77419c8ef5e09ad606c, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -1889210339327558612, guid: e9285c4081661844d8a02574e0cdcc75, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f5b249f47a8d77419c8ef5e09ad606c, type: 3}
