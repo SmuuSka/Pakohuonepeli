@@ -134,7 +134,7 @@ public class RobotMoveScript : MonoBehaviour
     private void UpdateIsInsideDoorZone()
     {
         isPlayerInsideDoorZone = playerCollider.OverlapCollider(doorZoneFilter, doorZoneDetectionResults) > 0;
-        Debug.Log("Ovi alueella" + isPlayerInsideDoorZone);
+        
     }
 
     private void CheckHitRaycastDoor()

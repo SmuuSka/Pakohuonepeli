@@ -15,7 +15,7 @@ public class ObjectHighlight : MonoBehaviour
     private Vector2 playerPos;
 
     private bool highlightObject;
-    public bool mouseOnObject;
+    public bool mouseOnObject, canUse;
 
     private Camera cam;
     private float secs = 10f;
@@ -32,7 +32,7 @@ public class ObjectHighlight : MonoBehaviour
 
 
         //Screwdriver.SetActive(false);
-        playerPos = GameObject.Find("Robo").GetComponent<Transform>().transform.position;
+        
 
         cam = Camera.main;
 
@@ -53,23 +53,17 @@ public class ObjectHighlight : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(waitTime);
-            if (mouseOnObject && this.gameObject.transform.position.x - playerPos.x < 3.5f)
+            if (mouseOnObject)
             {
-                
-
-
-
-                if (this.gameObject.tag == "Lock")
+                if (this.gameObject.tag == "Lock" && canUse)
                 {
                     Vector2 pos = GameObject.Find("Robo").GetComponent<Transform>().transform.position;
-                    //Vector3 cameraPos = GameObject.Find("Main Camera").GetComponent<Transform>().transform.position;
                     PlayerData.playerTransformPos = pos;
-                    //PlayerData.gameCameraTransformPos = cameraPos;
                     SceneManager.LoadScene("LockScene");
-                    //PlayerData.lockerTaskDone = true;
+                    PlayerData.lockerTaskDone = true;
                     robotMoveScript.roboAnimator.SetTrigger("interact");
                 }
-                if (this.gameObject.tag == "Toolbox")
+                if (this.gameObject.tag == "Toolbox" && canUse)
                 {
                     
                     Vector2 pos = GameObject.Find("Robo").GetComponent<Transform>().transform.position;
@@ -78,7 +72,7 @@ public class ObjectHighlight : MonoBehaviour
                     PlayerData.ToolboxTaskDone = true;
                     robotMoveScript.roboAnimator.SetTrigger("interact");
                 }
-                if (this.gameObject.tag == "Grill" && GameObject.Find("Hand").GetComponent<Inventory>().isFull[0] == true && GameObject.Find("Canvas").GetComponentInChildren<UICursorScript>().cursorActive == true)
+                if (this.gameObject.tag == "Grill" && GameObject.Find("Hand").GetComponent<Inventory>().isFull[0] == true && GameObject.Find("Canvas").GetComponentInChildren<UICursorScript>().cursorActive == true && canUse)
                 {
                     Debug.Log("Grill");
                     Cursor.SetCursor(null, Vector2.zero, CursorMode.ForceSoftware);
@@ -88,14 +82,14 @@ public class ObjectHighlight : MonoBehaviour
                     GameObject.Find("Main Camera").GetComponent<CameraScript>().gameCamera.transform.position = new Vector3(GameObject.Find("Main Camera").GetComponent<CameraScript>().nextPos[1].position.x, GameObject.Find("Main Camera").GetComponent<CameraScript>().target.transform.position.y, -10);
                     robotMoveScript.roboAnimator.SetTrigger("interact");
                 }
-                if (this.gameObject.tag == "SlidePuzzleTausta")
+                if (this.gameObject.tag == "SlidePuzzleTausta" && canUse)
                 {
                     Vector2 pos = GameObject.Find("Robo").GetComponent<Transform>().transform.position;
                     PlayerData.playerTransformPos = pos;
                     SceneManager.LoadScene("SlidePuzzle");
                     robotMoveScript.roboAnimator.SetTrigger("interact");
                 }
-                if (this.gameObject.tag == "LaserTausta")
+                if (this.gameObject.tag == "LaserTausta" && canUse)
                 {
                     if (GameObject.Find("Patteri") == null)
                     {
@@ -109,25 +103,14 @@ public class ObjectHighlight : MonoBehaviour
                         robotMoveScript.roboAnimator.SetTrigger("interact");
                     }
                 }
-
-
-
             }
-            else
-            {
-                Debug.Log("Olet liian kaukana" + (this.gameObject.transform.position.x - playerPos.x));
-               
-            }
-            StopCoroutine(coroutine);
-            
-
-
-
+            StopCoroutine(coroutine); 
         }
     }
     private void Update()
     {
-        playerPos = new Vector2(GameObject.Find("Robo").GetComponent<Transform>().transform.position.x, GameObject.Find("Robo").GetComponent<Transform>().transform.position.y);
+        DistanceCheck();
+        
 
         if (!highlightObject)
         {
@@ -167,5 +150,21 @@ public class ObjectHighlight : MonoBehaviour
 
         StartCoroutine(coroutine);
         
+    }
+    private void DistanceCheck()
+    {
+        playerPos = GameObject.Find("Robo").GetComponent<Transform>().transform.position;
+
+        float distance = Vector2.Distance(playerPos, this.gameObject.transform.position);
+        if (distance < 3 && distance > -3)
+        {
+            Debug.Log(this.gameObject.tag);
+            canUse = true;
+        }
+        else
+        {
+            Debug.Log("Olet liian kaukana");
+            canUse = false;
+        }
     }
 }
