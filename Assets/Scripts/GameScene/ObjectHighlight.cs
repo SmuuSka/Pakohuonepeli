@@ -21,8 +21,8 @@ public class ObjectHighlight : MonoBehaviour
     private float secs = 10f;
     private bool runtimer;
     private IEnumerator coroutine;
-
-
+    private bool timer;
+    private bool doNext;
 
     void Start()
     {
@@ -50,6 +50,10 @@ public class ObjectHighlight : MonoBehaviour
     }
     private IEnumerator Sec(float waitTime)
     {
+
+        
+            StartCoroutine(Timer());
+        
         while (true)
         {
             yield return new WaitForSeconds(waitTime);
@@ -104,7 +108,8 @@ public class ObjectHighlight : MonoBehaviour
                     }
                 }
             }
-            StopCoroutine(coroutine); 
+            StopCoroutine(coroutine);
+            timer = false;
         }
     }
     private void Update()
@@ -123,15 +128,15 @@ public class ObjectHighlight : MonoBehaviour
             
             highlight.SetActive(true);
         }
-        if (Input.GetMouseButtonDown(0))
+        if (timer)
         {
-            robotMoveScript.roboAnimator.SetTrigger("interact");
+            StartCoroutine(Timer()); 
         }
+        
 
     }
     private void OnMouseEnter()
     {
-        Debug.Log("Positio: " + (this.gameObject.transform.position.x - playerPos.x));
         highlightObject = true;
         mouseOnObject = true;
 
@@ -146,9 +151,7 @@ public class ObjectHighlight : MonoBehaviour
 
     private void OnMouseDown()
     {
-        
-
-        StartCoroutine(coroutine);
+        timer = true;
         
     }
     private void DistanceCheck()
@@ -156,7 +159,7 @@ public class ObjectHighlight : MonoBehaviour
         playerPos = GameObject.Find("Robo").GetComponent<Transform>().transform.position;
 
         float distance = Vector2.Distance(playerPos, this.gameObject.transform.position);
-        if (distance < 3 && distance > -3)
+        if (distance < 4 && distance > -4)
         {
             Debug.Log(this.gameObject.tag);
             canUse = true;
@@ -166,5 +169,11 @@ public class ObjectHighlight : MonoBehaviour
             Debug.Log("Olet liian kaukana");
             canUse = false;
         }
+    }
+    private IEnumerator Timer()
+    {
+        robotMoveScript.roboAnimator.SetTrigger("interact");
+        yield return new WaitForSeconds(1f);
+        StartCoroutine(coroutine);
     }
 }
