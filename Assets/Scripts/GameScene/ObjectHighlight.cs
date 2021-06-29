@@ -50,9 +50,8 @@ public class ObjectHighlight : MonoBehaviour
     }
     private IEnumerator Sec(float waitTime)
     {
-
         
-            StartCoroutine(Timer());
+        //StartCoroutine(Timer());
         
         while (true)
         {
@@ -130,7 +129,7 @@ public class ObjectHighlight : MonoBehaviour
         }
         if (timer)
         {
-            StartCoroutine(Timer()); 
+            //StartCoroutine(Timer()); 
         }
         
 
@@ -151,8 +150,14 @@ public class ObjectHighlight : MonoBehaviour
 
     private void OnMouseDown()
     {
-        timer = true;
+        if (canUse)
+        {
+            robotMoveScript.roboAnimator.SetTrigger("interact");
+            StartCoroutine(coroutine);
+        }
         
+        
+        //timer = true;
     }
     private void DistanceCheck()
     {
@@ -161,6 +166,7 @@ public class ObjectHighlight : MonoBehaviour
         float distance = Vector2.Distance(playerPos, this.gameObject.transform.position);
         if (distance < 4 && distance > -4)
         {
+            
             Debug.Log(this.gameObject.tag);
             canUse = true;
         }
@@ -170,10 +176,10 @@ public class ObjectHighlight : MonoBehaviour
             canUse = false;
         }
     }
-    private IEnumerator Timer()
-    {
-        robotMoveScript.roboAnimator.SetTrigger("interact");
-        yield return new WaitForSeconds(1f);
-        StartCoroutine(coroutine);
-    }
+    //private IEnumerator Timer()
+    //{
+    //    
+    //    yield return new WaitForSeconds(2f);
+    //    StartCoroutine(coroutine);
+    //}
 }

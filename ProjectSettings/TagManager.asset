@@ -21,6 +21,7 @@ TagManager:
   - SlidePuzzleTausta
   - LaserTausta
   - DoorZone
+  - OpenableDoorDouble
   layers:
   - Default
   - TransparentFX

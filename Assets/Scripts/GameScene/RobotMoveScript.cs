@@ -19,8 +19,9 @@ public class RobotMoveScript : MonoBehaviour
     //--------Player Variables--------
 
     //--------Door Temp Variables--------
+    private GameObject doubleDoorLeft, doubleDoorRight;
     private Animator tempRightAnimator, tempLeftAnimator;
-    private Collider2D tempRightBoxCol2D, tempLeftBoxCol2D;
+    private Collider2D tempRightBoxCol2D, tempLeftBoxCol2D, doubleDoorCol2D;
     private Vector2 tempRightUpperDoor, tempLeftUpperDoor;
     //--------Door Temp Variables--------
 
@@ -50,6 +51,15 @@ public class RobotMoveScript : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            roboAnimator.SetBool("lockpick", true);
+        }
+        else
+        {
+            roboAnimator.SetBool("lockpick", false);
+        }
+
 
         horizontalInput = Input.GetAxisRaw("Horizontal");
 
@@ -97,6 +107,34 @@ public class RobotMoveScript : MonoBehaviour
             }
         }
     }
+
+    private void OpenBoth()
+    {
+        if (playerRaycastHitDoor.rigidbody.tag == "OpenableDoorDouble")
+        {
+            doubleDoorRight = GameObject.Find("Oik_ovi");
+            doubleDoorLeft = GameObject.Find("Vas_ovi");
+            doubleDoorCol2D = playerRaycastHitDoor.collider;
+
+            tempRightAnimator = doubleDoorRight.GetComponent<Animator>();
+            //tempRightBoxCol2D = playerRaycastHitDoor.collider.GetComponent<BoxCollider2D>();
+            tempRightUpperDoor = doubleDoorRight.GetComponentInChildren<Transform>().Find("Ovi_ylä").GetComponent<Transform>().position;
+            tempRightAnimator.SetBool("rightDoorIsOpening", true);
+
+            tempLeftAnimator = doubleDoorLeft.GetComponent<Animator>();
+            //tempLeftBoxCol2D = playerRaycastHitDoor.collider.GetComponent<BoxCollider2D>();
+            tempLeftUpperDoor = doubleDoorLeft.GetComponentInChildren<Transform>().Find("Ovi_ylä").GetComponent<Transform>().position;
+            tempLeftAnimator.SetBool("leftDoorIsOpening", true);
+
+            if (tempRightUpperDoor.y > 3.5f && tempLeftUpperDoor.y > 3.5f)
+            {
+                doubleDoorCol2D.enabled = false;
+
+                closeDoorPulse = true;
+                openDoorPulse = false;
+            }
+        }
+    }
     private void CloseDoorRight()
     {
         tempRightBoxCol2D.enabled = true;
@@ -106,7 +144,12 @@ public class RobotMoveScript : MonoBehaviour
     {
         tempLeftBoxCol2D.enabled = true;
         tempLeftAnimator.SetBool("leftDoorIsOpening", false);
-
+    }
+    private void CloseDoorBoth()
+    {
+        doubleDoorCol2D.enabled = true;
+        tempRightAnimator.SetBool("rightDoorIsOpening", false);
+        tempLeftAnimator.SetBool("leftDoorIsOpening", false);
     }
 
 
@@ -116,9 +159,14 @@ public class RobotMoveScript : MonoBehaviour
         {
             CheckHitRaycastDoor();
         }
-        if (playerRaycastHitDoor && openDoorPulse == true && rightDoor || playerRaycastHitDoor && openDoorPulse == true && leftDoor)
+        if (playerRaycastHitDoor && openDoorPulse && rightDoor == true && leftDoor == true)
         {
-            OpenDoor();
+            OpenBoth();
+        }
+
+        else if (playerRaycastHitDoor && openDoorPulse == true && rightDoor || playerRaycastHitDoor && openDoorPulse == true && leftDoor)
+        {
+            //OpenDoor();
         }
 
         if (closeDoorPulse && !isPlayerInsideDoorZone && rightDoor)
@@ -128,6 +176,10 @@ public class RobotMoveScript : MonoBehaviour
         if (closeDoorPulse && !isPlayerInsideDoorZone && leftDoor)
         {
             CloseDoorLeft();
+        }
+        if (closeDoorPulse && !isPlayerInsideDoorZone && leftDoor && rightDoor)
+        {
+            CloseDoorBoth();
         }
     }
 
@@ -140,7 +192,7 @@ public class RobotMoveScript : MonoBehaviour
     private void CheckHitRaycastDoor()
     {
 
-        Debug.DrawRay(playerPos.position, transform.TransformDirection(Vector2.right) * 1f, Color.red);
+        Debug.DrawRay(playerPos.position, transform.TransformDirection(Vector2.right) * 2f, Color.red);
         LayerMask maskRoom = LayerMask.GetMask("Room");
         LayerMask maskVent = LayerMask.GetMask("CrawlZone");
         playerRaycastHitDoor = Physics2D.Raycast(transform.position, transform.TransformDirection(Vector2.right), 2f, maskRoom);
@@ -155,6 +207,12 @@ public class RobotMoveScript : MonoBehaviour
             }
             else if (playerRaycastHitDoor.rigidbody.CompareTag("OpenableDoorLeft"))
             {
+                leftDoor = true;
+                openDoorPulse = true;
+            }
+            else if (playerRaycastHitDoor.rigidbody.CompareTag("OpenableDoorDouble"))
+            {
+                rightDoor = true;
                 leftDoor = true;
                 openDoorPulse = true;
             }
@@ -219,8 +277,19 @@ public class RobotMoveScript : MonoBehaviour
     }
     private void Crawl()
     {
+        if (hitVent)
+        {
+            roboAnimator.SetBool("crawl", true);
             boxColliders[0].enabled = false;
             boxColliders[1].enabled = true;
             circleCollider.enabled = false;
+        }
+        else
+        {
+            roboAnimator.SetBool("crawl", false);
+            boxColliders[0].enabled = true;
+            boxColliders[1].enabled = false;
+            circleCollider.enabled = true;
+        }
     }
 }
