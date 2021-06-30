@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8344218661009083832}
   - component: {fileID: 4556546137280918364}
   - component: {fileID: 7809315740091391859}
+  - component: {fileID: -4288252454497924814}
   m_Layer: 5
   m_Name: LappuPrefab
   m_TagString: Untagged
@@ -118,4 +119,29 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4556546137280918364}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: -4288252454497924814}
+        m_TargetAssemblyTypeName: Lappu, Assembly-CSharp
+        m_MethodName: OnMouseDown
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &-4288252454497924814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7024851999253049994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7b41ff35ad64a247a3eeead54abc5e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lappu: {fileID: 2573908994675139706, guid: dd5d0df3b61bb0048a87730d38237576, type: 3}

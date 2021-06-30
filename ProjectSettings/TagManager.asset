@@ -22,6 +22,7 @@ TagManager:
   - LaserTausta
   - DoorZone
   - OpenableDoorDouble
+  - LappuVastaukset
   layers:
   - Default
   - TransparentFX
@@ -43,7 +44,7 @@ TagManager:
   - CrawlZone
   - DropZoneBattery
   - SlidePuzzleTausta
-  - 
+  - LappuVastaukset
   - 
   - 
   - 
