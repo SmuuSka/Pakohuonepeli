@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LaserLock.unity
     guid: 841804f0fa74f794498f8f265f4ddd5c
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 1024f821eea9412449dcf090bab4475d
   m_configObjects: {}
