@@ -24,6 +24,10 @@ public class Pickup : MonoBehaviour
                 
                 Instantiate(itemButton, inventory.slots[i].transform, false);
                 itemAdded = true;
+                if (itemButton.name == "LappuPrefab")
+                {
+                    PlayerData.lappuPrefab.Add(itemButton);
+                }
                 
                 break;
             }
