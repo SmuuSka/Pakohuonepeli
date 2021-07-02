@@ -9,6 +9,7 @@ public class RobotMoveScript : MonoBehaviour
     [SerializeField] private Transform playerPos;
     [SerializeField] private Collider2D playerCollider;
     [SerializeField] public Animator roboAnimator;
+    private Vector2 playerVectorPos;
     private Rigidbody2D playerRb;
     private float horizontalInput;
     private int multiplier = 5;
@@ -40,17 +41,26 @@ public class RobotMoveScript : MonoBehaviour
 
 
     //public bool setTrueRight, setTrueLeft, hitOpenableDoorRight, hitOpenableDoorLeft;
-    
+
+    private void Awake()
+    {
+        facingRight = true;
+        PlayerData.facingStatic = facingRight;
+    }
 
     private void Start()
     {
         
         playerRb = GetComponent<Rigidbody2D>();
-        transform.position = PlayerData.playerTransformPos;
+        
     }
 
     private void Update()
     {
+        playerVectorPos = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y);
+        PlayerData.playerTransformPos = playerVectorPos;
+        transform.position = PlayerData.playerTransformPos;
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
             roboAnimator.SetBool("lockpick", true);
@@ -68,7 +78,7 @@ public class RobotMoveScript : MonoBehaviour
         DoorController();
 
         UpdateIsInsideDoorZone();
-        Flip();
+        
         
     }
     private void FixedUpdate()
@@ -245,16 +255,24 @@ public class RobotMoveScript : MonoBehaviour
 
     private void Flip()
     {
-        if ((Input.GetAxisRaw("Horizontal") > 0 && facingRight) || (Input.GetAxisRaw("Horizontal") < 0 && !facingRight))
+        if (horizontalInput > 0)
         {
-            facingRight = !facingRight;
-            transform.Rotate(new Vector3(0, 180, 0));
+            transform.localRotation = new Quaternion(0, 0, 0, 0);
+            facingRight = true;
+            PlayerData.facingStatic = facingRight;
+        }
+        if (horizontalInput < 0)
+        {
+            transform.localRotation = new Quaternion(0, 180, 0, 0);
+            facingRight = false;
+            PlayerData.facingStatic = facingRight;
         }
     }
     private void MoveRobo()
     {
         if (horizontalInput > 0)
         {
+            Flip();
             roboAnimator.SetBool("move", true);
             playerRb.transform.Translate(Vector2.right * horizontalInput * multiplier * Time.deltaTime);
 
@@ -262,6 +280,7 @@ public class RobotMoveScript : MonoBehaviour
 
         else if (horizontalInput < 0)
         {
+            Flip();
             roboAnimator.SetBool("move", true);
             playerRb.transform.Translate(Vector2.left * horizontalInput * multiplier * Time.deltaTime);
         }

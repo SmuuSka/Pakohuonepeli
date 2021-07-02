@@ -12,7 +12,7 @@ public class ObjectHighlight : MonoBehaviour
 
     private RobotMoveScript robotMoveScript;
 
-    private Vector2 playerPos;
+    private Vector2 playerPos, playerPosIdle;
 
     private bool highlightObject;
     public bool mouseOnObject, canUse;
@@ -28,7 +28,7 @@ public class ObjectHighlight : MonoBehaviour
     {
         coroutine = Sec(0.6f);
         
-        robotMoveScript = GameObject.Find("Robo").GetComponent<RobotMoveScript>();
+        //robotMoveScript = GameObject.Find("Robo").GetComponent<RobotMoveScript>(); 2.7 Samu
 
 
         //Screwdriver.SetActive(false);
@@ -113,7 +113,7 @@ public class ObjectHighlight : MonoBehaviour
     }
     private void Update()
     {
-        DistanceCheck();
+        //DistanceCheck(); 2.7 Samu
         
 
         if (!highlightObject)
@@ -162,6 +162,7 @@ public class ObjectHighlight : MonoBehaviour
     private void DistanceCheck()
     {
         playerPos = GameObject.Find("Robo").GetComponent<Transform>().transform.position;
+        playerPosIdle = GameObject.Find("Robo_Idle").GetComponent<Transform>().transform.position;
 
         float distance = Vector2.Distance(playerPos, this.gameObject.transform.position);
         if (distance < 4 && distance > -4)
