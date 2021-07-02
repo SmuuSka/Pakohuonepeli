@@ -44,13 +44,15 @@ public class RobotMoveScript : MonoBehaviour
 
     private void Awake()
     {
+        playerVectorPos = new Vector2(0, -1.63f);
+        PlayerData.playerTransformPos = playerVectorPos;
         facingRight = true;
         PlayerData.facingStatic = facingRight;
     }
 
     private void Start()
     {
-        
+        playerVectorPos = new Vector2(0, -1.63f);
         playerRb = GetComponent<Rigidbody2D>();
         
     }
