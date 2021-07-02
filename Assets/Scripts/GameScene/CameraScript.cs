@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class CameraScript : MonoBehaviour
 {
-    [SerializeField] public Transform target;
+    [SerializeField] public GameObject target;
     [SerializeField] public Camera gameCamera;
     [SerializeField] public Transform[] nextPos = new Transform[0];
+
+    private Vector2 playerPos;
 
     private void Start()
     {
         gameCamera.transform.position = new Vector3(nextPos[0].position.x, nextPos[0].position.y, -10);
+        
     }
 
 
@@ -19,7 +22,7 @@ public class CameraScript : MonoBehaviour
         if (target.transform.position.y < -2)
         {
             Vector2 pos = GameObject.Find("Huone_Final (1)/SpawnPos").transform.position;
-            target.position = pos;
+            target.transform.position = pos;
         }
     }
     private void LateUpdate()

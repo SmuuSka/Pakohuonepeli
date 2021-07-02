@@ -44,15 +44,14 @@ public class RobotMoveScript : MonoBehaviour
 
     private void Awake()
     {
-        playerVectorPos = new Vector2(0, -1.63f);
-        PlayerData.playerTransformPos = playerVectorPos;
         facingRight = true;
         PlayerData.facingStatic = facingRight;
     }
 
     private void Start()
     {
-        playerVectorPos = new Vector2(0, -1.63f);
+
+        Debug.Log("First Pos " + PlayerData.firstPos);
         playerRb = GetComponent<Rigidbody2D>();
         
     }
@@ -60,9 +59,9 @@ public class RobotMoveScript : MonoBehaviour
     private void Update()
     {
         playerVectorPos = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y);
-        PlayerData.playerTransformPos = playerVectorPos;
-        transform.position = PlayerData.playerTransformPos;
-
+        PlayerData.roboPos[0] = playerVectorPos;
+        PlayerData.roboPos[1] = playerVectorPos;
+        //GameObject.Find("GameObjectController").GetComponent<GameObjectController>().playerPrefab[1].transform.position = playerVectorPos;
         if (Input.GetKeyDown(KeyCode.Space))
         {
             roboAnimator.SetBool("lockpick", true);
@@ -71,7 +70,6 @@ public class RobotMoveScript : MonoBehaviour
         {
             roboAnimator.SetBool("lockpick", false);
         }
-
 
         horizontalInput = Input.GetAxisRaw("Horizontal");
 
