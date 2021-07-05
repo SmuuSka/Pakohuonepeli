@@ -46,6 +46,10 @@ public class RobotMoveScript : MonoBehaviour
     {
         facingRight = true;
         PlayerData.facingStatic = facingRight;
+        if (PlayerData.playerTransformPos != null)
+        {
+            transform.position = PlayerData.playerTransformPos;
+        }
     }
 
     private void Start()
