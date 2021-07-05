@@ -2593,11 +2593,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 869862817}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.6, y: 38.4, z: 0}
-  m_LocalScale: {x: 4, y: 4, z: 1}
+  m_LocalPosition: {x: -0.5373143, y: 28.3, z: 0}
+  m_LocalScale: {x: 3.5820894, y: 4, z: 1}
   m_Children: []
   m_Father: {fileID: 1951570653}
-  m_RootOrder: 0
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &869862819
 SpriteRenderer:
@@ -3776,8 +3776,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1309277949}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.1, z: 0}
-  m_LocalScale: {x: 3.32, y: 5.47, z: 1}
+  m_LocalPosition: {x: 0, y: -0.099998474, z: 0}
+  m_LocalScale: {x: 3.30597, y: 5.4625, z: 1}
   m_Children: []
   m_Father: {fileID: 1951570653}
   m_RootOrder: 1
@@ -4902,11 +4902,11 @@ RectTransform:
   m_LocalScale: {x: 0.2, y: 0.2, z: 1}
   m_Children: []
   m_Father: {fileID: 1951570653}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 38.9}
+  m_AnchoredPosition: {x: 0, y: 28.6}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1890146044
@@ -4995,7 +4995,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1890146045
@@ -5113,11 +5113,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1900348244}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.1, y: 0, z: 0}
-  m_LocalScale: {x: 3.32, y: 5.5, z: 1}
+  m_LocalPosition: {x: -0.08955315, y: 0, z: 0}
+  m_LocalScale: {x: 3.3208954, y: 5.475, z: 1}
   m_Children: []
   m_Father: {fileID: 1951570653}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1900348246
 SpriteRenderer:
@@ -5719,7 +5719,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1951570651
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5767,12 +5767,12 @@ RectTransform:
   m_GameObject: {fileID: 1951570650}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 12, y: 8, z: 1}
+  m_LocalScale: {x: 13.4, y: 8, z: 1}
   m_Children:
-  - {fileID: 869862818}
-  - {fileID: 1309277950}
   - {fileID: 1900348245}
+  - {fileID: 1309277950}
   - {fileID: 1890146043}
+  - {fileID: 869862818}
   - {fileID: 1908322909}
   - {fileID: 795043068}
   - {fileID: 963750758}
