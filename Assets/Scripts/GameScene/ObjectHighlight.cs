@@ -89,7 +89,7 @@ public class ObjectHighlight : MonoBehaviour
                     GameObject.Find("GameObjectController").GetComponent<GameObjectController>().playerPrefab[0].transform.position = vent.position;
                     GameObject.Find("GameObjectController").GetComponent<GameObjectController>().playerPrefab[1].transform.position = vent.position;
                     GameObject.Find("Main Camera").GetComponent<CameraScript>().gameCamera.transform.position = new Vector3(GameObject.Find("Main Camera").GetComponent<CameraScript>().nextPos[1].position.x, GameObject.Find("Main Camera").GetComponent<CameraScript>().target.transform.position.y, -10);
-                    robotMoveScript.roboAnimator.SetTrigger("interact");
+                    //robotMoveScript.roboAnimator.SetTrigger("interact");
                 }
                 if (this.gameObject.tag == "SlidePuzzleTausta" && canUse)
                 {
