@@ -1,18 +1,36 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Lappu : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject lappu;
+    public GameObject vastaukset;
+    public Slot drop;
+
+    private void Start()
+    {
+        drop = GameObject.Find("Slot").GetComponent<Slot>();
+    }
 
     private void Update()
     {
-        lappu = GameObject.Find("LappuVastaukset");
+        Scene currentScene = SceneManager.GetActiveScene();
+
+        string sceneName = currentScene.name;
+
+        if (sceneName == "LockScene")
+        {
+            Vastaukset.sceneActive = true;
+        }
     }
     public void OnMouseDown()
     {
-        lappu.SetActive(true);
+        if(Vastaukset.sceneActive == true)
+        {
+            Instantiate(vastaukset, new Vector3(5.77f, 2.35f, 0f), Quaternion.identity);
+            drop.DropItem();
+        }
+        
     }
 }

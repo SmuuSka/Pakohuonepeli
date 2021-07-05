@@ -5,11 +5,13 @@ using UnityEngine;
 public class Vastaukset : MonoBehaviour
 {
     public GameObject answers;
+    public GameObject vastauksetPrefab;
+    public static bool sceneActive = false;
 
     public void Start()
     {
         answers = GameObject.Find("LappuVastaukset");
-        answers.SetActive(false);
+        sceneActive = true;
     }
 
 }

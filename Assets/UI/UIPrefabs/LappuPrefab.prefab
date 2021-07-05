@@ -144,4 +144,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7b41ff35ad64a247a3eeead54abc5e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lappu: {fileID: 2573908994675139706, guid: dd5d0df3b61bb0048a87730d38237576, type: 3}
+  vastaukset: {fileID: 5483232477401236857, guid: 6905eebd4a576b040b7f714faa300fe4, type: 3}
+  sceneActive: 0
