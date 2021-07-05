@@ -33,12 +33,6 @@ public class ObjectHighlight : MonoBehaviour
     {
         coroutine = Sec(0.6f);
         
-        
-
-
-        //Screwdriver.SetActive(false);
-        
-
         cam = Camera.main;
 
         if (PlayerData.lockerTaskDone)
@@ -66,7 +60,7 @@ public class ObjectHighlight : MonoBehaviour
                 if (this.gameObject.tag == "Lock" && canUse)
                 {
                     Vector2 pos = GameObject.Find("Robo").GetComponent<Transform>().transform.position;
-                    //PlayerData.playerTransformPos = pos;
+                    PlayerData.playerTransformPos = pos;
                     SceneManager.LoadScene("LockScene");
                     robotMoveScript.roboAnimator.SetTrigger("interact");
                 }
@@ -84,11 +78,9 @@ public class ObjectHighlight : MonoBehaviour
                     Debug.Log("Grill");
                     Cursor.SetCursor(null, Vector2.zero, CursorMode.ForceSoftware);
                     GameObject.Find("Canvas").GetComponentInChildren<UICursorScript>().cursorActive = false;
-                    //Vector2 pos = GameObject.Find("Robo").GetComponent<Transform>().transform.position;
-                    GameObject.Find("GameObjectController").GetComponent<GameObjectController>().playerPrefab[0].transform.position = vent.position;
-                    GameObject.Find("GameObjectController").GetComponent<GameObjectController>().playerPrefab[1].transform.position = vent.position;
+                    Vector2 pos = GameObject.Find("Robo").GetComponent<Transform>().transform.position;
+                    GameObject.Find("Robo").GetComponent<Transform>().transform.position = vent.position;
                     GameObject.Find("Main Camera").GetComponent<CameraScript>().gameCamera.transform.position = new Vector3(GameObject.Find("Main Camera").GetComponent<CameraScript>().nextPos[1].position.x, GameObject.Find("Main Camera").GetComponent<CameraScript>().target.transform.position.y, -10);
-                    //robotMoveScript.roboAnimator.SetTrigger("interact");
                 }
                 if (this.gameObject.tag == "SlidePuzzleTausta" && canUse)
                 {
@@ -185,7 +177,7 @@ public class ObjectHighlight : MonoBehaviour
 
         //playerPos = GameObject.Find("Robo_Idle").GetComponent<Transform>().transform.position;
 
-        float distance = Vector2.Distance(GameObject.Find("GameObjectController").GetComponent<GameObjectController>().playerPrefab[0].transform.position, this.gameObject.transform.position);
+        float distance = Vector2.Distance(GameObject.Find("Robo").GetComponent<Transform>().transform.position, this.gameObject.transform.position);
 
         if (distance < 5 && distance > -5)
         {
