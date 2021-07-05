@@ -50,6 +50,11 @@ public class RobotMoveScript : MonoBehaviour
 
     private void Start()
     {
+        if (PlayerData.playerTransformPos != null)
+        {
+            playerVectorPos = PlayerData.playerTransformPos;
+        }
+
 
         Debug.Log("First Pos " + PlayerData.firstPos);
         playerRb = GetComponent<Rigidbody2D>();

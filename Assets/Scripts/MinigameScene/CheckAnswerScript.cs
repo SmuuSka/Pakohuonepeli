@@ -187,6 +187,7 @@ public class CheckAnswerScript : MonoBehaviour
         while (rightAnswers > answersGiven)
         {
             okAll = true;
+            PlayerData.lockerTaskDone = true;
             StartCoroutine(delay());
             break;
         }

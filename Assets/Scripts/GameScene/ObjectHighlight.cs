@@ -66,16 +66,15 @@ public class ObjectHighlight : MonoBehaviour
                 if (this.gameObject.tag == "Lock" && canUse)
                 {
                     Vector2 pos = GameObject.Find("Robo").GetComponent<Transform>().transform.position;
-                    PlayerData.playerTransformPos = pos;
+                    //PlayerData.playerTransformPos = pos;
                     SceneManager.LoadScene("LockScene");
-                    PlayerData.lockerTaskDone = true;
                     robotMoveScript.roboAnimator.SetTrigger("interact");
                 }
                 if (this.gameObject.tag == "Toolbox" && canUse)
                 {
                     
-                    //Vector2 pos = GameObject.Find("Robo").GetComponent<Transform>().transform.position;
-                    //PlayerData.playerTransformPos = pos;
+                    Vector2 pos = GameObject.Find("Robo").GetComponent<Transform>().transform.position;
+                    PlayerData.playerTransformPos = pos;
                     SceneManager.LoadScene("Tiirikka");
                     PlayerData.ToolboxTaskDone = true;
                     robotMoveScript.roboAnimator.SetTrigger("interact");
