@@ -5623,6 +5623,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenuUI: {fileID: 1951570650}
+  UIcanvas: {fileID: 7923474894491949583}
+  InGameUserInterface: {fileID: 2189538574088420162}
 --- !u!114 &1942620362
 MonoBehaviour:
   m_ObjectHideFlags: 0

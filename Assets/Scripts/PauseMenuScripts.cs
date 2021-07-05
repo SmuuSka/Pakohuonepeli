@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class PauseMenuScripts : MonoBehaviour
 {
     public static bool GameIsPaused = false;
-    public GameObject pauseMenuUI;
+    public GameObject pauseMenuUI, UIcanvas, InGameUserInterface;
 
 
 
@@ -29,6 +29,8 @@ public class PauseMenuScripts : MonoBehaviour
     public void Resume()
     {
         pauseMenuUI.SetActive(false);
+        //UIcanvas.SetActive(true);
+        //InGameUserInterface.SetActive(true);
         Time.timeScale = 1f;
         GameIsPaused = false;
     }
@@ -42,6 +44,8 @@ public class PauseMenuScripts : MonoBehaviour
 
     public void LoadMenu()
     {
+        UIcanvas.SetActive(false);
+        InGameUserInterface.SetActive(false);
         Time.timeScale = 1f;
         SceneManager.LoadScene("MainMenu");
         //Time.timeScale = 0f;
