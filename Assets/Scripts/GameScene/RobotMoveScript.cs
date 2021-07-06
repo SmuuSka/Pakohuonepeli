@@ -9,6 +9,7 @@ public class RobotMoveScript : MonoBehaviour
     [SerializeField] private ContactFilter2D doorZoneFilter;
 
     private Collider2D[] doorZoneDetectionResults = new Collider2D[16];
+    private Animator playerAnimator;
 
     
     private Rigidbody2D playerRb;
@@ -19,7 +20,7 @@ public class RobotMoveScript : MonoBehaviour
 
     private void Start()
     {
-        
+        playerAnimator = GetComponent<Animator>();
 
         if (PlayerData.playerTransformPos == null)
         {
@@ -36,11 +37,21 @@ public class RobotMoveScript : MonoBehaviour
 
     private void Update()
     {
+
         
         horizontalInput = Input.GetAxisRaw("Horizontal");
         //playerPos.position = new Vector2(transform.position.x, transform.position.y);
         CheckHitRaycast();
         UpdateIsInsideDoorZone();
+
+        if (Input.GetKey(KeyCode.LeftControl))
+        {
+            playerAnimator.SetBool("Crawl", true);
+        }
+        else
+        {
+            playerAnimator.SetBool("Crawl", false);
+        }
 
     }
 
