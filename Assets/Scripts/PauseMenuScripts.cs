@@ -7,8 +7,6 @@ public class PauseMenuScripts : MonoBehaviour
 {
     public static bool GameIsPaused = false;
     public GameObject pauseMenuUI, UIcanvas, InGameUserInterface;
-    
-
 
     void Update()
     {
@@ -23,7 +21,7 @@ public class PauseMenuScripts : MonoBehaviour
                 Pause();
             }
         }
-
+        
     }
 
     public void Resume()
@@ -54,6 +52,7 @@ public class PauseMenuScripts : MonoBehaviour
 
     public void Restart()
     {
+        GameObject.Find("Slot").GetComponent<Slot>().DropItem();
         PlayerData.ResetData();
         GameObject.Find("InGameUI").GetComponent<Kello>().ResetTime();
         GameIsPaused = false;
