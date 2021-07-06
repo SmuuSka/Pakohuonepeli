@@ -11,6 +11,10 @@ public class Pickup : MonoBehaviour
     private void Start()
     {
         inventory = GameObject.FindGameObjectWithTag("Hand").GetComponent<Inventory>();
+        //Ennen klikkausta static bool on false, jos static bool on false, voit noukkia lapun.
+        //Kun lappu on kerran noukittu, asetetaan static bool trueksi.
+        //Ladatessaan scene uudestaan, tarkistetaan static bool ehto if lauseella.
+        //Jos static bool on true, palautetaan(=return)
     }
     public void Additem(GameObject item)
     {
