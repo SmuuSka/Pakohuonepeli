@@ -45,6 +45,10 @@ public class ObjectHighlight : MonoBehaviour
             Destroy(GameObject.FindGameObjectWithTag("Toolbox"));
             //Screwdriver.SetActive(true);
         }
+        if (PlayerData.slideTaskDone)
+        {
+            Destroy(GameObject.FindGameObjectWithTag("SlidePuzzleTausta"));
+        }
         
     }
     private IEnumerator Sec(float waitTime)
