@@ -45,7 +45,6 @@ public class RobotMoveScript : MonoBehaviour
     private void Awake()
     {
         facingRight = true;
-        PlayerData.facingStatic = facingRight;
         if (PlayerData.playerTransformPos != null)
         {
             transform.position = PlayerData.playerTransformPos;
@@ -61,6 +60,10 @@ public class RobotMoveScript : MonoBehaviour
 
     private void Update()
     {
+        Debug.Log(PlayerData.ToolboxTaskDone + "toimii jeejee");
+
+        Debug.Log(!PlayerData.ToolboxTaskDone + "toimii");
+
         playerVectorPos = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y);
 
         if (Input.GetKeyDown(KeyCode.Space))
