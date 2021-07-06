@@ -49,6 +49,11 @@ public class ObjectHighlight : MonoBehaviour
         {
             Destroy(GameObject.FindGameObjectWithTag("SlidePuzzleTausta"));
         }
+        if (PlayerData.laserTaskDone)
+        {
+            //GameObject.Find("LaserTausta").tag = "Untagged";
+            Destroy(GameObject.FindGameObjectWithTag("LaserTausta"));
+        }
         
     }
     private IEnumerator Sec(float waitTime)
