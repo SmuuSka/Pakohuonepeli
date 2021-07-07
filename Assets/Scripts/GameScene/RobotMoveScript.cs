@@ -48,6 +48,16 @@ public class RobotMoveScript : MonoBehaviour
         if (PlayerData.playerTransformPos != null)
         {
             transform.position = PlayerData.playerTransformPos;
+            
+        }
+        
+        if (PlayerData.facingStatic)
+        {
+            transform.localRotation = new Quaternion(0, 0, 0, 0);
+        }
+        else
+        {
+            transform.localRotation = new Quaternion(0, 180, 0, 0);
         }
     }
 
@@ -270,14 +280,14 @@ public class RobotMoveScript : MonoBehaviour
         if (horizontalInput > 0)
         {
             transform.localRotation = new Quaternion(0, 0, 0, 0);
-            //facingRight = true;
-            //PlayerData.facingStatic = facingRight;
+            facingRight = true;
+            PlayerData.facingStatic = facingRight;
         }
         if (horizontalInput < 0)
         {
             transform.localRotation = new Quaternion(0, 180, 0, 0);
-            //facingRight = false;
-            //PlayerData.facingStatic = facingRight;
+            facingRight = false;
+            PlayerData.facingStatic = facingRight;
         }
     }
     private void MoveRobo()

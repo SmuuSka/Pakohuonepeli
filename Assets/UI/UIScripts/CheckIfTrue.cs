@@ -21,11 +21,8 @@ public class CheckIfTrue : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        Debug.Log("Ruuvari: " + PlayerData.screwdriver);
-        Debug.Log("Lappu: " + PlayerData.postIt);
-        Debug.Log("Patteri: " + PlayerData.battery);
+        Debug.Log("Pukukaappi status: " + PlayerData.lockerTaskDone);
     }
 }
