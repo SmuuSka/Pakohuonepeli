@@ -6,12 +6,12 @@ public class Collectible : MonoBehaviour
 {
     private GameObject meisseli;
     private GameObject patteri;
+
     private void Start()
     {
         meisseli = GameObject.Find("Screwdriver");
         patteri = GameObject.Find("Battery");
-
-
+    
         if (!PlayerData.ToolboxTaskDone)
         {
             meisseli.SetActive(false);
@@ -27,7 +27,7 @@ public class Collectible : MonoBehaviour
         else
         {
 
-            patteri.SetActive(true);
+          patteri.SetActive(true);
         }
     }
 }

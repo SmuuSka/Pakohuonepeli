@@ -45,17 +45,24 @@ public class RobotMoveScript : MonoBehaviour
     private void Awake()
     {
         facingRight = true;
-        PlayerData.facingStatic = facingRight;
+        if (PlayerData.playerTransformPos != null)
+        {
+            transform.position = PlayerData.playerTransformPos;
+            
+        }
+        
+        if (PlayerData.facingStatic)
+        {
+            transform.localRotation = new Quaternion(0, 0, 0, 0);
+        }
+        else
+        {
+            transform.localRotation = new Quaternion(0, 180, 0, 0);
+        }
     }
 
     private void Start()
     {
-        if (PlayerData.playerTransformPos != null)
-        {
-            playerVectorPos = PlayerData.playerTransformPos;
-        }
-
-
         Debug.Log("First Pos " + PlayerData.firstPos);
         playerRb = GetComponent<Rigidbody2D>();
         
@@ -63,10 +70,12 @@ public class RobotMoveScript : MonoBehaviour
 
     private void Update()
     {
+        Debug.Log(PlayerData.ToolboxTaskDone + "toimii jeejee");
+
+        Debug.Log(!PlayerData.ToolboxTaskDone + "toimii");
+
         playerVectorPos = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y);
-        PlayerData.roboPos[0] = playerVectorPos;
-        PlayerData.roboPos[1] = playerVectorPos;
-        //GameObject.Find("GameObjectController").GetComponent<GameObjectController>().playerPrefab[1].transform.position = playerVectorPos;
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
             roboAnimator.SetBool("lockpick", true);
@@ -127,8 +136,18 @@ public class RobotMoveScript : MonoBehaviour
     {
         if (playerRaycastHitDoor.rigidbody.tag == "OpenableDoorDouble")
         {
-            doubleDoorRight = GameObject.Find("/DoubleDoorCollider/Oik_ovi");
-            doubleDoorLeft = GameObject.Find("/DoubleDoorCollider/Vas_ovi");
+            if (playerRaycastHitDoor.rigidbody.GetComponent<DoorIndex>().doorIndex == 1)
+            {
+                doubleDoorRight = GameObject.Find("/DoubleDoorCollider/Oik_ovi");
+                doubleDoorLeft = GameObject.Find("/DoubleDoorCollider/Vas_ovi");
+            }
+            else if (playerRaycastHitDoor.rigidbody.GetComponent<DoorIndex>().doorIndex == 2)
+            {
+                doubleDoorRight = GameObject.Find("/DoubleDoorCollider_1/Oik_ovi");
+                doubleDoorLeft = GameObject.Find("/DoubleDoorCollider_1/Vas_ovi");
+            }
+
+
             doubleDoorCol2D = playerRaycastHitDoor.collider;
 
             tempRightAnimatorDoubleDoors = doubleDoorRight.GetComponent<Animator>();
@@ -246,7 +265,7 @@ public class RobotMoveScript : MonoBehaviour
         if (hitVent)
         {
             Debug.Log("Et voi nousta");
-            Crawl();
+            
         }
         else
         {
@@ -255,8 +274,6 @@ public class RobotMoveScript : MonoBehaviour
             circleCollider.enabled = true;
         }
     }
-
-
 
     private void Flip()
     {
@@ -280,6 +297,7 @@ public class RobotMoveScript : MonoBehaviour
             Flip();
             roboAnimator.SetBool("move", true);
             playerRb.transform.Translate(Vector2.right * horizontalInput * multiplier * Time.deltaTime);
+            Crawl();
 
         }
 
@@ -288,23 +306,13 @@ public class RobotMoveScript : MonoBehaviour
             Flip();
             roboAnimator.SetBool("move", true);
             playerRb.transform.Translate(Vector2.left * horizontalInput * multiplier * Time.deltaTime);
+            Crawl();
         }
 
         else
         {
             roboAnimator.SetBool("move", false);
         }
-
-        //if (Input.GetAxisRaw("Horizontal") > 0)
-        //{
-        //    playerRb.velocity = Vector2.right * horizontalInput * forceMultiplier * Time.deltaTime;
-
-        //}
-
-        //if (Input.GetAxisRaw("Horizontal") < 0)
-        //{
-        //    playerRb.velocity = Vector2.left * horizontalInput * forceMultiplierMinus * Time.deltaTime;
-        //}
     }
     private void Crawl()
     {

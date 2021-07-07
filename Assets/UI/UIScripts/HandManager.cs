@@ -26,14 +26,7 @@ public class HandManager : MonoBehaviour
             if (currentPickupScript.inventory)
             {
                 currentPickupScript.Additem(currentInterObj);
-                
             }
-        }
-        else if (Input.GetMouseButtonDown(0) && currentPickObj)
-        {
-            SceneManager.LoadScene("SlidePuzzle");
-            
-            
         }
     }
     

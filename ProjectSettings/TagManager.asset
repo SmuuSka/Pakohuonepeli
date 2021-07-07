@@ -23,6 +23,7 @@ TagManager:
   - DoorZone
   - OpenableDoorDouble
   - LappuVastaukset
+  - DesCanvas
   layers:
   - Default
   - TransparentFX
