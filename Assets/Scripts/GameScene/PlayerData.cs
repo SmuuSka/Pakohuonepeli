@@ -23,5 +23,8 @@ public static class PlayerData
         laserTaskDone = false;
         slideTaskDone = false;
         lappuPrefab = null;
+        screwdriver = false;
+        battery = false;
+        postIt = false;
     }
 }
