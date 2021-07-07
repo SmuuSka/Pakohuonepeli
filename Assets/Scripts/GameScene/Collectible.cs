@@ -24,10 +24,10 @@ public class Collectible : MonoBehaviour
         {
             patteri.SetActive(false);
         }
-        //else
-        //{
+        else
+        {
 
-        //    patteri.SetActive(true);
-        //}
+          patteri.SetActive(true);
+        }
     }
 }
