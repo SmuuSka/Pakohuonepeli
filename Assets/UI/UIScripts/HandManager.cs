@@ -22,25 +22,10 @@ public class HandManager : MonoBehaviour
     }
     private void Update()
     {
-        Debug.Log("Status " + PlayerData.screwdriver);
-        if (PlayerData.screwdriver)
-        {
-            GameObject.Find("Screwdriver").SetActive(false);
-        }
-
         if (Input.GetMouseButtonDown(0) && currentInterObj) { 
             if (currentPickupScript.inventory)
             {
-                if (PlayerData.screwdriver != false)
-                {
-                    return;
-                }
-                else
-                {
-                    currentPickupScript.Additem(currentInterObj);
-                    PlayerData.screwdriver = true;
-                    GameObject.Find("Screwdriver").SetActive(false);
-                }
+                currentPickupScript.Additem(currentInterObj);
             }
         }
     }
