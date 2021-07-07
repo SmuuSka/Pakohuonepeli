@@ -4232,6 +4232,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1362255027}
   - component: {fileID: 1362255026}
+  - component: {fileID: 1362255028}
   m_Layer: 0
   m_Name: CheckManager
   m_TagString: Untagged
@@ -4265,6 +4266,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 53
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1362255028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1362255025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b3f3d655ada82243bd1916a6fefef71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1415465610
 GameObject:
   m_ObjectHideFlags: 0
@@ -11276,7 +11289,6 @@ GameObject:
   - component: {fileID: 7839866660042822648}
   - component: {fileID: 7839866660042822631}
   - component: {fileID: 7839866660042822630}
-  - component: {fileID: 7839866660042822652}
   m_Layer: 14
   m_Name: Screwdriver
   m_TagString: Interactable
@@ -11284,18 +11296,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &7839866660042822652
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7839866660042822651}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b3f3d655ada82243bd1916a6fefef71, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &7923474894316602144
 MonoBehaviour:
   m_ObjectHideFlags: 0
