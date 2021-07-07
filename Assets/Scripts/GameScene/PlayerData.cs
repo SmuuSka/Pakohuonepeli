@@ -9,7 +9,7 @@ public static class PlayerData
     public static Vector2 playerTransformPos;
     public static Vector3 gameCameraTransformPos;
     public static bool lockerTaskDone, ToolboxTaskDone, laserTaskDone, slideTaskDone;
-    public static bool screwdriver;
+    public static bool screwdriver, battery, postIt;
 
     public static List<GameObject> lappuPrefab = new List<GameObject>();
 

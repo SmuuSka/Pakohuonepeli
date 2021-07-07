@@ -16,6 +16,7 @@ public class Pickup : MonoBehaviour
         //Ladatessaan scene uudestaan, tarkistetaan static bool ehto if lauseella.
         //Jos static bool on true, palautetaan(=return)
     }
+
     public void Additem(GameObject item)
     {
         bool itemAdded = false;
@@ -40,7 +41,24 @@ public class Pickup : MonoBehaviour
         if (itemAdded)
         {
             Debug.Log("Added to inventory");
-            gameObject.SetActive(false);
+            if (gameObject.name == "Screwdriver")
+            {
+                gameObject.SetActive(false);
+                PlayerData.screwdriver = true;
+            }
+
+            if (gameObject.name == "Battery")
+            {
+                gameObject.SetActive(false);
+                PlayerData.battery = true;
+            }
+
+            if (gameObject.name == "numerolappu")
+            {
+                gameObject.SetActive(false);
+                PlayerData.postIt = true;
+            }
+            
         }
     }
 }
