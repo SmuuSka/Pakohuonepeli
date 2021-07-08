@@ -31,28 +31,48 @@ public class CheckAnswerScript : MonoBehaviour
 
     private void Start()
     {
-        slotDefaultColor = slot[slotInt].color;
-        currentSlotInt = slotInt;
-        cursorManager = GameObject.Find("näyttö").GetComponent<CursorScrip>();
-
-        for (int i = 0; i < slot.Count; i++)
+        if (PlayerData.lockerScene != true)
         {
-            slot[i].text = " 0 ";
+            for (int i = 0; i < answer.Count; i++)
+            {
+                answer[i].text = Random.Range(0, 35).ToString();
+                PlayerData.tempAnswers.Add(answer[i]);
+                
+            }
+            PlayerData.lockerScene = true;
         }
-
-        for (int i = 0; i < answer.Count; i++)
+        else
         {
-            answer[i].text = Random.Range(0, 35).ToString();
+            for (int i = 0; i < PlayerData.tempAnswers.Count; i++)
+            {
+                answer[i].text = PlayerData.tempAnswers[i].text;
+      
+            }
         }
+        
 
-        slotInt = 0;
-        slotCount = slot.Count;
+            slotDefaultColor = slot[slotInt].color;
+            currentSlotInt = slotInt;
+            cursorManager = GameObject.Find("näyttö").GetComponent<CursorScrip>();
 
-        nextSlot.onClick.AddListener(GoNext);
-        previousSlot.onClick.AddListener(GoBack);
-        sendAnswer.onClick.AddListener(CheckAnswer2);
+            for (int i = 0; i < slot.Count; i++)
+            {
+                slot[i].text = " 0 ";
+            }
 
-        sendAnswer.gameObject.SetActive(false);
+
+
+            slotInt = 0;
+            slotCount = slot.Count;
+
+            nextSlot.onClick.AddListener(GoNext);
+            previousSlot.onClick.AddListener(GoBack);
+            sendAnswer.onClick.AddListener(CheckAnswer2);
+
+            sendAnswer.gameObject.SetActive(false);
+            
+        
+
 
     }
 
@@ -203,4 +223,10 @@ public class CheckAnswerScript : MonoBehaviour
         yield return new WaitForSeconds(3);
         SceneManager.LoadScene(0);
     }
+
+    public void GameScene()
+    {
+        SceneManager.LoadScene("GameView");
+    }
+     
 }
