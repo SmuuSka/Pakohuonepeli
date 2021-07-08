@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 public class ObjectHighlight : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class ObjectHighlight : MonoBehaviour
 
     private bool highlightObject;
     public bool mouseOnObject, canUse;
+    public GameObject floatingTextPrefab, floatingTaustaPrefab;
 
     private Camera cam;
     private bool runtimer;
@@ -161,9 +163,19 @@ public class ObjectHighlight : MonoBehaviour
             robotMoveScript.roboAnimator.SetTrigger("interact");
             StartCoroutine(coroutine);
         }
+        else if(canUse == false)
+        {
+            ShowFloatingText();
+        }
         
         
         //timer = true;
+    }
+    public void ShowFloatingText()
+    {
+       var go = Instantiate(floatingTextPrefab, transform.position, Quaternion.identity);
+       go.GetComponent<TextMesh>().text = ("Olet liian kaukana");
+        Instantiate(floatingTaustaPrefab, transform.position, Quaternion.identity);
     }
     private void DistanceCheck()
     {
@@ -197,6 +209,7 @@ public class ObjectHighlight : MonoBehaviour
         {
             Debug.Log("Olet liian kaukana");
             canUse = false;
+            
         }
     }
     //private IEnumerator Timer()
