@@ -28,7 +28,8 @@ public class Lappu : MonoBehaviour
     {
         if(Vastaukset.sceneActive == true)
         {
-            Instantiate(vastaukset, new Vector3(5.77f, 2.35f, 0f), Quaternion.identity);
+            //Instantiate(vastaukset, new Vector3(5.77f, 2.35f, 0f), Quaternion.identity);
+            Instantiate(vastaukset, GameObject.Find("IfLappuExist").transform.position, Quaternion.identity);
             drop.DropItem();
         }
         
