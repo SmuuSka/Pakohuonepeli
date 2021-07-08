@@ -47,18 +47,21 @@ public class RobotMoveScript : MonoBehaviour
         facingRight = true;
         if (PlayerData.playerTransformPos != null)
         {
+            PlayerData.playerTransformPos = new Vector2(-6.36f, -1.61f);
             transform.position = PlayerData.playerTransformPos;
             
         }
         
         if (PlayerData.facingStatic)
         {
-            transform.localRotation = new Quaternion(0, 0, 0, 0);
-        }
-        else
-        {
             transform.localRotation = new Quaternion(0, 180, 0, 0);
         }
+        else
+        {            
+            transform.localRotation = new Quaternion(0, 0, 0, 0);
+        }
+
+
     }
 
     private void Start()
