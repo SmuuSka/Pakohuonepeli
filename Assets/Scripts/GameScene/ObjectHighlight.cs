@@ -18,7 +18,6 @@ public class ObjectHighlight : MonoBehaviour
     public bool mouseOnObject, canUse;
 
     private Camera cam;
-    private float secs = 10f;
     private bool runtimer;
     private IEnumerator coroutine;
     private bool timer;
