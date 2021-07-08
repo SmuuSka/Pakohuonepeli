@@ -32,19 +32,38 @@ public class CheckAnswerScript : MonoBehaviour
 
     private void Start()
     {
+        if (PlayerData.lockerScene != true)
+        {
+            for (int i = 0; i < answer.Count; i++)
+            {
+                answer[i].text = Random.Range(0, 35).ToString();
+                PlayerData.tempAnswers.Add(answer[i]);
+
+            }
+            PlayerData.lockerScene = true;
+        }
+        else
+        {
+            for (int i = 0; i < PlayerData.tempAnswers.Count; i++)
+            {
+                answer[i].text = PlayerData.tempAnswers[i].text;
+
+            }
+        }
+
         slotDefaultColor = slot[slotInt].color;
         currentSlotInt = slotInt;
         cursorManager = GameObject.Find("näyttö").GetComponent<CursorScrip>();
 
-        for (int i = 0; i < slot.Count; i++)
-        {
-            slot[i].text = " 0 ";
-        }
+        //for (int i = 0; i < slot.Count; i++)
+        //{
+        //    slot[i].text = " 0 ";
+        //}
 
-        for (int i = 0; i < answer.Count; i++)
-        {
-            answer[i].text = Random.Range(0, 35).ToString();
-        }
+        //for (int i = 0; i < answer.Count; i++)
+        //{
+        //    answer[i].text = Random.Range(0, 35).ToString();
+        //}
 
         slotInt = 0;
         slotCount = slot.Count;
