@@ -1,18 +1,26 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TamaScripti : MonoBehaviour
 {
-    // Start is called before the first frame update
+
+
     void Start()
     {
-        
+        StartCoroutine(asd());
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        asd();
     }
+
+    public IEnumerator asd()
+    {
+        yield return new WaitForSeconds(7f);
+        SceneManager.LoadScene("GameView");
+    }
+
 }
