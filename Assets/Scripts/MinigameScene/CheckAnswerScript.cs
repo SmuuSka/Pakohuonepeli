@@ -228,7 +228,7 @@ public class CheckAnswerScript : MonoBehaviour
     private IEnumerator delay()
     {
         yield return new WaitForSeconds(1.5f);
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene("GameView");
         PlayerData.lockerTaskDone = true;
     }
 }

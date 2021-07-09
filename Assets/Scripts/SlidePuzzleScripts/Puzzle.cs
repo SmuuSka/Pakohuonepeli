@@ -32,7 +32,7 @@ public class Puzzle : MonoBehaviour
 
     private IEnumerator WaitFor()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(1.5f);
 
         if (state == PuzzleState.Solved)
         {
