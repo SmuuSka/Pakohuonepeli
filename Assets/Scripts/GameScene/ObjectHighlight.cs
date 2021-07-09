@@ -201,13 +201,11 @@ public class ObjectHighlight : MonoBehaviour
 
         if (distance < 5 && distance > -5)
         {
-            Debug.Log("Voit käyttää");
-            Debug.Log(this.gameObject.tag);
             canUse = true;
         }
         else
         {
-            Debug.Log("Olet liian kaukana");
+            
             canUse = false;
             
         }

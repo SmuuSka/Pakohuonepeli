@@ -20,9 +20,4 @@ public class CheckIfTrue : MonoBehaviour
             Destroy(GameObject.Find("Battery"));
         }
     }
-
-    private void Update()
-    {
-        Debug.Log("Pukukaappi status: " + PlayerData.lockerTaskDone);
-    }
 }

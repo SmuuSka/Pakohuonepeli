@@ -85,10 +85,6 @@ public class RobotMoveScript : MonoBehaviour
             GameObject.Find("LappuVastaukset(Clone)").SetActive(false);
         }
 
-        Debug.Log(PlayerData.ToolboxTaskDone + "toimii jeejee");
-
-        Debug.Log(!PlayerData.ToolboxTaskDone + "toimii");
-
         playerVectorPos = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y);
 
         if (Input.GetKeyDown(KeyCode.Space))
