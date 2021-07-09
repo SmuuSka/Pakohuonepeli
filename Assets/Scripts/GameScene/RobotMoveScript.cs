@@ -65,6 +65,15 @@ public class RobotMoveScript : MonoBehaviour
 
     private void Start()
     {
+        if (PlayerData.slideTaskDone != true)
+        {
+            GameObject.Find("DoorZone (4)").SetActive(false);
+        }
+        else
+        {
+            GameObject.Find("DoorZone (4)").SetActive(true);
+        }
+
         Debug.Log("First Pos " + PlayerData.firstPos);
         playerRb = GetComponent<Rigidbody2D>();
         
