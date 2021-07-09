@@ -42,12 +42,14 @@ public class PauseMenuScripts : MonoBehaviour
 
     public void LoadMenu()
     {
-        UIcanvas.SetActive(false);
-        InGameUserInterface.SetActive(false);
+        //UIcanvas.SetActive(false);
+        //InGameUserInterface.SetActive(false);
+        Destroy(GameObject.Find("Canvas"));
+        Destroy(GameObject.Find("InGameUI"));
+        Destroy(GameObject.Find("Hand"));
+        PlayerData.ResetData();
         Time.timeScale = 1f;
-        SceneManager.LoadScene("MainMenu");
-        //Time.timeScale = 0f;
-        
+        SceneManager.LoadScene("MainMenu");       
     }
 
     public void Restart()

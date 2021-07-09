@@ -21,6 +21,7 @@ public class TamaScripti : MonoBehaviour
     {
         yield return new WaitForSeconds(7f);
         SceneManager.LoadScene("GameView");
+        //GameObject.Find("PauseMenuCanvas").GetComponent<PauseMenuScripts>().UIcanvas.SetActive(true);
     }
 
 }

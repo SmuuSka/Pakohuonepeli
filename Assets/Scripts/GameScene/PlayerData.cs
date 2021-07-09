@@ -18,7 +18,7 @@ public static class PlayerData
     public static void ResetData()
     {
         firstPos = false;
-        playerTransformPos = new Vector2(0,0);
+        playerTransformPos = new Vector2(-6.36f, -1.61f);
         gameCameraTransformPos = new Vector3(0, 0, -10);
         lockerTaskDone = false;
         ToolboxTaskDone = false;
@@ -28,5 +28,7 @@ public static class PlayerData
         screwdriver = false;
         battery = false;
         postIt = false;
+        
+        
     }
 }

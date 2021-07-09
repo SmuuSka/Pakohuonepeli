@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DontDestroyMultiple : MonoBehaviour
 {
@@ -15,7 +16,7 @@ public class DontDestroyMultiple : MonoBehaviour
     {
         for (int i = 0; i < Object.FindObjectsOfType<DontDestroyMultiple>().Length; i++)
         {
-            if(Object.FindObjectsOfType<DontDestroyMultiple>()[i] != this)
+            if (Object.FindObjectsOfType<DontDestroyMultiple>()[i] != this)
             {
                 if (Object.FindObjectsOfType<DontDestroyMultiple>()[i].objectID == objectID)
                 {
@@ -24,6 +25,7 @@ public class DontDestroyMultiple : MonoBehaviour
             }
         }
         DontDestroyOnLoad(gameObject);
+
     }
 
     // Update is called once per frame
