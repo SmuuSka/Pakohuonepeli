@@ -1129,6 +1129,7 @@ MonoBehaviour:
   vent: {fileID: 0}
   mouseOnObject: 0
   canUse: 0
+  isInstansiated: 0
   floatingTextPrefab: {fileID: 6201070421739703801, guid: 31595594b9dfc4545bf42f18d1d816f3, type: 3}
   floatingTaustaPrefab: {fileID: 7290532868476454738, guid: 4d5e97c692ef877479075fcc08dea6b1, type: 3}
 --- !u!61 &297842327
@@ -9007,6 +9008,7 @@ MonoBehaviour:
   vent: {fileID: 0}
   mouseOnObject: 0
   canUse: 0
+  isInstansiated: 0
   floatingTextPrefab: {fileID: 6201070421739703801, guid: 31595594b9dfc4545bf42f18d1d816f3, type: 3}
   floatingTaustaPrefab: {fileID: 7290532868476454738, guid: 4d5e97c692ef877479075fcc08dea6b1, type: 3}
 --- !u!50 &1451281504
@@ -9651,6 +9653,7 @@ MonoBehaviour:
   vent: {fileID: 0}
   mouseOnObject: 0
   canUse: 0
+  isInstansiated: 0
   floatingTextPrefab: {fileID: 6201070421739703801, guid: 31595594b9dfc4545bf42f18d1d816f3, type: 3}
   floatingTaustaPrefab: {fileID: 7290532868476454738, guid: 4d5e97c692ef877479075fcc08dea6b1, type: 3}
 --- !u!1 &1827073006
@@ -10487,6 +10490,7 @@ MonoBehaviour:
   vent: {fileID: 0}
   mouseOnObject: 0
   canUse: 0
+  isInstansiated: 0
   floatingTextPrefab: {fileID: 6201070421739703801, guid: 31595594b9dfc4545bf42f18d1d816f3, type: 3}
   floatingTaustaPrefab: {fileID: 7290532868476454738, guid: 4d5e97c692ef877479075fcc08dea6b1, type: 3}
 --- !u!50 &1935149612
@@ -16753,6 +16757,7 @@ MonoBehaviour:
   vent: {fileID: 0}
   mouseOnObject: 0
   canUse: 0
+  isInstansiated: 0
   floatingTextPrefab: {fileID: 6201070421739703801, guid: 31595594b9dfc4545bf42f18d1d816f3, type: 3}
   floatingTaustaPrefab: {fileID: 7290532868476454738, guid: 4d5e97c692ef877479075fcc08dea6b1, type: 3}
 --- !u!212 &4494759912663818388
@@ -18263,8 +18268,9 @@ MonoBehaviour:
   vent: {fileID: 1107900912}
   mouseOnObject: 0
   canUse: 0
+  isInstansiated: 0
   floatingTextPrefab: {fileID: 6201070421739703801, guid: 31595594b9dfc4545bf42f18d1d816f3, type: 3}
-  floatingTaustaPrefab: {fileID: 8981215337112307245, guid: 03a41ea347c856244bfb599031c0303a, type: 3}
+  floatingTaustaPrefab: {fileID: 7290532868476454738, guid: 4d5e97c692ef877479075fcc08dea6b1, type: 3}
 --- !u!1 &9031163160429104493
 GameObject:
   m_ObjectHideFlags: 0

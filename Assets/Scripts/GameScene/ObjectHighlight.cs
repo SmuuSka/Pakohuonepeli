@@ -181,6 +181,7 @@ public class ObjectHighlight : MonoBehaviour
             go.GetComponent<TextMesh>().text = ("Olet liian kaukana");
             Instantiate(floatingTaustaPrefab, transform.position, Quaternion.identity);
             isInstansiated = true;
+            StartCoroutine(Timer());
         }
 
             
@@ -219,10 +220,11 @@ public class ObjectHighlight : MonoBehaviour
             
         }
     }
-    //private IEnumerator Timer()
-    //{
-    //    
-    //    yield return new WaitForSeconds(2f);
-    //    StartCoroutine(coroutine);
-    //}
+    private IEnumerator Timer()
+    {
+        
+        yield return new WaitForSeconds(3f);
+        isInstansiated = false;
+        
+    }
 }
