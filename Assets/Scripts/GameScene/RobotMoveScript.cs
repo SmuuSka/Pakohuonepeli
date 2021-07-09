@@ -74,13 +74,17 @@ public class RobotMoveScript : MonoBehaviour
             GameObject.Find("DoorZone (4)").SetActive(true);
         }
 
-        Debug.Log("First Pos " + PlayerData.firstPos);
         playerRb = GetComponent<Rigidbody2D>();
         
     }
 
     private void Update()
     {
+        if (GameObject.Find("LappuVastaukset(Clone)") != null && GameObject.Find("LappuVastaukset(Clone)").activeInHierarchy == true)
+        {
+            GameObject.Find("LappuVastaukset(Clone)").SetActive(false);
+        }
+
         Debug.Log(PlayerData.ToolboxTaskDone + "toimii jeejee");
 
         Debug.Log(!PlayerData.ToolboxTaskDone + "toimii");
