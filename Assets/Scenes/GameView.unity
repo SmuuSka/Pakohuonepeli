@@ -1130,7 +1130,7 @@ MonoBehaviour:
   mouseOnObject: 0
   canUse: 0
   floatingTextPrefab: {fileID: 6201070421739703801, guid: 31595594b9dfc4545bf42f18d1d816f3, type: 3}
-  floatingTaustaPrefab: {fileID: 8981215337112307245, guid: 03a41ea347c856244bfb599031c0303a, type: 3}
+  floatingTaustaPrefab: {fileID: 7290532868476454738, guid: 4d5e97c692ef877479075fcc08dea6b1, type: 3}
 --- !u!61 &297842327
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -9008,7 +9008,7 @@ MonoBehaviour:
   mouseOnObject: 0
   canUse: 0
   floatingTextPrefab: {fileID: 6201070421739703801, guid: 31595594b9dfc4545bf42f18d1d816f3, type: 3}
-  floatingTaustaPrefab: {fileID: 8981215337112307245, guid: 03a41ea347c856244bfb599031c0303a, type: 3}
+  floatingTaustaPrefab: {fileID: 7290532868476454738, guid: 4d5e97c692ef877479075fcc08dea6b1, type: 3}
 --- !u!50 &1451281504
 Rigidbody2D:
   serializedVersion: 4
@@ -9652,7 +9652,7 @@ MonoBehaviour:
   mouseOnObject: 0
   canUse: 0
   floatingTextPrefab: {fileID: 6201070421739703801, guid: 31595594b9dfc4545bf42f18d1d816f3, type: 3}
-  floatingTaustaPrefab: {fileID: 8981215337112307245, guid: 03a41ea347c856244bfb599031c0303a, type: 3}
+  floatingTaustaPrefab: {fileID: 7290532868476454738, guid: 4d5e97c692ef877479075fcc08dea6b1, type: 3}
 --- !u!1 &1827073006
 GameObject:
   m_ObjectHideFlags: 0
@@ -10488,7 +10488,7 @@ MonoBehaviour:
   mouseOnObject: 0
   canUse: 0
   floatingTextPrefab: {fileID: 6201070421739703801, guid: 31595594b9dfc4545bf42f18d1d816f3, type: 3}
-  floatingTaustaPrefab: {fileID: 8981215337112307245, guid: 03a41ea347c856244bfb599031c0303a, type: 3}
+  floatingTaustaPrefab: {fileID: 7290532868476454738, guid: 4d5e97c692ef877479075fcc08dea6b1, type: 3}
 --- !u!50 &1935149612
 Rigidbody2D:
   serializedVersion: 4
@@ -12437,8 +12437,8 @@ MonoBehaviour:
   - {fileID: 1232477863762965156}
   - {fileID: 1232477864313723232}
   m_Bounds:
-    m_Center: {x: 0.6230241, y: 0.8549967, z: 0}
-    m_Extent: {x: 2.1789322, y: 9.324238, z: 0}
+    m_Center: {x: 0.6230228, y: 0.8549967, z: 0}
+    m_Extent: {x: 2.1789327, y: 9.324237, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!4 &1232477863233449647
@@ -16754,7 +16754,7 @@ MonoBehaviour:
   mouseOnObject: 0
   canUse: 0
   floatingTextPrefab: {fileID: 6201070421739703801, guid: 31595594b9dfc4545bf42f18d1d816f3, type: 3}
-  floatingTaustaPrefab: {fileID: 8981215337112307245, guid: 03a41ea347c856244bfb599031c0303a, type: 3}
+  floatingTaustaPrefab: {fileID: 7290532868476454738, guid: 4d5e97c692ef877479075fcc08dea6b1, type: 3}
 --- !u!212 &4494759912663818388
 SpriteRenderer:
   m_ObjectHideFlags: 0
