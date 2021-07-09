@@ -2213,8 +2213,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
-  maxY: -0.5
-  minY: -0.73
+  maxY: -0.55
+  minY: -0.65
   haitat:
   - {fileID: 356844791}
   - {fileID: 953957187}
