@@ -17,6 +17,7 @@ public class ObjectHighlight : MonoBehaviour
 
     private bool highlightObject;
     public bool mouseOnObject, canUse;
+    public bool isInstansiated = false;
     public GameObject floatingTextPrefab, floatingTaustaPrefab;
 
     private Camera cam;
@@ -173,9 +174,17 @@ public class ObjectHighlight : MonoBehaviour
     }
     public void ShowFloatingText()
     {
-       var go = Instantiate(floatingTextPrefab, transform.position, Quaternion.identity);
-       go.GetComponent<TextMesh>().text = ("Olet liian kaukana");
-        Instantiate(floatingTaustaPrefab, transform.position, Quaternion.identity);
+
+        if(isInstansiated == false)
+        {
+            var go = Instantiate(floatingTextPrefab, transform.position, Quaternion.identity);
+            go.GetComponent<TextMesh>().text = ("Olet liian kaukana");
+            Instantiate(floatingTaustaPrefab, transform.position, Quaternion.identity);
+            isInstansiated = true;
+        }
+
+            
+
     }
     private void DistanceCheck()
     {

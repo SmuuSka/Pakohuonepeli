@@ -9,8 +9,10 @@ public class FloatingTausta : MonoBehaviour
     
     void Start()
     {
+        
         Destroy(gameObject, Destroytime);
+        GameObject.Find("Grill").GetComponent<ObjectHighlight>().isInstansiated = false;
         transform.localPosition += Offset;
     }
-
+    
 }
