@@ -20,7 +20,7 @@ public class CheckAnswerScript : MonoBehaviour
 
     [SerializeField] private int slotInt, currentSlotInt;
 
-    [SerializeField] private int slotCount, answersGiven;
+    [SerializeField] private int answersGiven, slotCount;
 
     private Color slotDefaultColor;
 
@@ -55,16 +55,6 @@ public class CheckAnswerScript : MonoBehaviour
         currentSlotInt = slotInt;
         cursorManager = GameObject.Find("näyttö").GetComponent<CursorScrip>();
 
-        //for (int i = 0; i < slot.Count; i++)
-        //{
-        //    slot[i].text = " 0 ";
-        //}
-
-        //for (int i = 0; i < answer.Count; i++)
-        //{
-        //    answer[i].text = Random.Range(0, 35).ToString();
-        //}
-
         slotInt = 0;
         slotCount = slot.Count;
 
@@ -79,34 +69,8 @@ public class CheckAnswerScript : MonoBehaviour
 
     private void GoBackGameScene()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene("GameView");
     }
-
-    //private void CheckAnswer()
-    //{
-
-    //    if (slot.Count != 0)
-    //    {
-    //        LockWheelNumber();
-    //        for (int i = 0; i < slotCount; i++)
-    //        {
-    //            Debug.Log("SlotCount" + slotCount);
-    //            if (slot[slotInt].text == answer[slotInt].text)
-    //            {
-    //                slot[slotInt].color = Color.green;
-    //                isAllRight.Add(slot[slotInt]);
-    //                slot.Remove(slot[slotInt]);
-    //                answer.Remove(answer[slotInt]);
-    //                slotInt--;
-    //                if (slotInt < 0)
-    //                {
-    //                    slotInt += 1;
-    //                }
-    //            }
-    //        }
-    //    }
-    //}
-
 
     private void Update()
     {
@@ -186,17 +150,11 @@ public class CheckAnswerScript : MonoBehaviour
             {
                 slot[i].color = Color.green;
                 rightAnswers++;
-                
-                
-                //okAll = true;
-                //StartCoroutine(delay());
-                
             }
             else
             {
                 ResetAnswers();
                 rightAnswers = 0;
-                //break;
             }
         }
     }
@@ -207,7 +165,7 @@ public class CheckAnswerScript : MonoBehaviour
         {
             okAll = true;
             PlayerData.lockerTaskDone = true;
-            StartCoroutine(delay());
+            StartCoroutine(Delay());
             break;
         }
     }
@@ -218,14 +176,14 @@ public class CheckAnswerScript : MonoBehaviour
         answersGiven = 0;
         sendAnswer.gameObject.SetActive(false);
         cursorManager.currentValue = 0;
-        //cursorManager.target.transform.rotation = Quaternion.Euler(0, 0, 0);
+
         for (int t = 0; t < slot.Count; t++)
         {
             slot[t].text = " 0 ";
         }
     }
 
-    private IEnumerator delay()
+    private IEnumerator Delay()
     {
         yield return new WaitForSeconds(1.5f);
         SceneManager.LoadScene("GameView");
