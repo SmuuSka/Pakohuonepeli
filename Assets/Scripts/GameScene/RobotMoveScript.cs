@@ -80,6 +80,8 @@ public class RobotMoveScript : MonoBehaviour
 
     private void Update()
     {
+        
+
         playerVectorPos = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y);
 
         if (Input.GetKeyDown(KeyCode.Space))

@@ -73,7 +73,6 @@ public class ObjectHighlight : MonoBehaviour
                     Vector2 pos = GameObject.Find("Robo").GetComponent<Transform>().transform.position;
                     PlayerData.playerTransformPos = pos;
                     SceneManager.LoadScene("LockScene");
-                    robotMoveScript.roboAnimator.SetTrigger("interact");
                 }
                 if (this.gameObject.tag == "Toolbox" && canUse)
                 {

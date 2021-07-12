@@ -7,6 +7,7 @@ public class Lappu : MonoBehaviour
 {
     public GameObject vastaukset;
     public Slot drop;
+    public bool isPressedLappu;
 
     private void Start()
     {
@@ -21,17 +22,15 @@ public class Lappu : MonoBehaviour
 
         if (sceneName == "LockScene")
         {
-            Vastaukset.sceneActive = true;
+            PlayerData.scene = true;
         }
     }
     public void OnMouseDown()
     {
-        if(Vastaukset.sceneActive == true)
+        if(PlayerData.scene == true)
         {
-            //LappuVastaukset(Clone)
-            //Instantiate(vastaukset, new Vector3(5.77f, 2.35f, 0f), Quaternion.identity);
-            var lappuVastaukset = Instantiate(vastaukset, GameObject.Find("IfLappuExist").transform.position, Quaternion.identity) as GameObject;
-            PlayerData.lappuVastaukset[0] = lappuVastaukset;
+            isPressedLappu = true;
+            PlayerData.scene = false;
             drop.DropItem();
         }
         
