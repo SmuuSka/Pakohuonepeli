@@ -12,12 +12,6 @@ public class FillArea : MonoBehaviour
     void Start()
     {
         fillSlider.fillAmount = 0;
-        
-        
-        
-        
-        //fillSlider.value = value;
-        //Debug.Log("Fill Slider Status " + fillSlider.value);
     }
 
     // Update is called once per frame

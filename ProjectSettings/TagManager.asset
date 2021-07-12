@@ -4,13 +4,26 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - LeftDoor
-  - RightDoor
-  - Locker
-  - Toolbox
   - Grill
-  - OpenableDoor
-  - Room
+  - Toolbox
+  - Hand
+  - Interactable
+  - RightDoor
+  - LeftDoor
+  - OpenableDoorLeft
+  - OpenableDoorRight
+  - Lock
+  - Locker
+  - Propel
+  - DropZone
+  - NotOpenable
+  - DropZoneBattery
+  - SlidePuzzleTausta
+  - LaserTausta
+  - DoorZone
+  - OpenableDoorDouble
+  - LappuVastaukset
+  - DesCanvas
   layers:
   - Default
   - TransparentFX
@@ -20,20 +33,20 @@ TagManager:
   - UI
   - 
   - 
-  - ObjectLayer
+  - Object
   - Player
+  - Hand
   - Room
   - DoorZone
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - DropZone
+  - Interactable
+  - Scruuvvari
+  - Propel
+  - CrawlZone
+  - DropZoneBattery
+  - SlidePuzzleTausta
+  - LappuVastaukset
+  - PlayerIdle
   - 
   - 
   - 
@@ -48,12 +61,15 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Room
-    uniqueID: 2902336659
-    locked: 0
-  - name: Objects
-    uniqueID: 1639010917
+  - name: Object
+    uniqueID: 3091668445
     locked: 0
   - name: Player
-    uniqueID: 1061679927
+    uniqueID: 2261682451
+    locked: 0
+  - name: PopUpText
+    uniqueID: 450280333
+    locked: 0
+  - name: Playerr
+    uniqueID: 2724580127
     locked: 0

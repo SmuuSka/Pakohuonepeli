@@ -4,27 +4,49 @@ using UnityEngine;
 
 public class CameraScript : MonoBehaviour
 {
-    [SerializeField] private Transform target;
-    [SerializeField] private Camera playerCamera;
+    [SerializeField] public GameObject target;
+    [SerializeField] public Camera gameCamera;
+    [SerializeField] public Transform[] nextPos = new Transform[0];
 
-    private float smoothSpeed = 0.125f;
-    private Vector3 offset = new Vector3(0,1.5f,-10);
-    private Vector3 velocity = Vector3.zero;
+    private Vector2 playerPos;
 
+    private void Start()
+    {
+        gameCamera.transform.position = new Vector3(nextPos[0].position.x, nextPos[0].position.y, -10);
+        
+    }
+
+
+    private void Update()
+    {
+        if (target.transform.position.y < -2)
+        {
+            Vector2 pos = GameObject.Find("Huone_Final (1)/SpawnPos").transform.position;
+            target.transform.position = pos;
+        }
+    }
     private void LateUpdate()
     {
-        playerCamera.transform.position = target.position + offset;
-
-        if (target.transform.position.x < 0)
+        if (target.transform.position.x > 12 && target.transform.position.x < 27)
         {
-            playerCamera.transform.position = new Vector3(0,playerCamera.transform.position.y,-10);
-
+            gameCamera.transform.position = new Vector3(nextPos[1].position.x, nextPos[1].position.y, -10);
         }
-        else if (target.transform.position.x >= 0)
+
+        if (target.transform.position.x > 27 && target.transform.position.x < 40)
         {
-            Vector3 desiredPosition = target.position + offset;
-            Vector3 smoothedPosition = Vector3.SmoothDamp(transform.position, desiredPosition, ref velocity, smoothSpeed * Time.deltaTime);
-            transform.position = smoothedPosition;
+            gameCamera.transform.position = new Vector3(nextPos[2].position.x, nextPos[2].position.y, -10);
+        }
+        if (target.transform.position.x > 40 && target.transform.position.x < 62.5f)
+        {
+            gameCamera.transform.position = new Vector3(nextPos[3].position.x, nextPos[3].position.y, -10);
+        }
+        if (target.transform.position.x > 62.5f && target.transform.position.x < 80.7f)
+        {
+            gameCamera.transform.position = new Vector3(nextPos[4].position.x, nextPos[4].position.y, -10);
+        }
+        if (target.transform.position.x > 80.7f)
+        {
+            gameCamera.transform.position = new Vector3(nextPos[5].position.x, nextPos[5].position.y, -10);
         }
     }
 }

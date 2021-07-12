@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Lukitus : MonoBehaviour
 {
@@ -70,10 +71,18 @@ public class Lukitus : MonoBehaviour
                     rb = sylinterit[luku].GetComponent<Rigidbody2D>();
                     rb.constraints = RigidbodyConstraints2D.FreezeAll;
                     luku++;
+                    StartCoroutine(Delay());
+
                 }
                 break;           
             default:
                 break;
         }
+    }
+
+    IEnumerator Delay()
+    {
+        yield return new WaitForSeconds(1.5f);
+        SceneManager.LoadScene("GameView");
     }
 }
