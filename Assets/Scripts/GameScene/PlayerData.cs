@@ -11,6 +11,7 @@ public static class PlayerData
     public static Vector3 gameCameraTransformPos;
     public static bool lockerTaskDone, ToolboxTaskDone, laserTaskDone, slideTaskDone, lockerScene;
     public static bool screwdriver, battery, postIt;
+    public static GameObject[] lappuVastaukset = new GameObject[1];
 
     public static List<GameObject> lappuPrefab = new List<GameObject>();
     public static List<TMP_Text> tempAnswers = new List<TMP_Text>();

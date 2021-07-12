@@ -80,11 +80,6 @@ public class RobotMoveScript : MonoBehaviour
 
     private void Update()
     {
-        if (GameObject.Find("LappuVastaukset(Clone)") != null && GameObject.Find("LappuVastaukset(Clone)").activeInHierarchy == true)
-        {
-            GameObject.Find("LappuVastaukset(Clone)").SetActive(false);
-        }
-
         playerVectorPos = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y);
 
         if (Input.GetKeyDown(KeyCode.Space))

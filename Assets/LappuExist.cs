@@ -4,8 +4,17 @@ using UnityEngine;
 
 public class LappuExist : MonoBehaviour
 {
+    private void Start()
+    {
+ 
+    }
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Instantiate(PlayerData.lappuVastaukset[0]);
+        }
+        
         Lappu();
     }
     private void Lappu()
