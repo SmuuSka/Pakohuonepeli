@@ -4,30 +4,11 @@ using UnityEngine;
 
 public class CursorScrip : MonoBehaviour
 {
-    //[SerializeField] private Camera mainCamera; //Ei liity hiireen
-    //[SerializeField] private Texture2D cursorSprite;
-    //[SerializeField] public GameObject target; //Ei liity hiireen
-    
-    public float currentValue, maxValue, minValue; //Ei liity hiireen
+    public float currentValue, maxValue, minValue; 
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-        //Cursor.visible = false; // Piilottaa alkuperäisen kursorin
-        //Cursor.SetCursor(cursorSprite, new Vector2(0,0),CursorMode.ForceSoftware);
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
-        //Debug.Log("Value: " + currentValue);
-        //Vector3 mouseWorldPos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
-        //mouseWorldPos.z = 0f;
-        //transform.position = mouseWorldPos;
-        //cursorSprite.transform.position = mouseWorldPos;
+
         SpinTheLock();
 
 
@@ -38,7 +19,6 @@ public class CursorScrip : MonoBehaviour
         if (mouseWheel > 0)
         {
             currentValue++;
-            //target.transform.Rotate(new Vector3(0, 0, transform.rotation.z + 10f));
             if (currentValue == 36)
             {
                 currentValue = 0;
@@ -47,7 +27,6 @@ public class CursorScrip : MonoBehaviour
         if (mouseWheel < 0)
         {
             currentValue--;
-            //target.transform.Rotate(new Vector3(0, 0, transform.rotation.z - 10f));
 
             if (currentValue == -1)
             {

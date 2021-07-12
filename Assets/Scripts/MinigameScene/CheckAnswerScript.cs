@@ -20,14 +20,10 @@ public class CheckAnswerScript : MonoBehaviour
 
     [SerializeField] private int slotInt, currentSlotInt;
 
-    [SerializeField] private int answersGiven, slotCount;
-
+    private int answersGiven, slotCount;
     private Color slotDefaultColor;
-
-
-    //private bool checkAnswerIsClicked;
     private bool okAll;
-    //private bool switchScene = false;
+    
     [SerializeField] private int rightAnswers;
 
     private void Start()
