@@ -10,7 +10,7 @@ public static class PlayerData
     public static Vector2 playerTransformPos = new Vector2(-6.36f, -1.61f);
     public static Vector3 gameCameraTransformPos;
     public static bool lockerTaskDone, ToolboxTaskDone, laserTaskDone, slideTaskDone, lockerScene;
-    public static bool screwdriver, battery, postIt, scene;
+    public static bool screwdriver, battery, postIt, scene, lappuIsTrue;
     public static List<GameObject> lappuCopy = new List<GameObject>();
    
 

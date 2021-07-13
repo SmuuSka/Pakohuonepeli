@@ -30,6 +30,7 @@ public class Lappu : MonoBehaviour
         if(PlayerData.scene == true)
         {
             isPressedLappu = true;
+            PlayerData.lappuIsTrue = true;
             PlayerData.scene = false;
             drop.DropItem();
         }

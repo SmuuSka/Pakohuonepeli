@@ -60,7 +60,6 @@ public class CheckAnswerScript : MonoBehaviour
         goBack.onClick.AddListener(GoBackGameScene);
 
         sendAnswer.gameObject.SetActive(false);
-
     }
 
     private void GoBackGameScene()
@@ -102,8 +101,6 @@ public class CheckAnswerScript : MonoBehaviour
                     break;
             }
         }
-
-
         currentSlotInt = slotInt;
         if (slot.Count > 0)
         {
