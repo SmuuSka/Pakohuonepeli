@@ -85,7 +85,7 @@ public class ObjectHighlight : MonoBehaviour
                 }
                 if (this.gameObject.tag == "Grill" && GameObject.Find("Hand").GetComponent<Inventory>().isFull[0] == true && GameObject.Find("Canvas").GetComponentInChildren<UICursorScript>().cursorActive == true && canUse)
                 {
-                    Debug.Log("Grill");
+                    
                     Cursor.SetCursor(null, Vector2.zero, CursorMode.ForceSoftware);
                     GameObject.Find("Canvas").GetComponentInChildren<UICursorScript>().cursorActive = false;
                     Vector2 pos = GameObject.Find("Robo").GetComponent<Transform>().transform.position;

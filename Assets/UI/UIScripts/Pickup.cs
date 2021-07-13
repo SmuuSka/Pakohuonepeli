@@ -40,7 +40,6 @@ public class Pickup : MonoBehaviour
 
         if (itemAdded)
         {
-            Debug.Log("Added to inventory");
             if (gameObject.name == "Screwdriver")
             {
                 gameObject.SetActive(false);

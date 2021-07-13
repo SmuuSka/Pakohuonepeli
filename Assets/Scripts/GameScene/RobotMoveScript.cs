@@ -202,7 +202,6 @@ public class RobotMoveScript : MonoBehaviour
         }
         if (openDoorPulse == true && rightDoubleDoor == true && leftDoubleDoor == true)
         {
-            Debug.Log("Avaa molemmat");
             OpenBoth();
         }
         if (closeDoorPulse == true && !isPlayerInsideDoorZone == true && leftDoubleDoor == true && rightDoubleDoor == true)
@@ -272,8 +271,7 @@ public class RobotMoveScript : MonoBehaviour
         }
         if (hitVent)
         {
-            Debug.Log("Et voi nousta");
-            
+
         }
         else
         {

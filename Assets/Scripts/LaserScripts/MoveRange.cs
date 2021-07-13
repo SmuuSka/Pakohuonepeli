@@ -31,7 +31,7 @@ public class MoveRange : MonoBehaviour
         {
             RangeMove();
         }
-        Debug.Log("speed" + speed);
+        
         CheckPos();
     }
     private void RangeMove()

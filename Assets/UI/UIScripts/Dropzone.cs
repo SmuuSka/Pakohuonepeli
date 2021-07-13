@@ -37,8 +37,6 @@ public class Dropzone : MonoBehaviour
     }
     private void OnMouseDown()
     {
-        Debug.Log("HiiriDropzonella");
-
         if (this.gameObject.tag == "DropZone" && GameObject.Find("Hand").GetComponent<Inventory>().isFull[0] == true && GameObject.Find("Canvas").GetComponentInChildren<UICursorScript>().cursorActive == true && useable == true) 
         {
             ruuvvari.SetActive(true);

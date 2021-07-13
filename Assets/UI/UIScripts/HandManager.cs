@@ -35,7 +35,6 @@ public class HandManager : MonoBehaviour
     {
         if (other.CompareTag("Interactable"))
         {
-            Debug.Log(other.name);
             currentInterObj = other.gameObject;
             currentPickupScript = currentInterObj.GetComponent<Pickup>();
             
