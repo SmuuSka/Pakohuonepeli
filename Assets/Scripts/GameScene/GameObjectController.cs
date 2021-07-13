@@ -7,7 +7,7 @@ public class GameObjectController : MonoBehaviour
     private void Update()
     {
         Debug.Log("Scene " + PlayerData.scene);
-        if (PlayerData.lappuCopy.Count != 0)
+        if (PlayerData.lappuCopy.Count != 0 && GameObject.Find("LappuVastaukset(Clone)") != null)
         {
             if (PlayerData.scene == false)
             {

@@ -179,6 +179,7 @@ public class CheckAnswerScript : MonoBehaviour
     private IEnumerator Delay()
     {
         yield return new WaitForSeconds(1.5f);
+        Destroy(GameObject.Find("LappuVastaukset(Clone)"));
         SceneManager.LoadScene("GameView");
         PlayerData.lockerTaskDone = true;
     }
