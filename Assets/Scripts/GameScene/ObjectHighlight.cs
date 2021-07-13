@@ -114,6 +114,10 @@ public class ObjectHighlight : MonoBehaviour
                         robotMoveScript.roboAnimator.SetTrigger("interact");
                     }
                 }
+                if (this.gameObject.tag == "Propel" && canUse)
+                {
+                    GameObject.Find("/Ventti (1)/Dropzone").GetComponent<Dropzone>().OnMouseDown();
+                }
             }
             StopCoroutine(coroutine);
             timer = false;

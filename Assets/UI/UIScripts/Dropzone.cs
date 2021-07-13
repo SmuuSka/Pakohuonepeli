@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class Dropzone : MonoBehaviour
 {
+    [SerializeField] private GameObject propel;
+
     [SerializeField]
     Transform center;
     GameObject ruuvvari;
@@ -26,7 +28,7 @@ public class Dropzone : MonoBehaviour
         zone = GameObject.Find("Dropzone").GetComponent<Transform>().transform.position;
         float dist = Vector2.Distance(playerPos, zone);
 
-        if (dist < 3 && dist > -3)
+        if (dist < 5 && dist > -5)
         {
             useable = true;
         }
@@ -35,13 +37,18 @@ public class Dropzone : MonoBehaviour
             useable = false;
         }
     }
-    private void OnMouseDown()
+    public void OnMouseDown()
     {
-        if (this.gameObject.tag == "DropZone" && GameObject.Find("Hand").GetComponent<Inventory>().isFull[0] == true && GameObject.Find("Canvas").GetComponentInChildren<UICursorScript>().cursorActive == true && useable == true) 
+        if (this.gameObject.tag == "DropZone" && GameObject.Find("Hand").GetComponent<Inventory>().isFull[0] == true && GameObject.Find("Canvas").GetComponentInChildren<UICursorScript>().cursorActive == true && useable == true)
         {
             ruuvvari.SetActive(true);
             Cursor.SetCursor(null, Vector2.zero, CursorMode.ForceSoftware);
             funct.DropItem();
         }
+
     }
+    //public void ScrewDriverDrop()
+    //{
+
+    //}
 }

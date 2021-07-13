@@ -19,7 +19,7 @@ public class CameraScript : MonoBehaviour
 
     private void Update()
     {
-        if (target.transform.position.y < -2)
+        if (target.transform.position.y < -5)
         {
             Vector2 pos = GameObject.Find("Huone_Final (1)/SpawnPos").transform.position;
             target.transform.position = pos;

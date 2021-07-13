@@ -14,7 +14,7 @@ public class RobotMoveScript : MonoBehaviour
     private float horizontalInput;
     private int multiplier = 5;
     private bool facingRight;
-    private bool crawl;
+    private bool canCrawl;
 
     public RaycastHit2D playerRaycastHitDoor, hitVent;
     //--------Player Variables--------
@@ -48,15 +48,15 @@ public class RobotMoveScript : MonoBehaviour
         if (PlayerData.playerTransformPos != null)
         {
             transform.position = PlayerData.playerTransformPos;
-            
+
         }
-        
+
         if (PlayerData.facingStatic == true)
         {
             transform.localRotation = new Quaternion(0, 0, 0, 0);
         }
         else if (PlayerData.facingStatic == false)
-        {            
+        {
             transform.localRotation = new Quaternion(0, 180, 0, 0);
         }
 
@@ -75,37 +75,45 @@ public class RobotMoveScript : MonoBehaviour
         }
 
         playerRb = GetComponent<Rigidbody2D>();
-        
+
     }
 
     private void Update()
     {
-        
-
+ 
         playerVectorPos = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y);
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            roboAnimator.SetBool("lockpick", true);
-        }
-        else
-        {
-            roboAnimator.SetBool("lockpick", false);
-        }
 
         horizontalInput = Input.GetAxisRaw("Horizontal");
 
-        //CheckHitRaycast();
 
         DoorController();
 
         UpdateIsInsideDoorZone();
-        
+
+
+    }
+    private void Crawl()
+    {
+        if (Input.GetKey(KeyCode.LeftControl))
+        {
+            roboAnimator.SetBool("crawl", true);
+            boxColliders[0].enabled = false;
+            boxColliders[1].enabled = true;
+            circleCollider.enabled = false;
+        }
+        else
+        {
+            roboAnimator.SetBool("crawl", false);
+            boxColliders[0].enabled = true;
+            boxColliders[1].enabled = false;
+            circleCollider.enabled = true;
+        }
         
     }
     private void FixedUpdate()
     {
         MoveRobo();
+        //Crawl();
     }
 
     private void OpenDoor()
@@ -236,7 +244,7 @@ public class RobotMoveScript : MonoBehaviour
     private void UpdateIsInsideDoorZone()
     {
         isPlayerInsideDoorZone = playerCollider.OverlapCollider(doorZoneFilter, doorZoneDetectionResults) > 0;
-        
+
     }
 
     private void CheckHitRaycastDoor()
@@ -267,11 +275,12 @@ public class RobotMoveScript : MonoBehaviour
                 leftDoor = true;
                 openDoorPulse = true;
             }
-
         }
         if (hitVent)
         {
-
+            boxColliders[0].enabled = false;
+            boxColliders[1].enabled = true;
+            circleCollider.enabled = false;
         }
         else
         {
@@ -303,7 +312,7 @@ public class RobotMoveScript : MonoBehaviour
             Flip();
             roboAnimator.SetBool("move", true);
             playerRb.transform.Translate(Vector2.right * horizontalInput * multiplier * Time.deltaTime);
-            Crawl();
+            
 
         }
 
@@ -312,7 +321,7 @@ public class RobotMoveScript : MonoBehaviour
             Flip();
             roboAnimator.SetBool("move", true);
             playerRb.transform.Translate(Vector2.left * horizontalInput * multiplier * Time.deltaTime);
-            Crawl();
+            
         }
 
         else
@@ -320,21 +329,5 @@ public class RobotMoveScript : MonoBehaviour
             roboAnimator.SetBool("move", false);
         }
     }
-    private void Crawl()
-    {
-        if (hitVent)
-        {
-            roboAnimator.SetBool("crawl", true);
-            boxColliders[0].enabled = false;
-            boxColliders[1].enabled = true;
-            circleCollider.enabled = false;
-        }
-        else
-        {
-            roboAnimator.SetBool("crawl", false);
-            boxColliders[0].enabled = true;
-            boxColliders[1].enabled = false;
-            circleCollider.enabled = true;
-        }
-    }
 }
+
