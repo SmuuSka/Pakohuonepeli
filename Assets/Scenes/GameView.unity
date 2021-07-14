@@ -485,8 +485,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1203298851
-  m_SortingLayer: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: -657165470020343576, guid: aee2f4ad91d60c94ead686aa65ed6ea9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -6465,8 +6465,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1203298851
-  m_SortingLayer: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: -657165470020343576, guid: aee2f4ad91d60c94ead686aa65ed6ea9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -11024,7 +11024,7 @@ MonoBehaviour:
   m_LightType: 3
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
-  m_Color: {r: 0.003921569, g: 0.98039216, b: 0.023529412, a: 1}
+  m_Color: {r: 0, g: 1, b: 0, a: 1}
   m_Intensity: 0.98
   m_LightVolumeOpacity: 0.56
   m_ApplyToSortingLayers: 00000000
@@ -11313,8 +11313,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1203298851
-  m_SortingLayer: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 2
   m_Sprite: {fileID: -657165470020343576, guid: aee2f4ad91d60c94ead686aa65ed6ea9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -11526,8 +11526,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1203298851
-  m_SortingLayer: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: -657165470020343576, guid: aee2f4ad91d60c94ead686aa65ed6ea9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -12461,6 +12461,9 @@ MonoBehaviour:
   - {fileID: 6849433288291139696}
   - {fileID: 4988037544251049405}
   circleCollider: {fileID: 4552065295360199640}
+  doorLight:
+  - {fileID: 291070443}
+  - {fileID: 1285419739}
 --- !u!4 &1232477862449825356
 Transform:
   m_ObjectHideFlags: 0

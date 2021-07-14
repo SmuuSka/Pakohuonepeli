@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.Rendering.Universal;
 
 public class RobotMoveScript : MonoBehaviour
 {
@@ -39,13 +40,14 @@ public class RobotMoveScript : MonoBehaviour
     private bool openDoorPulse, closeDoorPulse;
     //--------Door Boolean Variables--------
 
+    //--------Door Light--------
+    [SerializeField] GameObject[] doorLight = new GameObject[0];
     private void Awake()
     {
         PlayerData.facingStatic = true;
         if (PlayerData.playerTransformPos != null)
         {
             transform.position = PlayerData.playerTransformPos;
-
         }
 
         if (PlayerData.facingStatic == true)
@@ -56,21 +58,16 @@ public class RobotMoveScript : MonoBehaviour
         {
             transform.localRotation = new Quaternion(0, 180, 0, 0);
         }
-
+        if (PlayerData.slideTaskDone)
+        {
+            doorLight[0].GetComponent<Light2D>().color = new Color(0, 1, 0);
+            doorLight[1].GetComponent<Light2D>().color = new Color(0, 1, 0);
+        }
 
     }
 
     private void Start()
     {
-        if (PlayerData.slideTaskDone != true)
-        {
-            GameObject.Find("DoorZone (4)").SetActive(false);
-        }
-        else
-        {
-            GameObject.Find("DoorZone (4)").SetActive(true);
-        }
-
         playerRb = GetComponent<Rigidbody2D>();
 
     }
@@ -152,10 +149,14 @@ public class RobotMoveScript : MonoBehaviour
                 doubleDoorRight = GameObject.Find("/DoubleDoorCollider/Oik_ovi");
                 doubleDoorLeft = GameObject.Find("/DoubleDoorCollider/Vas_ovi");
             }
-            else if (playerRaycastHitDoor.rigidbody.GetComponent<DoorIndex>().doorIndex == 2)
+            else if (playerRaycastHitDoor.rigidbody.GetComponent<DoorIndex>().doorIndex == 2 && PlayerData.slideTaskDone)
             {
                 doubleDoorRight = GameObject.Find("/DoubleDoorCollider_1/Oik_ovi");
                 doubleDoorLeft = GameObject.Find("/DoubleDoorCollider_1/Vas_ovi");
+            }
+            else
+            {
+                return;
             }
 
 
