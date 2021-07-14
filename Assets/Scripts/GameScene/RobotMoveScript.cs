@@ -39,9 +39,6 @@ public class RobotMoveScript : MonoBehaviour
     private bool openDoorPulse, closeDoorPulse;
     //--------Door Boolean Variables--------
 
-
-    //public bool setTrueRight, setTrueLeft, hitOpenableDoorRight, hitOpenableDoorLeft;
-
     private void Awake()
     {
         PlayerData.facingStatic = true;
@@ -90,30 +87,28 @@ public class RobotMoveScript : MonoBehaviour
 
         UpdateIsInsideDoorZone();
 
-
-    }
-    private void Crawl()
-    {
-        if (Input.GetKey(KeyCode.LeftControl))
+        if (canCrawl)
         {
-            roboAnimator.SetBool("crawl", true);
-            boxColliders[0].enabled = false;
-            boxColliders[1].enabled = true;
-            circleCollider.enabled = false;
+            if (Input.GetKey(KeyCode.LeftControl))
+            {
+                roboAnimator.SetBool("crawl", true);
+                boxColliders[0].enabled = false;
+                boxColliders[1].enabled = true;
+                circleCollider.enabled = false;
+            }
         }
-        else
+        else if (!canCrawl)
         {
             roboAnimator.SetBool("crawl", false);
             boxColliders[0].enabled = true;
             boxColliders[1].enabled = false;
             circleCollider.enabled = true;
         }
-        
+
     }
     private void FixedUpdate()
     {
         MoveRobo();
-        //Crawl();
     }
 
     private void OpenDoor()
@@ -278,15 +273,11 @@ public class RobotMoveScript : MonoBehaviour
         }
         if (hitVent)
         {
-            boxColliders[0].enabled = false;
-            boxColliders[1].enabled = true;
-            circleCollider.enabled = false;
+            canCrawl = true;
         }
         else
         {
-            boxColliders[0].enabled = true;
-            boxColliders[1].enabled = false;
-            circleCollider.enabled = true;
+            canCrawl = false;
         }
     }
 

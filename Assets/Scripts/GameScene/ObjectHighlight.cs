@@ -23,7 +23,6 @@ public class ObjectHighlight : MonoBehaviour
     private Camera cam;
     private bool runtimer;
     private IEnumerator coroutine;
-    private bool timer;
     private bool doNext;
 
     private void Awake()
@@ -45,7 +44,6 @@ public class ObjectHighlight : MonoBehaviour
         if (PlayerData.ToolboxTaskDone)
         {
             Destroy(GameObject.FindGameObjectWithTag("Toolbox"));
-            //Screwdriver.SetActive(true);
         }
         if (PlayerData.slideTaskDone)
         {
@@ -120,37 +118,28 @@ public class ObjectHighlight : MonoBehaviour
                 }
             }
             StopCoroutine(coroutine);
-            timer = false;
+            
         }
     }
     private void Update()
     {
         DistanceCheck();
-        
 
         if (!highlightObject)
         {
-            
             highlight.SetActive(false);
         }
 
         if (highlightObject)
         {
-            
+
             highlight.SetActive(true);
         }
-        if (timer)
-        {
-            //StartCoroutine(Timer()); 
-        }
-        
-
     }
     private void OnMouseEnter()
     {
         highlightObject = true;
         mouseOnObject = true;
-
     }
     private void OnMouseExit()
     {
@@ -164,16 +153,21 @@ public class ObjectHighlight : MonoBehaviour
     {
         if (canUse)
         {
-            robotMoveScript.roboAnimator.SetTrigger("interact");
-            StartCoroutine(coroutine);
+            if (gameObject.tag != "Propel")
+            {
+                robotMoveScript.roboAnimator.SetTrigger("interact");
+                StartCoroutine(coroutine);
+            }
+            else
+            {
+                StartCoroutine(coroutine);
+            }
+
         }
         else if(canUse == false)
         {
             ShowFloatingText();
         }
-        
-        
-        //timer = true;
     }
     public void ShowFloatingText()
     {
@@ -192,24 +186,6 @@ public class ObjectHighlight : MonoBehaviour
     }
     private void DistanceCheck()
     {
-        //playerPos = GameObject.Find("Robo").GetComponent<Transform>().transform.position;
-
-        //float distance = Vector2.Distance(playerPos, this.gameObject.transform.position);
-
-        //if (distance < 4 && distance > -4)
-        //{
-
-        //    Debug.Log(this.gameObject.tag);
-        //    canUse = true;
-        //}
-        //else
-        //{
-        //    Debug.Log("Olet liian kaukana");
-        //    canUse = false;
-        //}
-
-        //playerPos = GameObject.Find("Robo_Idle").GetComponent<Transform>().transform.position;
-
         float distance = Vector2.Distance(GameObject.Find("Robo").GetComponent<Transform>().transform.position, this.gameObject.transform.position);
 
         if (distance < 5 && distance > -5)
@@ -218,9 +194,7 @@ public class ObjectHighlight : MonoBehaviour
         }
         else
         {
-            
             canUse = false;
-            
         }
     }
     private IEnumerator Timer()
