@@ -14,7 +14,6 @@ public class RobotMoveScript : MonoBehaviour
     private Rigidbody2D playerRb;
     private float horizontalInput;
     private int multiplier = 5;
-    private bool facingRight;
     private bool canCrawl;
 
     public RaycastHit2D playerRaycastHitDoor, hitVent;
@@ -74,8 +73,6 @@ public class RobotMoveScript : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log("facing " + PlayerData.facingStatic);
- 
         playerVectorPos = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y);
 
         horizontalInput = Input.GetAxisRaw("Horizontal");
