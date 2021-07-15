@@ -47,6 +47,7 @@ public class PauseMenuScripts : MonoBehaviour
         Destroy(GameObject.Find("Canvas"));
         Destroy(GameObject.Find("InGameUI"));
         Destroy(GameObject.Find("Hand"));
+        Destroy(GameObject.Find("-------Sounds-------"));
         PlayerData.ResetData();
         Time.timeScale = 1f;
         SceneManager.LoadScene("MainMenu");       
