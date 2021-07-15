@@ -44,17 +44,17 @@ public class RobotMoveScript : MonoBehaviour
     [SerializeField] GameObject[] doorLight = new GameObject[0];
     private void Awake()
     {
-        PlayerData.facingStatic = true;
+        
         if (PlayerData.playerTransformPos != null)
         {
             transform.position = PlayerData.playerTransformPos;
         }
 
-        if (PlayerData.facingStatic == true)
+        if (PlayerData.facingStatic == false)
         {
             transform.localRotation = new Quaternion(0, 0, 0, 0);
         }
-        else if (PlayerData.facingStatic == false)
+        else if (PlayerData.facingStatic == true)
         {
             transform.localRotation = new Quaternion(0, 180, 0, 0);
         }
@@ -74,6 +74,7 @@ public class RobotMoveScript : MonoBehaviour
 
     private void Update()
     {
+        Debug.Log("facing " + PlayerData.facingStatic);
  
         playerVectorPos = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y);
 
@@ -287,14 +288,12 @@ public class RobotMoveScript : MonoBehaviour
         if (horizontalInput > 0)
         {
             transform.localRotation = new Quaternion(0, 0, 0, 0);
-            facingRight = true;
-            PlayerData.facingStatic = true;
+            PlayerData.facingStatic = false;
         }
         if (horizontalInput < 0)
         {
             transform.localRotation = new Quaternion(0, 180, 0, 0);
-            facingRight = false;
-            PlayerData.facingStatic = false;
+            PlayerData.facingStatic = true;
         }
     }
     private void MoveRobo()
