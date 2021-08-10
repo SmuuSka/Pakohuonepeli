@@ -84,15 +84,22 @@ public class RobotMoveScript : MonoBehaviour
 
         if (canCrawl)
         {
-            if (Input.GetKey(KeyCode.LeftControl))
+            roboAnimator.SetBool("crawl", true);
+            boxColliders[0].enabled = false;
+            boxColliders[1].enabled = true;
+            circleCollider.enabled = false;
+
+            if (canCrawl && Input.GetAxisRaw("Horizontal") < 0 || Input.GetAxisRaw("Horizontal") > 0)
             {
-                roboAnimator.SetBool("crawl", true);
-                boxColliders[0].enabled = false;
-                boxColliders[1].enabled = true;
-                circleCollider.enabled = false;
+                roboAnimator.SetBool("crawling", true);
             }
+            else
+            {
+                roboAnimator.SetBool("crawling", false);
+            }
+       
         }
-        else if (!canCrawl)
+        else
         {
             roboAnimator.SetBool("crawl", false);
             boxColliders[0].enabled = true;
