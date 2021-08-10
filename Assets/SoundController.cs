@@ -30,6 +30,6 @@ public class SoundController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        gameMusic.volume = GameObject.Find("Canvas/MusicSlider/Slider").GetComponent<Slider>().value;
+        gameMusic.volume = GameObject.Find("SliderCanvas/MusicSlider/Slider").GetComponent<Slider>().value;
     }
 }
