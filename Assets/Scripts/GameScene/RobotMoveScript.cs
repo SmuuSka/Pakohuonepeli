@@ -73,6 +73,8 @@ public class RobotMoveScript : MonoBehaviour
 
     private void Update()
     {
+
+
         playerVectorPos = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y);
 
         horizontalInput = Input.GetAxisRaw("Horizontal");
@@ -90,6 +92,16 @@ public class RobotMoveScript : MonoBehaviour
                 boxColliders[0].enabled = false;
                 boxColliders[1].enabled = true;
                 circleCollider.enabled = false;
+
+                if (Input.GetAxis("Horizontal") < 0 || Input.GetAxis("Horizontal") > 0)
+                {
+                    float move = Input.GetAxis("Horizontal");
+                    roboAnimator.SetBool("hold", true);
+                }
+                else
+                {
+                    roboAnimator.SetBool("hold", false);
+                }
             }
         }
         else if (!canCrawl)
