@@ -73,8 +73,6 @@ public class RobotMoveScript : MonoBehaviour
 
     private void Update()
     {
-
-
         playerVectorPos = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y);
 
         horizontalInput = Input.GetAxisRaw("Horizontal");
@@ -86,25 +84,22 @@ public class RobotMoveScript : MonoBehaviour
 
         if (canCrawl)
         {
-            if (Input.GetKey(KeyCode.LeftControl))
-            {
-                roboAnimator.SetBool("crawl", true);
-                boxColliders[0].enabled = false;
-                boxColliders[1].enabled = true;
-                circleCollider.enabled = false;
+            roboAnimator.SetBool("crawl", true);
+            boxColliders[0].enabled = false;
+            boxColliders[1].enabled = true;
+            circleCollider.enabled = false;
 
-                if (Input.GetAxis("Horizontal") < 0 || Input.GetAxis("Horizontal") > 0)
-                {
-                    float move = Input.GetAxis("Horizontal");
-                    roboAnimator.SetBool("hold", true);
-                }
-                else
-                {
-                    roboAnimator.SetBool("hold", false);
-                }
+            if (canCrawl && Input.GetAxisRaw("Horizontal") < 0 || Input.GetAxisRaw("Horizontal") > 0)
+            {
+                roboAnimator.SetBool("crawling", true);
             }
+            else
+            {
+                roboAnimator.SetBool("crawling", false);
+            }
+       
         }
-        else if (!canCrawl)
+        else
         {
             roboAnimator.SetBool("crawl", false);
             boxColliders[0].enabled = true;
