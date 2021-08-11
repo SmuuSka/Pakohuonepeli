@@ -11,7 +11,7 @@ public class WinScript : MonoBehaviour
     {
         Destroy(GameObject.Find("Canvas"));
         Destroy(GameObject.Find("InGameUI"));
-        Destroy(GameObject.Find("SliderCanvas"));
+        //Destroy(GameObject.Find("SliderCanvas"));
         SceneManager.LoadScene("EndScreen");       
     }   
 }
