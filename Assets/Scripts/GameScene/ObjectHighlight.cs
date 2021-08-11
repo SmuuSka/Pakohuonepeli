@@ -20,6 +20,7 @@ public class ObjectHighlight : MonoBehaviour
     public bool isInstansiated = false;
     public GameObject floatingTextPrefab, floatingTaustaPrefab;
 
+
     private Camera cam;
     private bool runtimer;
     private IEnumerator coroutine;
@@ -32,6 +33,8 @@ public class ObjectHighlight : MonoBehaviour
 
     void Start()
     {
+        GameObject.Find("WinPortal").GetComponent<BoxCollider2D>().enabled = false;
+
         coroutine = Sec(0.6f);
         
         cam = Camera.main;
@@ -52,7 +55,7 @@ public class ObjectHighlight : MonoBehaviour
         if (PlayerData.laserTaskDone)
         {           
             Destroy(GameObject.FindGameObjectWithTag("LaserTausta"));
-            GameObject.Find("WinPortal").SetActive(true);
+            GameObject.Find("WinPortal").GetComponent<BoxCollider2D>().enabled = true;
         }
         
     }
@@ -123,6 +126,8 @@ public class ObjectHighlight : MonoBehaviour
     }
     private void Update()
     {
+        
+
         DistanceCheck();
 
         if (!highlightObject)
