@@ -189,11 +189,11 @@ public class ObjectHighlight : MonoBehaviour
             
 
     }
-    private void DistanceCheck()
+    public void DistanceCheck()
     {
         float distance = Vector2.Distance(GameObject.Find("Robo").GetComponent<Transform>().transform.position, this.gameObject.transform.position);
 
-        if (distance < 5 && distance > -5)
+        if (distance < 8 && distance > -8)
         {
             canUse = true;
         }

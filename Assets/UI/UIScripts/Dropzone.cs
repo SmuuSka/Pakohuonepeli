@@ -25,21 +25,31 @@ public class Dropzone : MonoBehaviour
     private void Update()
     {
         playerPos = GameObject.Find("Robo").GetComponent<Transform>().transform.position;
-        zone = GameObject.Find("Dropzone").GetComponent<Transform>().transform.position;
-        float dist = Vector2.Distance(playerPos, zone);
-
-        if (dist < 5 && dist > -5)
+        zone = GameObject.Find("/Ventti (1)/Dropzone").GetComponent<Transform>().transform.position;
+        
+        if (propel == null)
         {
-            useable = true;
+            return;
         }
         else
         {
-            useable = false;
+            float dist = Vector2.Distance(playerPos, propel.transform.position);//zone
+
+            if (dist < 10 && dist > -10)
+            {
+                useable = true;
+                //Debug.Log("Ruuvari " + useable);
+            }
+            else
+            {
+                useable = false;
+            }
         }
+
     }
     public void OnMouseDown()
     {
-        if (this.gameObject.tag == "DropZone" && GameObject.Find("Hand").GetComponent<Inventory>().isFull[0] == true && GameObject.Find("Canvas").GetComponentInChildren<UICursorScript>().cursorActive == true && useable == true)
+        if (GameObject.Find("Hand").GetComponent<Inventory>().isFull[0] == true && GameObject.Find("Canvas").GetComponentInChildren<UICursorScript>().cursorActive == true && useable == true)
         {
             ruuvvari.SetActive(true);
             Cursor.SetCursor(null, Vector2.zero, CursorMode.ForceSoftware);
