@@ -10,6 +10,7 @@ public class EndScreenScript : MonoBehaviour
 
     public void MainMenu()
     {
+        GameObject.Find("-------Sounds-------").GetComponent<SoundController>().MainMenuClip();
         SceneManager.LoadScene("MainMenu");
         PlayerData.ResetData();
     }

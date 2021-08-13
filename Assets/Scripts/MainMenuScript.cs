@@ -9,6 +9,7 @@ public class MainMenuScript : MonoBehaviour
 
     public void StartGame()
     {
+        GameObject.Find("-------Sounds-------").GetComponent<SoundController>().GameMusicClip();
         SceneManager.LoadScene("Cutscene");
     }
 

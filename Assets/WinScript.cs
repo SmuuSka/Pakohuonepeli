@@ -11,7 +11,7 @@ public class WinScript : MonoBehaviour
     {
         Destroy(GameObject.Find("Canvas"));
         Destroy(GameObject.Find("InGameUI"));
-        GameObject.Find("-------Sounds-------").GetComponent<SoundController>().ChangeClip();
+        GameObject.Find("-------Sounds-------").GetComponent<SoundController>().WinScreenClip();
         //Destroy(GameObject.Find("SliderCanvas"));
         SceneManager.LoadScene("EndScreen");       
     }   

@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class SoundController : MonoBehaviour
 {
     [SerializeField] private AudioSource audioSource;
-    [SerializeField] private AudioClip gameMusic, winScreen;
+    [SerializeField] private AudioClip gameMusic, winScreen, mainMenu;
     public static SoundController Instance;
 
     private int sceneIndex;
@@ -28,8 +28,7 @@ public class SoundController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        audioSource.clip = gameMusic;
-        audioSource.Play();
+        MainMenuClip();
     }
 
     // Update is called once per frame
@@ -39,11 +38,21 @@ public class SoundController : MonoBehaviour
         sceneIndex = SceneManager.GetActiveScene().buildIndex;
 
     }
-    public void ChangeClip()
+    public void GameMusicClip()
+    {
+        audioSource.clip = gameMusic;
+        audioSource.PlayDelayed(7f);
+      
+    }
+    public void WinScreenClip()
     {
         audioSource.clip = winScreen;
         audioSource.Play();
-      
+    }
+    public void MainMenuClip()
+    {
+        audioSource.clip = mainMenu;
+        audioSource.Play();
     }
 
 
