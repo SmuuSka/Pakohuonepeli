@@ -143,8 +143,15 @@ public class ObjectHighlight : MonoBehaviour
     }
     private void OnMouseEnter()
     {
-        highlightObject = true;
-        mouseOnObject = true;
+        if (GameObject.Find("PauseMenuCanvas").GetComponent<PauseMenuScripts>().onPause)
+        {
+            return;
+        }
+        else
+        {
+            highlightObject = true;
+            mouseOnObject = true;
+        }
     }
     private void OnMouseExit()
     {

@@ -6,10 +6,12 @@ using UnityEngine.SceneManagement;
 public class PauseMenuScripts : MonoBehaviour
 {
     public static bool GameIsPaused = false;
+    public bool onPause;
     public GameObject pauseMenuUI, UIcanvas, InGameUserInterface;
 
     void Update()
     {
+        onPause = GameIsPaused;
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (GameIsPaused)
