@@ -25,10 +25,6 @@ public class CameraScript : MonoBehaviour
             target.transform.position = pos;
         }
     }
-    private void Awake()
-    {
-        GameObject.Find("-------Sounds-------").GetComponent<SoundController>().GameMusicClip();
-    }
     private void LateUpdate()
     {
         if (target.transform.position.x > 12 && target.transform.position.x < 27)
