@@ -26,9 +26,11 @@ public static class PlayerData
         ToolboxTaskDone = false;
         laserTaskDone = false;
         slideTaskDone = false;
-        lappuPrefab = null;
+        lappuPrefab.Clear();
+        lappuCopy.Clear();
         screwdriver = false;
         battery = false;
         postIt = false;
+        lappuIsTrue = false;
     }
 }

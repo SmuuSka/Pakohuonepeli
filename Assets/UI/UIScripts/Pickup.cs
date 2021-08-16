@@ -7,6 +7,7 @@ public class Pickup : MonoBehaviour
 
     public GameObject itemButton;
     public Inventory inventory;
+    private bool addeditem;
 
     private void Start()
     {
@@ -17,9 +18,15 @@ public class Pickup : MonoBehaviour
         //Jos static bool on true, palautetaan(=return)
     }
 
+    private void Update()
+    {
+        Debug.Log("ITEM ADDED " + addeditem);
+    }
+
     public void Additem(GameObject item)
     {
         bool itemAdded = false;
+        addeditem = itemAdded;
 
         for (int i = 0; i < inventory.slots.Length; i++)
         {
@@ -54,7 +61,7 @@ public class Pickup : MonoBehaviour
 
             if (gameObject.name == "numerolappu")
             {
-                gameObject.SetActive(false);
+                Destroy(GameObject.Find("numerolappu"));
                 PlayerData.postIt = true;
             }
             

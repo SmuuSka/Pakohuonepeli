@@ -13,6 +13,7 @@ public class EndScreenScript : MonoBehaviour
         GameObject.Find("-------Sounds-------").GetComponent<SoundController>().MainMenuClip();
         SceneManager.LoadScene("MainMenu");
         PlayerData.ResetData();
+        Destroy(GameObject.Find("GameMusic"));
         Destroy(GameObject.Find("Hand"));
     }
 
