@@ -20,7 +20,7 @@ public class Pickup : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log("ITEM ADDED " + addeditem);
+     
     }
 
     public void Additem(GameObject item)

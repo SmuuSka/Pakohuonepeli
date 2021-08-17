@@ -7,6 +7,5 @@ public class MusicScript : MonoBehaviour
     private void Start()
     {
         GameObject.Find("-------Sounds-------").GetComponent<SoundController>().GameMusicClip();
-        Debug.Log("Latas");
     }
 }
