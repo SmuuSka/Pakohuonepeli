@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 
 public class Kello : MonoBehaviour
@@ -28,6 +29,7 @@ public class Kello : MonoBehaviour
         if (timeToDisplay < 0)
         {
             timeToDisplay = 0;
+            StartCoroutine(loppu());
         }
         else if (timeToDisplay > 0)
         {
@@ -43,5 +45,15 @@ public class Kello : MonoBehaviour
     public void ResetTime()
     {
         timeValue = 600;
+    }
+
+    IEnumerator loppu()
+    {
+        
+        yield return new WaitForSeconds(0.5f);
+        SceneManager.LoadScene("GameOver");
+        Destroy(GameObject.Find("Canvas"));
+        Destroy(GameObject.Find("InGameUI"));
+        
     }
 }
