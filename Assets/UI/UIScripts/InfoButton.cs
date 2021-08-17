@@ -15,7 +15,12 @@ public class InfoButton : MonoBehaviour
     }
     private void Update()
     {
-        
+        if (Input.GetAxis("Horizontal") > 0 || Input.GetAxis("Horizontal") < 0)
+        {
+            infoPanel.SetActive(false);
+            isOpened = false;
+            canClose = false;
+        }
     }
     public void OpenInfo()
     {
