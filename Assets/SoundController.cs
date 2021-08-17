@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class SoundController : MonoBehaviour
 {
     [SerializeField] private AudioSource audioSource;
-    [SerializeField] private AudioClip gameMusic, winScreen, mainMenu, cutScene;
+    [SerializeField] private AudioClip gameMusic, winScreen, mainMenu, cutScene, gameOverScene;
     public static SoundController Instance;
 
     private int sceneIndex;
@@ -60,5 +60,10 @@ public class SoundController : MonoBehaviour
         audioSource.Play();
     }
 
+    public void gameOverClip()
+    {
+        audioSource.clip = gameOverScene;
+        audioSource.Play();
+    }
 
 }

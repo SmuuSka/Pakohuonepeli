@@ -52,6 +52,7 @@ public class Kello : MonoBehaviour
         
         yield return new WaitForSeconds(0.5f);
         SceneManager.LoadScene("GameOver");
+        GameObject.Find("-------Sounds-------").GetComponent<SoundController>().gameOverClip();
         Destroy(GameObject.Find("Canvas"));
         Destroy(GameObject.Find("InGameUI"));
         

@@ -1672,6 +1672,7 @@ MonoBehaviour:
   winScreen: {fileID: 8300000, guid: 91d627a8a045ffe4a8f10f487775b520, type: 3}
   mainMenu: {fileID: 8300000, guid: 7bf2222d71396b04883ef349f69a8120, type: 3}
   cutScene: {fileID: 8300000, guid: 77b83e7f075d98e458b534855263a940, type: 3}
+  gameOverScene: {fileID: 8300000, guid: 3d38f9b2b9de36441998c942ad98dfba, type: 3}
 --- !u!1 &1024810851
 GameObject:
   m_ObjectHideFlags: 0
