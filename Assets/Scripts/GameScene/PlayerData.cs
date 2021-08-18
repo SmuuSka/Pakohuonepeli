@@ -19,6 +19,7 @@ public static class PlayerData
 
     public static void ResetData()
     {
+        lockerScene = false;
         firstPos = false;
         playerTransformPos = new Vector2(-6.36f, -1.61f);
         gameCameraTransformPos = new Vector3(0, 0, -10);
