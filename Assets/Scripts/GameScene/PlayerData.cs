@@ -32,5 +32,6 @@ public static class PlayerData
         battery = false;
         postIt = false;
         lappuIsTrue = false;
+        tempAnswers.Clear();
     }
 }
