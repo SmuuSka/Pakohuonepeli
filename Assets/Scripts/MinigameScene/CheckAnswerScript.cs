@@ -28,16 +28,20 @@ public class CheckAnswerScript : MonoBehaviour
 
     private void Start()
     {
+        //Arvotaan uudet numerot, jos PlayerData.lockerScene on false.
         if (PlayerData.lockerScene != true)
         {
             for (int i = 0; i < answer.Count; i++)
             {
                 answer[i].text = Random.Range(0, 35).ToString();
+                //Tallennetaan arvotut numerot väliaikaiseen listaan.
                 PlayerData.tempAnswers.Add(answer[i]);
 
             }
+            //Asetetaan PlayerData.lockerScene arvo true
             PlayerData.lockerScene = true;
         }
+        //Jos numerot on jo kerran arvottu, laitetaan väliaikaisesta listasta numerot lappu-objektiin.
         else
         {
             for (int i = 0; i < PlayerData.tempAnswers.Count; i++)
@@ -49,7 +53,7 @@ public class CheckAnswerScript : MonoBehaviour
 
         slotDefaultColor = slot[slotInt].color;
         currentSlotInt = slotInt;
-        cursorManager = GameObject.Find("näyttö").GetComponent<CursorScrip>();
+        cursorManager = GameObject.Find("Screen").GetComponent<CursorScrip>();
 
         slotInt = 0;
         slotCount = slot.Count;
