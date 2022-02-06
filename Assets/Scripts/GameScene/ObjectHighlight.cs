@@ -187,7 +187,7 @@ public class ObjectHighlight : MonoBehaviour
         if(isInstansiated == false)
         {
             var go = Instantiate(floatingTextPrefab, transform.position, Quaternion.identity);
-            go.GetComponent<TextMesh>().text = ("Olet liian kaukana");
+            go.GetComponent<TextMesh>().text = ("Too far for use");
             Instantiate(floatingTaustaPrefab, transform.position, Quaternion.identity);
             isInstansiated = true;
             StartCoroutine(Timer());
