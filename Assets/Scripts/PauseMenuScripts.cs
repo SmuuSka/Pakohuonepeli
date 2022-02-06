@@ -52,7 +52,8 @@ public class PauseMenuScripts : MonoBehaviour
         Destroy(GameObject.Find("-------Sounds-------"));
         PlayerData.ResetData();
         Time.timeScale = 1f;
-        SceneManager.LoadScene("MainMenu");       
+        SceneManager.LoadScene("MainMenu");
+        Destroy(GameObject.Find("GameMusic"));
     }
 
     public void Restart()
