@@ -9,21 +9,29 @@ public class Vastaukset : MonoBehaviour
     
     private Lappu lappuScript;
 
+    [SerializeField] private GameObject rightAnswerObject;
+
+    private void Awake()
+    {
+
+    }
+
     public void Start()
     {
+        //Jos PlayerData.lappuCopy listassa on jo vastaukset, luodaan sieltä uusi lappukopio.
         if (PlayerData.lappuCopy.Count != 0 && PlayerData.lappuCopy.Count < 1)
         {
             Instantiate(PlayerData.lappuCopy[0]);
         }
         else if (GameObject.Find("Canvas/Slot/LappuPrefab(Clone)") != null)
         {
-            answers = GameObject.Find("LappuVastaukset");
+            answers = GameObject.Find("LappuVastauksetUusi"); //Vaihdetaan LappuVastaukset => LappuVastauksetUusi 
             answers.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0);
             lappuScript = GameObject.Find("/Canvas/Slot/LappuPrefab(Clone)").GetComponent<Lappu>();
         }
         else
         {
-            answers = GameObject.Find("LappuVastaukset");
+            answers = GameObject.Find("LappuVastauksetUusi"); //Vaihdetaan LappuVastaukset => LappuVastauksetUusi 
             answers.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0);
             return;
         }
@@ -50,13 +58,14 @@ public class Vastaukset : MonoBehaviour
     {
         if (lappuScript.isPressedLappu)
         {
+            
             var lappu = Instantiate(answers);
-            lappu.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
+            //lappu.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
 
-            if (lappu.GetComponent<DontDestroyLappuClone>() == null)
-            {
-                lappu.AddComponent<DontDestroyLappuClone>();
-            }
+            //if (lappu.GetComponent<DontDestroyLappuClone>() == null)
+            //{
+            //    lappu.AddComponent<DontDestroyLappuClone>();
+            //}
             PlayerData.lappuCopy.Add(lappu);
             lappuScript.isPressedLappu = false;
         }
