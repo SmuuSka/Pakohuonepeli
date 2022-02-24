@@ -43,12 +43,13 @@ public class RobotMoveScript : MonoBehaviour
     [SerializeField] GameObject[] doorLight = new GameObject[0];
     private void Awake()
     {
-        
+        //If player have a position already, player pos is PlayerData.playerTransformPos
         if (PlayerData.playerTransformPos != null)
         {
             transform.position = PlayerData.playerTransformPos;
         }
 
+        //Check and set player facing
         if (PlayerData.facingStatic == false)
         {
             transform.localRotation = new Quaternion(0, 0, 0, 0);
@@ -57,6 +58,7 @@ public class RobotMoveScript : MonoBehaviour
         {
             transform.localRotation = new Quaternion(0, 180, 0, 0);
         }
+        //Check for the pervious task is done, set door lights on.
         if (PlayerData.slideTaskDone)
         {
             doorLight[0].GetComponent<Light2D>().color = new Color(0, 1, 0);
@@ -73,6 +75,7 @@ public class RobotMoveScript : MonoBehaviour
 
     private void Update()
     {
+        //Updating current player pos for saving it to Playerdata
         playerVectorPos = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y);
 
         horizontalInput = Input.GetAxisRaw("Horizontal");
@@ -113,6 +116,8 @@ public class RobotMoveScript : MonoBehaviour
         MoveRobo();
     }
 
+
+    //Door opening logic for both sides
     private void OpenDoor()
     {
         if (playerRaycastHitDoor.rigidbody.tag == "OpenableDoorRight")
@@ -145,7 +150,8 @@ public class RobotMoveScript : MonoBehaviour
         }
     }
 
-    private void OpenBoth()
+    //Double door opening logic
+    private void OpenDoubleDoors()
     {
         if (playerRaycastHitDoor.rigidbody.tag == "OpenableDoorDouble")
         {
@@ -164,16 +170,13 @@ public class RobotMoveScript : MonoBehaviour
                 return;
             }
 
-
             doubleDoorCol2D = playerRaycastHitDoor.collider;
 
             tempRightAnimatorDoubleDoors = doubleDoorRight.GetComponent<Animator>();
-            //tempRightBoxCol2D = playerRaycastHitDoor.collider.GetComponent<BoxCollider2D>();
             tempRightUpperDoubleDoor = doubleDoorRight.GetComponentInChildren<Transform>().Find("Ovi_ylä").GetComponent<Transform>().position;
             tempRightAnimatorDoubleDoors.SetBool("rightDoorIsOpening", true);
 
             tempLeftAnimatorDoubleDoors = doubleDoorLeft.GetComponent<Animator>();
-            //tempLeftBoxCol2D = playerRaycastHitDoor.collider.GetComponent<BoxCollider2D>();
             tempLeftUpperDoubleDoor = doubleDoorLeft.GetComponentInChildren<Transform>().Find("Ovi_ylä").GetComponent<Transform>().position;
             tempLeftAnimatorDoubleDoors.SetBool("leftDoorIsOpening", true);
 
@@ -205,19 +208,21 @@ public class RobotMoveScript : MonoBehaviour
 
     private void DoorController()
     {
+        //Door opening pulse check
         if (openDoorPulse == false)
         {
             CheckHitRaycastDoor();
         }
         if (openDoorPulse == true && rightDoubleDoor == true && leftDoubleDoor == true)
         {
-            OpenBoth();
+            OpenDoubleDoors();
         }
         if (closeDoorPulse == true && !isPlayerInsideDoorZone == true && leftDoubleDoor == true && rightDoubleDoor == true)
         {
             CloseDoorBoth();
         }
-        //Left Door
+        
+        //Left door
         if (playerRaycastHitDoor && openDoorPulse && leftDoor == true)
         {
             OpenDoor();
@@ -226,8 +231,8 @@ public class RobotMoveScript : MonoBehaviour
         {
             CloseDoorLeft();
         }
-        //Right Door
 
+        //Right door
         if (playerRaycastHitDoor && openDoorPulse && rightDoor == true)
         {
             OpenDoor();
@@ -237,9 +242,6 @@ public class RobotMoveScript : MonoBehaviour
         {
             CloseDoorRight();
         }
-
-
-
     }
 
     private void UpdateIsInsideDoorZone()
@@ -250,8 +252,8 @@ public class RobotMoveScript : MonoBehaviour
 
     private void CheckHitRaycastDoor()
     {
+        //Debug.DrawRay(playerPos.position, transform.TransformDirection(Vector2.right) * 2f, Color.red);
 
-        Debug.DrawRay(playerPos.position, transform.TransformDirection(Vector2.right) * 2f, Color.red);
         LayerMask maskRoom = LayerMask.GetMask("Room");
         LayerMask maskVent = LayerMask.GetMask("CrawlZone");
         playerRaycastHitDoor = Physics2D.Raycast(transform.position, transform.TransformDirection(Vector2.right), 2f, maskRoom);
