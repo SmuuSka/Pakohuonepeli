@@ -5,36 +5,38 @@ using UnityEngine.UI;
 
 public class LoginManager : MonoBehaviour
 {
-    public ScriptableObjects so;
+    //public ScriptableObjects so;
     public InputField nameInput;
-    private bool canBeAdded = false;
+    //private bool canBeAdded = false;
+    MongoDatabase db;
+
+    string userNameInput;
 
 
+    private void Start()
+    {
+        db = GameObject.Find("Database").GetComponent<MongoDatabase>();
+    }
 
     public void EnterNameButton()
     {
-        var userNameInput = nameInput.text;
-
-        if (so.nameList.Count < 1)
-        {
-            so.nameList.Add(userNameInput);
-        }
-        else if (canBeAdded == false)
-        {
-            foreach (var name in so.nameList)
-            {
-                if (name == userNameInput)
-                {
-                    Debug.Log("Käyttäjä on olemassa");
-                    break;
-                }
-                else
-                {
-                    Debug.Log("Käyttäjä on luotu");
-                    so.nameList.Add(userNameInput);
-                    canBeAdded = true;
-                }
-            }
-        }                 
+        userNameInput = nameInput.text;
+        db.AddPlayer(userNameInput);        
     }
+
+    public async void LoadButton()
+    {
+        userNameInput = nameInput.text;
+        var playersData = db.LoadPlayer();
+        var dict = await playersData;
+
+        foreach (KeyValuePair<string, string> item in dict) 
+        {
+            Debug.Log(item.Key + ":" + item.Value);
+            //playersData.text += item.Key + " : " + item.Value + "\n";
+        }
+
+    }
+
+
 }
