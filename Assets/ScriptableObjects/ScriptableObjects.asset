@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29f4dcb636cdbe7409e44fb91e6cfa08, type: 3}
   m_Name: ScriptableObjects
   m_EditorClassIdentifier: 
-  playerName: 
-  nameList: []
+  playerName: samuhui
+  score: 600

@@ -1,7 +1,6 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class LoginManager : MonoBehaviour
 {
@@ -10,13 +9,13 @@ public class LoginManager : MonoBehaviour
 
     string userNameInput;
     string nameToLower;
-    double defaultScore = 600;
+    public static double defaultScore = 600;
 
 
     private void Start()
     {
         db = GameObject.Find("Database").GetComponent<MongoDatabase>();
-    }   
+    }
     private void Update()
     {
         userNameInput = nameInput.text;
@@ -65,14 +64,28 @@ public class LoginManager : MonoBehaviour
         var playerName = NameToLower();
         db.AddPlayer(playerName, defaultScore);
 
-        SceneManager.LoadScene(2);
+        //var database = GameObject.Find("Database").GetComponent<PlayerScript>().playerData;
+
+        //database.playerName = playerName;
+        //database.score = defaultScore;
+
+
+        //SceneManager.LoadScene(2);
 
         nameInput.Select();
         nameInput.text = null;
         userNameInput = null;
         nameToLower = null;
         playerName = null;
+
+
+
+        //nameInput.Select();
+        //nameInput.text = null;
+        //userNameInput = null;
+        //nameToLower = null;
+        //playerName = null;
+        //return;
+
     }
-
-
 }

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 using System;
+using UnityEngine.SceneManagement;
 
 
 public class MongoDatabase : MonoBehaviour
@@ -17,6 +18,7 @@ public class MongoDatabase : MonoBehaviour
     IMongoDatabase db;
     IMongoCollection<BsonDocument> collection;
 
+   
 
     private void Start()
     {
@@ -53,14 +55,22 @@ public class MongoDatabase : MonoBehaviour
                 // Jos pelaaja löytyy jo hakemistosta palataan takaisin alkuun, eikä lisätä pelaajaa.
                 if (playerName.Equals(player.Key))
                 {
+                    
                     return;
                 }
             }
             // Jos ei löytynyt yhtään samannimistä pelaajaa voidaan lisätä pelaaja hakemistoon.
             BsonDocument addPlayers = new BsonDocument().Add("name", playerName).Add("score", score);
             await collection.InsertOneAsync(addPlayers);
-        }      
+            var database = GetComponent<PlayerScript>().playerData;
+
+            database.playerName = playerName;
+            database.score = LoginManager.defaultScore;
+
+            SceneManager.LoadScene(2);
+        }
     }
+
 
     // Tässä metodissa korvataan vanha tulos uudella. Tätä käytetään vain jos uusi tulos on parempi kuin vanha.
     public void NewHighScore(string playerName, double score) // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! KOKEILE ILMAN NIMEÄ !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
