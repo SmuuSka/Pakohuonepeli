@@ -43,10 +43,20 @@ public class WinScript : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    public IEnumerator WaitBeforeScore()
     {
         StopClock();
         PlayerData();
+        yield return new WaitForSeconds(0.5f);
+        playerManager.playerData.playerName = null;
+        playerManager.playerData.score = 0;
+        StopCoroutine(WaitBeforeScore());
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        StartCoroutine(WaitBeforeScore());
+        
         Destroy(GameObject.Find("Canvas"));
         Destroy(GameObject.Find("InGameUI"));
         GameObject.Find("-------Sounds-------").GetComponent<SoundController>().WinScreenClip();
