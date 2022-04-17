@@ -4,5 +4,5 @@
 public class ScriptableObjects : ScriptableObject
 {
     public string playerName;
-    public int score;
+    public double score;
 }

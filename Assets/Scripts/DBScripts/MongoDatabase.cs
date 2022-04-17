@@ -24,10 +24,12 @@ public class MongoDatabase : MonoBehaviour
         db = mongoClient.GetDatabase("PakohuoneDB");
         // Haetaan collection referenssi ja tallennetaan se "collection" muuttujaan.
         collection = db.GetCollection<BsonDocument>("Players");
+        // Ei tuhota Database peliobjektia sceneä vaihdettaessa.
+        DontDestroyOnLoad(this.gameObject);
     }
 
-    // Lisätään pelaaja käyttäen asynkronista metodia ja otetaan parametriksi pelaajan nimi string muodossa ja pisteet integereinä.
-    public async void AddPlayer(string playerName, int score)
+    // Lisätään pelaaja käyttäen asynkronista metodia ja otetaan parametriksi pelaajan nimi string muodossa ja pisteet doublena.
+    public async void AddPlayer(string playerName, double score)
     {
         // Luodaan paikallinen muuttuja, johon tallennetaan LoadPlayer-metodin tieto.
         var playersData = LoadPlayer();
@@ -61,7 +63,7 @@ public class MongoDatabase : MonoBehaviour
     }
 
     // Tässä metodissa korvataan vanha tulos uudella. Tätä käytetään vain jos uusi tulos on parempi kuin vanha.
-    public void NewHighScore(string playerName, int score) // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! KOKEILE ILMAN NIMEÄ !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    public void NewHighScore(string playerName, double score) // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! KOKEILE ILMAN NIMEÄ !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     {
         // Tässä luodaan paikallinen newScore muuttuja ja tallennetaan siihen uudet pisteet.
         BsonDocument newScore = new BsonDocument().Add("name", playerName).Add("score", score);
@@ -72,29 +74,45 @@ public class MongoDatabase : MonoBehaviour
     }
 
     // Ladataan hakemistosta pelaajat ja pelaajien parhaimmat tulokset.
-    public async Task<Dictionary<string, int>> LoadPlayer()
+    public async Task<Dictionary<string, double>> LoadPlayer()
     {
         // Luodaan paikallinen muuttuja ja tallennetaan siihen collection.FindASync(new BsonDocument) metodi ja luodaan siitä uusi objekti.
         var playerID = collection.FindAsync(new BsonDocument());
         // Tallennetaan playerID:stä tuleva tieto toiseen paikalliseen muuttujaan nimeltä players.
         var players = await playerID;
         // Luodaan tyhjä hakemisto ja alustetaan se.
-        Dictionary<string, int> dict = new Dictionary<string, int>();
+        Dictionary<string, double> dict = new Dictionary<string, double>();
 
         // Ajetaan silmukka läpi, jolla haetaan hakemistosta kaikki pelaajat ja pelaajien parhaat pisteet ja tallennetaan ne uuteen paikalliseen hakemistoon.
         foreach (var id in players.ToList())
         {
             // Luodaan paikallinen "key" muuttuja ja tallennetaan siihen pelaajan nimi.
             var key = id.GetValue("name").ToString();
-            // Luodaan paikallinen "value" muuttuja ja tallennetaan siihen pelaajan pisteet. Käännetään se integer muotoon.
-            var value = Convert.ToInt32(id.GetValue("score"));
+            // Luodaan paikallinen "value" muuttuja ja tallennetaan siihen pelaajan pisteet. Käännetään se double muotoon.
+            var value = id.GetValue("score").ToDouble();
 
             // Lisätään arvopari hakemistoon.
             dict.Add(key, value);
         }
-
         // Palautetaan hakemisto.
         return dict;
     }
 
+    public async Task<Dictionary<string, double>> GetAllHighscores()
+    {
+        var allScores = collection.FindAsync(new BsonDocument());
+        var AllScoresAwaited = await allScores;
+        Dictionary<string, double> dict = new Dictionary<string, double>();
+
+        foreach (var score in AllScoresAwaited.ToList())
+        {
+            var key = score.GetValue("name").ToString();
+
+            var value = score.GetValue("score").ToDouble();
+
+            dict.Add(key, value);
+        }
+
+        return dict;
+    }
 }

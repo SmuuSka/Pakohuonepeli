@@ -10,7 +10,7 @@ public class LoginManager : MonoBehaviour
 
     string userNameInput;
     string nameToLower;
-    int defaultScore = 0;
+    double defaultScore = 600;
 
 
     private void Start()
@@ -32,11 +32,22 @@ public class LoginManager : MonoBehaviour
         {
             if (playerName.Equals(player.Key))
             {
-                //var _player = GameObject.Find("Player").GetComponent<>
-            }
+                var database = GameObject.Find("Database").GetComponent<PlayerScript>().playerData;
 
+                database.playerName = player.Key;
+                database.score = player.Value;
+
+                SceneManager.LoadScene(2);
+                return;
+            }
         }
 
+        Debug.Log("Pelaajaa ei löytynyt" + playerName);
+        nameInput.Select();
+        nameInput.text = null;
+        userNameInput = null;
+        nameToLower = null;
+        playerName = null;
     }
 
 
@@ -44,11 +55,24 @@ public class LoginManager : MonoBehaviour
     {
         foreach (char item in userNameInput)
         {
-            nameToLower += item.ToString().ToLower();
+            nameToLower += item.ToString().ToLower().Trim();
         }
         return nameToLower;
     }
 
+    public void AddUserToDatabase()
+    {
+        var playerName = NameToLower();
+        db.AddPlayer(playerName, defaultScore);
+
+        SceneManager.LoadScene(2);
+
+        nameInput.Select();
+        nameInput.text = null;
+        userNameInput = null;
+        nameToLower = null;
+        playerName = null;
+    }
 
 
 }

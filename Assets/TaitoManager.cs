@@ -20,6 +20,6 @@ public class TaitoManager : MonoBehaviour
     public IEnumerator kek()
     {
         yield return new WaitForSeconds(2f);
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene(1);
     }
 }
