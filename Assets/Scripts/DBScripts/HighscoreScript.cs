@@ -1,8 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
-using System.Linq;
 
 public class HighscoreScript : MonoBehaviour
 {
@@ -34,8 +34,14 @@ public class HighscoreScript : MonoBehaviour
 
     public void ShowHighScore(Dictionary<string, double> dict)
     {
+
         foreach (KeyValuePair<string, double> player in dict.OrderBy(key => key.Value))
         {
+            if (items >= 5)
+            {
+                break;
+            }
+
             player_txt[items].text = player.Key;
             int minutes = (int)(player.Value / 60) % 60;
             int seconds = (int)(player.Value % 60);
@@ -44,8 +50,5 @@ public class HighscoreScript : MonoBehaviour
             score_txt[items].text = timeString;
             items += 1;
         }
-
-
     }
-
 }

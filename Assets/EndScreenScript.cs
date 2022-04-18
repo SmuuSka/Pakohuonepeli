@@ -11,7 +11,7 @@ public class EndScreenScript : MonoBehaviour
     public void MainMenu()
     {
         GameObject.Find("-------Sounds-------").GetComponent<SoundController>().MainMenuClip();
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("LoginScreen");
         PlayerData.ResetData();
         Destroy(GameObject.Find("GameMusic"));
         Destroy(GameObject.Find("Hand"));

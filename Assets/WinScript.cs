@@ -41,13 +41,15 @@ public class WinScript : MonoBehaviour
                 }
             }
         }
+
+        playerManager.playerData.Reset();
     }
 
     public IEnumerator WaitBeforeScore()
     {
         StopClock();
         PlayerData();
-        playerManager.playerData.Reset();
+        
         yield return new WaitForSeconds(0.5f);
         //playerManager.playerData.playerName = null;
         //playerManager.playerData.score = 0;
