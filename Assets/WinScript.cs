@@ -47,9 +47,10 @@ public class WinScript : MonoBehaviour
     {
         StopClock();
         PlayerData();
+        playerManager.playerData.Reset();
         yield return new WaitForSeconds(0.5f);
-        playerManager.playerData.playerName = null;
-        playerManager.playerData.score = 0;
+        //playerManager.playerData.playerName = null;
+        //playerManager.playerData.score = 0;
         StopCoroutine(WaitBeforeScore());
     }
 
